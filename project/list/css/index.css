@@ -1,0 +1,81 @@
+*{margin: 0;padding: 0;}
+body{/*让鼠标不选中文本*/
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    /* 改变页面背景色*/
+    background-color: #002A35;
+    /*font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;*/
+    /*font-weight: 80;*/
+    /*font-family: YouYuan;*/
+   /* background-image: url("../images/bg.png");
+    background-size:cover;*/
+}
+#title{/*主标题*/
+    text-align: center;
+    color: #EC6D6D;
+    font-size: 20px;
+    margin: 10px;
+}
+#like{/* 主体部分属性 */
+    /*min-width: 750px;*/
+    width: 750px;
+    min-height: 300px;
+    margin: 20px auto 0px;
+    /*background-color: #002A35;*/
+}
+#like .box{ /* 标题整体属性 */
+    margin-bottom: 15px;
+}
+#like .box .box-title{ /* 标题title属性 */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #51C6BE;
+    color: #751B12;
+    height: 30px;
+    line-height: 30px;
+}
+#like .box .box-title span{
+    display: inline-block;
+}
+.angle{ /* 三角形属性 */
+    vertical-align:top;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-right: 0px;
+    border-top: 10px solid #51C6BE;
+    border-bottom: 10px solid #51C6BE;
+    border-left:10px solid #751B12;
+    border-right: 10px solid #51C6BE;
+    transform: rotate(0deg);
+}
+
+/* 链接部分的属性 */
+#like .box .box-list{
+    display: none;
+    background-color: #E9ECEF;
+}
+#like .box .box-list a{
+    text-decoration: none;
+    display: inline-block;
+    color: #00314F;
+    /*letter-spacing: 1px;*/
+    width: 15%;
+    min-width: 120px;
+    height: 20px;
+    /*text-align: center;*/
+    /*overflow: hidden;*/
+    line-height: 20px;
+    padding: 10px 10px;
+    margin: 1px 5px;
+}
+#like .box .box-list a:hover{
+    background-color: #B2BAC3;
+}
+#like .box .box-list a img{
+    display: inline-block;
+    vertical-align:top;
+    height: 20px;
+    margin-right: 6px;
+}

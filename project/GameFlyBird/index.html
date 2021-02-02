@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{/*让鼠标不选中文本*/
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+        #game{
+            position: relative;
+            overflow: hidden;
+            width: 800px;
+            height: 600px;
+            background-image: url('images/background.png');
+        }
+        #bird{
+            position: absolute;
+            width: 33px;
+            height: 25px;
+            background-image: url('images/bird.png');
+            background-repeat: no-repeat;
+            background-position: -8px, -100px;
+            top: 100px;
+            left: 100px;
+        }
+        .pipeTop{
+            background: url(images/pipe2.png) center bottom;
+            position: absolute;
+        }
+        .pipeBottom{
+            background: url(images/pipe1.png) top center;
+            position: absolute;
+        }
+        #out{ /*显示得分*/
+            width: 800px;
+            height: 600px;
+            position: absolute;
+            top: 14px;
+            left: 700px;
+        }
+        #end{
+            display: none;
+            width: 800px;
+            height: 600px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(200,200,200,0.8);
+        }
+        #end p{
+            margin: 150px auto 20px;
+            display: block;
+            width: 400px;
+            height: 100px;
+            text-align: center;
+            color: red;
+            letter-spacing: 10px;
+            font-size: 50px;
+            line-height: 100px;
+            /*border: 1px solid red;*/
+        }
+        #end span{
+            display: block;
+            margin: 10px auto;
+            color: green;
+            font-size: 30px;
+            width: 400px;
+            text-align: center;
+            letter-spacing: 10px;
+            /*border:1px solid green;*/
+        }
+        #end input{
+            position: absolute;
+            left: 300px;
+            top: 364px;
+            width: 180px;
+            height: 80px;
+            outline: none;
+            border-top: 3px solid red;
+            border-bottom: 3px solid green;
+            border-radius: 30px;
+            color: red;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div id="bird"></div>
+    </div>
+    <div id="out">得分:512</div>
+    <div id="end">
+        <p>恭喜你</p>
+        <span id="endOut">获得1024分</span>
+        <input type="button" id="btn" value="再来一局" />
+    </div>
+    <script>
+
+        // 检测点击事件是否有效
+        const clickEvent = (function() {
+            if ('ontouchstart' in document.documentElement === true)
+                return 'touchstart';
+            else
+                return 'click';
+        })();
+
+        var gameID = document.querySelector('#game');
+        var birdID = document.querySelector('#bird');
+        var end = document.querySelector('#end');
+        var btn = document.querySelector('#btn');
+        var out = document.querySelector('#out');
+        var endOut = document.querySelector('#endOut');
+
+        var isGameOver = false;
+
+        // 管道对象构造函数
+        function Pipe(positionX) {
+            this.x = positionX;
+
+            // 构造上管道
+            this.divTop = document.createElement('div');
+            this.divTop.className = 'pipeTop';
+
+            this.divTop.style.left = this.x + "px";
+            this.divTop.style.top = 0+'px';
+            this.divTop.style.width = 52+'px';
+
+            this.topPipeH = parseInt(Math.random() * 175 + 100);
+            this.divTop.style.height = this.topPipeH+'px';
+
+            // 构造下管道
+            this.divBottom = document.createElement('div');
+            this.divBottom.className = 'pipeBottom';
+
+            this.divBottom.style.left = this.x + "px";
+
+            this.bottomPipeY = this.topPipeH + 200;
+            this.divBottom.style.top = this.bottomPipeY + "px";
+            this.divBottom.style.width = 52+'px';
+
+            this.bottomPipeH = gameID.offsetHeight - this.bottomPipeY;
+            this.divBottom.style.height = this.bottomPipeH + "px";
+
+            // 将管道添加到网页中
+            gameID.appendChild(this.divBottom);
+            gameID.appendChild(this.divTop);
+
+            // 管道是否被小鸟经过标识
+            this.isPass = false;
+
+            // 重置管道高度函数
+            this.randomF = function(){
+                this.topPipeH = parseInt(Math.random() * 175 + 100);
+                this.divTop.style.height = this.topPipeH+'px';
+
+                this.bottomPipeY = this.topPipeH + parseInt(Math.random() * 150 + 100);
+                this.divBottom.style.top = this.bottomPipeY + "px";
+
+                this.bottomPipeH=gameID.offsetHeight-this.bottomPipeY;
+                this.divBottom.style.height = this.bottomPipeH + "px";
+            }
+            // 管道是否碰撞检测函数
+            this.check = function(){
+                var birdRight = birdID.offsetLeft+birdID.offsetWidth;
+                var birdBottom = birdID.offsetTop+birdID.offsetHeight;
+
+                if((birdRight >= this.x)&&(birdID.offsetLeft <= this.x + 52)){
+                    if((birdBottom >= this.divBottom.offsetTop)||(birdID.offsetTop <= this.divTop.offsetHeight)){
+                        isGameOver = true;
+                    }
+                }
+                // 安全通过增加10分数
+                if(!this.isPass){
+                    if(birdID.offsetLeft >= this.x + 52){
+                        Score += 10;
+                        this.isPass = true;
+                    }
+                }
+
+            }
+            // 管道移动函数，超过界面重置高度重新开始
+            this.move = function(){
+                if (this.x < -52){
+                    this.x = 800;
+                    this.isPass = false;
+                    this.randomF();
+                }
+                this.x -= 3;
+                this.divTop.style.left = this.x + "px";
+                this.divBottom.style.left = this.x + "px";
+                this.check();
+            }
+            // 重新开始游戏时重置管道初始位置和高度
+            this.reset = function(x){
+                this.x = x;
+                this.divTop.style.left = this.x + "px";
+                this.divBottom.style.left = this.x + "px";
+                this.randomF();
+            }
+
+        }
+
+        // 创建管道对象数组
+        var pipes = [];
+        for(var i = 0; i < 4; i++){
+            pipes[i] = new Pipe(400 + 200 * i);
+        }
+
+
+
+        var sky = {
+            postion:0
+        }
+        var gravity = 1; //加速度
+        var Score = 0; //得分
+        var bird = {
+            x:birdID.offsetLeft,
+            y:birdID.offsetTop,
+            speedY:0
+        }
+
+        // 背景移动函数
+        function backgroundMove(){
+            sky.postion -= 5;
+            gameID.style.backgroundPositionX = sky.postion + 'px';
+        }
+        // 小鸟移动函数，检测小鸟是否碰撞上下边界
+        function birdMove() {
+            bird.speedY += gravity;
+            bird.y += bird.speedY;
+            if( bird.y > gameID.offsetHeight - birdID.offsetHeight){
+                bird.y = gameID.offsetHeight - birdID.offsetHeight;
+                isGameOver = true;
+            }
+            if (bird.y < 0){
+                bird.y = 0;
+                isGameOver = true;
+            }
+            birdID.style.top = bird.y + 'px';
+        }
+        // 更新分数的显示
+        function updateScore(){
+            out.innerHTML = "得分:"+Score;
+        }
+        // 游戏开始函数，控制游戏的移动和
+        var timerF;
+        function bgeinGame(){
+            timerF = setInterval(function(){
+                if(!isGameOver){
+                    backgroundMove();
+                    birdMove();
+                    pipes[0].move();
+                    pipes[1].move();
+                    pipes[2].move();
+                    pipes[3].move();
+                    updateScore();
+                }else{
+                    showbutton();
+                    clearInterval(timerF);
+                }
+            },30);
+        }
+        // 游戏结束，游戏结果界面的显示
+        function showbutton(){
+            end.style.display = "block";
+            endOut.innerHTML = "获得"+Score+"分";
+        }
+        // 重置游戏，把各个参数重置到初始状态
+        function Reset(){
+            end.style.display = "none";
+            birdID.style.left = 100 +"px";
+            birdID.style.top = 100 +"px";
+
+            bird.x = 100 ;
+            bird.y = 100 ;
+            bird.speedY = 0;
+            sky.postion = 0;
+
+            Score = 0;
+
+            pipes[0].reset(400+200*0);
+            pipes[1].reset(400+200*1);
+            pipes[2].reset(400+200*2);
+            pipes[3].reset(400+200*3);
+
+            isGameOver = false;
+        }
+        // 重新开始游戏按钮，重置参数并开始新游戏
+        btn.onclick = function() {
+            Reset();
+            bgeinGame();
+        }
+        // 游戏控制函数，每次点击都改变小鸟状态，并添加1分数
+        // document.onclick = function(){
+        //     if(!isGameOver){
+        //         bird.speedY =  - 10;
+        //         Score += 1;
+        //     }
+        // }
+
+
+        document.addEventListener(clickEvent, e => {
+            if(!isGameOver){
+                bird.speedY =  - 10;
+                Score += 1;
+            }
+        });
+
+        // 页面加载就开始新游戏
+        window.onload = function(){
+            bgeinGame();
+        }
+
+    </script>
+</body>
+</html>

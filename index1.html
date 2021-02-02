@@ -44,20 +44,13 @@
         <script>
             var contentsList = document.getElementById("contentsList");
             for(var i =content.length -1;i>=0;i--){
-                var str = "";
-                if(content[i].familyID === 3){
-                    str = `<li><a href="`+content[i].url+`" target="_blank">
+                if(content[i].familyID === 1){
+                    var str = `<li><a href="`+content[i].url+`">
                     <span class="title">`+content[i].title+`</span>
                     <span class="family">`+content[i].family+`</span>
                     </a></li>`;
-                }else{
-                    str = `<li><a href="`+content[i].url+`">
-                    <span class="title">`+content[i].title+`</span>
-                    <span class="family">`+content[i].family+`</span>
-                    </a></li>`;
+                    contentsList.innerHTML += str;
                 }
-
-                contentsList.innerHTML += str;
             }
         </script>
     </body>

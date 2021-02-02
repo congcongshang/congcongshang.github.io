@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            /* display: inline-block; */
+            margin: 60px auto;
+            width: 800px;
+            height: 600px;
+            /* border: 1px solid green; */
+            /* background:green; */
+        }
+
+        #title {
+            /* border:1px solid red; */
+            padding: 20px;
+            display: inline-block;
+            margin: 10px;
+            width: 740px;
+            font-size: 20px;
+            line-height: 40px;
+            background-color: #eee;
+        }
+
+        #body {
+            /* border:1px solid red; */
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        .choose {
+            margin: 0px 20px 20px;
+            padding: 10px;
+            /* border: 4px solid green; */
+            border: 4px solid #ccc;
+            border-radius: 20px;
+        }
+
+        #result {
+            /* border:1px solid red; */
+            margin: 60px 10px 0px;
+            padding-left: 20px;
+            font-size: 18px;
+            line-height: 20px;
+
+        }
+
+        #result div {
+            display: inline-block;
+            width: 400px;
+            /* border: 1px solid red; */
+        }
+
+        #button {
+            display: inline-block;
+            margin-left: 235px;
+            width: 95px;
+            height: 35px;
+            font-size: 18px;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="title">1.新中国成立七十年来，近代以来实现中华民族伟大复兴的三大里程碑是建立中国共产党、成立中华人民共和国、推进改革开放和中国特色社我们党领导人民创伟大飞跃</div>
+        <div id="body">
+            <div class="choose" msg="A">A.近代以来实现中华民族伟大复兴的三大里程碑是建立中国共产党、成立中华人民共和国、推进改革开放和中国特色社会主义事业</div>
+            <div class="choose" msg="B">B.不是的</div>
+            <div class="choose" msg="C">C.yes</div>
+            <div class="choose" msg="D">D.No</div>
+            <div class="choose" msg="E">E.class="choose"</div>
+        </div>
+        <div id="result">
+            <div>正确答案: <span class="green" id="answer">--</span>&nbsp;&nbsp;&nbsp;&nbsp;您的答案是: <span class="red"
+                    id="userAnswer">--</span></div>
+            <button id="button" onclick="sumit()">确&nbsp;&nbsp;定</button>
+            <!-- <button id="button">下一题</button> -->
+        </div>
+    </div>
+    <!-- <script src="data.js"></script> -->
+    <script>
+        var Bank = [
+    ["1.近代以来中华民族最伟大的梦想是实现中华民族伟大复兴。中国梦的本质是____、____、____。", "ABC", "A.国家富强", "B.民族振兴", "C.人民幸福", "D.世界和平"],
+    ["2.中国共产党人的初心和使命，就是__________，_________。", "AC", "A.为中国人民谋幸福", "B.为消除剥削,消除两极分化", "C.为中华民族谋复兴", "D.为世界和平稳定"],
+    ["3.近代以来实现中华民族伟大复兴的三大里程碑是____、_____、_____。", "BCD", "A.取得抗日战争胜利", "B.建立中国共产党", "C.成立中华人民共和国", "D.推进改革开放和中国特色社会主义事业","E.推翻三座大山"],
+    ["4.新中国成立七十年来，我们党领导人民创造了世所罕见的经济快速发展奇迹和社会长期稳定奇迹，中华民族迎来了从_____、____到____的伟大飞跃。",
+    "A",
+    "A.站起来,富起来,强起来",
+    "B.站起来,强起来,富起来",
+    "C.强起来,富起来,站起来",
+    "D.快起来,富起来,强起来"],
+    ["2.你好我是题目测试2", "BC", "A.试啥啊", "B.我去呢", "C.什么啊", "D.就去，等我", "E.你这么慢啊"]
+];
+        var userChoose = [0, 0, 0, 0, 0]; // 用户的选项
+        var userAnswer = "";
+        var sysChoose = [0, 0, 0, 0, 0];
+        var sysAnswer = "";
+        var state = true; // 标识用户答题/对答案
+
+        var nowIndex = 0;
+
+        function setChoose(index, type) {
+            switch (type) {
+                case 'A': if (index[0] === 1) { index[0] = 0; return 0; } else { index[0] = 1; return 1; }
+                case 'B': if (index[1] === 1) { index[1] = 0; return 0; } else { index[1] = 1; return 1; }
+                case 'C': if (index[2] === 1) { index[2] = 0; return 0; } else { index[2] = 1; return 1; }
+                case 'D': if (index[3] === 1) { index[3] = 0; return 0; } else { index[3] = 1; return 1; }
+                case 'E': if (index[4] === 1) { index[4] = 0; return 0; } else { index[4] = 1; return 1; }
+                default: index[0] = 0; index[1] = 0; index[2] = 0; index[3] = 0; index[4] = 0; return -1;
+            }
+        }
+        function getChoose(index) {
+            var item = "";
+            for (var i = 0; i < 5; i++) {
+                if (index[i] === 1) {
+                    // console.log(i);
+                    switch (i) {
+                        case 0: item = item + "A"; break;
+                        case 1: item = item + "B"; break;
+                        case 2: item = item + "C"; break;
+                        case 3: item = item + "D"; break;
+                        case 4: item = item + "E"; break;
+                    }
+                }
+            }
+            // console.log(item);
+            return item;
+        }
+
+        // 初始化
+        function init() {
+            var chooses = document.querySelectorAll("#body div");
+
+            for (var i = 0; i < chooses.length; i++) {
+                chooses[i].addEventListener("click", function (obj) {
+                    if (state) {
+                        var objMsg = obj.path[0].getAttribute('msg');
+
+                        var index = setChoose(userChoose, objMsg);
+                        if (index === 1) {
+                            obj.path[0].style.borderColor = "green";
+                        } else {
+                            obj.path[0].style.borderColor = "#ccc";
+                        }
+                    }
+                })
+            }
+
+        };
+        init();
+
+        // 刷新
+        function update(num) {
+            // 更新标题
+            var titleText = document.querySelector("#title");
+            titleText.innerHTML = Bank[num][0];
+
+            // 更新选项
+            var j = Bank[num].length - 2;
+            var chooses = document.querySelectorAll("#body div");
+            for (var i = 0; i < chooses.length; i++) {
+                chooses[i].style.borderColor = "#ccc";
+                if (j > 0) {
+                    chooses[i].innerHTML = Bank[num][i + 2];
+                    chooses[i].classList.add("choose");
+                    j--;
+                } else {
+                    chooses[i].innerHTML = "";
+                    chooses[i].classList.remove("choose");
+                }
+            }
+
+            // 获取标准答案
+            setChoose(sysChoose, 'Z');
+            setChoose(userChoose, 'Z');
+            sysAnswer = Bank[num][1];
+            var sysIndex = sysAnswer.split('');
+            sysIndex.forEach(element => {
+                setChoose(sysChoose, element);
+            });
+        }
+        update(0);
+
+
+        // 确定
+        function sumit() {
+            var button = document.querySelector("#button");
+            if (state) {
+                // 关闭选择
+                state = false;
+                // 修改按钮显示
+                button.innerHTML = "下一题";
+                // 更新选项状态
+                var chooses = document.querySelectorAll("#body div");
+                for (var i = 0; i < 5; i++) {
+                    if (sysChoose[i] === 1) {
+                        chooses[i].style.borderColor = "green";
+                    } else if (userChoose[i] === 1) {
+                        chooses[i].style.borderColor = "red";
+                    }
+                }
+                // 更新答案区
+                userAnswer = getChoose(userChoose);
+                document.querySelector("#answer").innerHTML = sysAnswer;
+                document.querySelector("#userAnswer").innerHTML = userAnswer;
+            } else {
+                // 刷新选项
+                nowIndex = nowIndex + 1;
+                if (nowIndex >= Bank.length) {
+                    alert("没有题目了");
+                    nowIndex--;
+                } else {
+                    update(nowIndex);
+                    // 启动选择
+                    state = true;
+
+                    // 修改按钮显示
+                    button.innerHTML = "确&nbsp;&nbsp;定";
+                    // 关闭答案区
+                    document.querySelector("#answer").innerHTML = "--";
+                    document.querySelector("#userAnswer").innerHTML = "--";
+                }
+
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
