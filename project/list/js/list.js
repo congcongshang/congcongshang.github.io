@@ -33,7 +33,7 @@
         "-1@大鹏教育@images/ijjctyun.png@http://www.dapengjiaoyu.com/",
         "-1@微信读书@images/weread.png@https://weread.qq.com/",
         "-1@阿里云大学@images/aliyun.ico@https://edu.aliyun.com/",
-        "-1@花脸猫@images/myco.ico@http://shangcongcong.com/",
+        "-1@花脸猫@images/myco.ico@http://www.shangcongcong.com/",
         // "-1@省业务网@images/baidu.ico@http://10.13.254.168/",
         // "-1@市业务网@images/baidu.ico@http://10.8.1.13/pds/",
         // "-1@运维系统@images/baidu.ico@http://10.8.1.15:9080/topoms/WebUI.do?path=login",
