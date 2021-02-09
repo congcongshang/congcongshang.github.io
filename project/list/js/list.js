@@ -56,6 +56,7 @@
         "0@觅元素@images/51yuansu.ico@http://www.51yuansu.com/",
 
         // 学习练习 1 /favicon.ico
+        "1@又拍@images/yupoo.ico@https://x.yupoo.com/",
         "1@w3cschool@images/w3cschool.ico@https://www.w3cschool.cn",
         "1@W3@images/W3.ico@https://www.w3.org",
         "1@cn.FCC@images/freecode.ico@https://www.freecodecamp.cn/",
