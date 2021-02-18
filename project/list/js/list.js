@@ -20,7 +20,7 @@
  ']}';
  var webs = [
         "-1@百度一下@images/baidu.ico@http://www.baidu.com/",
-        "-1@org.FCC@images/freecode.ico@https://www.freecodecamp.org/learn",
+        "-1@org.FCC@images/freecode.ico@https://chinese.freecodecamp.org/learn",
         "-1@FCC社区@images/freecode.ico@https://chinese.freecodecamp.org/forum/",
         "-1@CODEPEN@images/codepen.ico@https://codepen.io/",
         "-1@GITTER@images/gitter.ico@https://gitter.im/",
