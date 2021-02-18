@@ -49,6 +49,7 @@ function creatItems(){
         aitem.href = items[3];
         aitem.target = "_blank";
         iitem.src = items[2];
+        // iitem.src = '#';
         sitem.innerHTML = items[1];
         sitem.title = items[1];
         aitem.appendChild(iitem);
