@@ -43,6 +43,7 @@
         "0@w3school@images/w3school.png@https://www.w3school.com.cn",
         "0@runoob@images/runoob.ico@http://www.runoob.com/",
         "0@华为学云@images/huaweixy.ico@https://ilearningx.huawei.com/",
+        "0@华为课堂@images/huaweixy.ico@https://classroom.devcloud.huaweicloud.com/home",
         "0@哔哩哔哩@images/bilibili.ico@https://www.bilibili.com/",
         "0@CSDN@images/csdn.ico@https://www.csdn.net/",
         "0@博客园@images/cnblogs.ico@https://www.cnblogs.com/",
