@@ -51,10 +51,12 @@
         "0@CCF CSP@images/ccfcsp.ico@https://www.cspro.org/",
         "0@学堂在线@images/xuetangx.ico@http://www.xuetangx.com/",
         "0@新浪微博@images/weibo.ico@https://weibo.com/",
-        "0@在线拼图@images/jigsawplanet.ico@https://www.jigsawplanet.com/",
+
         "0@ZCOOL站酷@images/zcool.ico@https://www.zcool.com.cn/",
         "0@花瓣@images/huaban.ico@https://huaban.com/",
         "0@觅元素@images/51yuansu.ico@http://www.51yuansu.com/",
+        "0@千库网@images/588ku.ico@https://588ku.com/",
+        "0@阿里图标@images/iconfont.ico@https://www.iconfont.cn/",
 
         // 学习练习 1 /favicon.ico
         "1@高中课本@images/freecode.ico@http://www.dzkbw.com/books/gaozhong-wuli/",
@@ -161,9 +163,11 @@
         "6@AcFun@images/acfun.ico@http://www.acfun.cn/",
         "6@美拍视频@images/meipai.ico@https://www.meipai.com/",
         "6@斗鱼直播@images/douyu.ico@https://www.douyu.com/2636",
+        "6@vip视频解析@images/qmaile.ico@http://peng3.com/vip",
+        "6@vip全民影视@images/daga.ico@https://www.daga.cc/",
+        "6@在线拼图@images/jigsawplanet.ico@https://www.jigsawplanet.com/",
         "6@嘀哩嘀哩@images/dilidili.ico@http://www.dilidili.name/",
         // "6@vip视频解析@images/qmaile.ico@http://www.qmaile.com/",
-        "6@vip视频解析@images/qmaile.ico@http://peng3.com/vip",
         "6@古诗文网@images/gushiwen.ico@https://www.gushiwen.org/",
         "6@诗词名句@images/shicimingju.ico@http://www.shicimingju.com/",
         "6@句子控@images/juzikong.ico@https://www.juzikong.com/",
@@ -190,7 +194,6 @@
 
         // UI素材  /favicon.ico
         "8@SSYER素材@images/ssyer.ico@https://www.ssyer.com/",
-        "8@千库网@images/588ku.ico@https://588ku.com/",
         "8@包图网@images/ibaotu.ico@https://ibaotu.com/",
         "8@easyicon@images/easyicon.ico@https://www.easyicon.net/",
         ];
