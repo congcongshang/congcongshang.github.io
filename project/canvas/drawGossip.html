@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #mycv {
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycv" width="800" height="800"></canvas>
+
+    <script>
+        function draw(){
+            var c = document.getElementById('mycv');  // 找到canvas元素
+            var ctx=c.getContext("2d");               // 创建contex对象
+
+            // 重设宽高刷新页面
+            // c.width = 800;
+            // c.height = 600;
+
+            var rateClock = 1.0;
+            var rLength = 200 * rateClock; //钟表的半径
+            var pX = 350; //钟表的中心点坐标
+            var pY = 400;
+
+            ctx.translate(0.5, 0.5)
+
+
+            // 绘制钟表外围最大的圆
+            ctx.beginPath();
+            ctx.arc(pX,pY,rLength,0,2*Math.PI);
+            ctx.stroke();
+
+            // ctx.beginPath();
+            // ctx.arc(pX,pY,100,0,2*Math.PI);
+            // ctx.strokeStyle = "red";
+            // ctx.stroke();
+            // ctx.strokeStyle = "#000";
+            var Gossip = [
+                ['金','泽西',[0,1,1],'兑七'],
+                ['土','地西南',[0,0,0],'坤二'],
+                ['火','火南',[1,0,1],'离九'],
+                ['木','风东南',[1,1,0],'巽四'],
+                ['木','雷东',[0,0,1],'震三'],
+                ['土','山东北',[1,0,0],'艮八'],
+                ['水','水北',[0,1,0],'坎一'],
+                ['金','天西北',[1,1,1],'乾六'],
+            ];
+
+            for(var i =0;i<8;i++){
+                drawFillReact(ctx,pX,pY,i*45,Gossip[i]);
+            }
+
+            // 绘制太极图
+            drawVeryPole(ctx,pX,pY,200,0);
+        }
+
+        draw();
+
+
+
+
+
+        //*******************下面是功能函数***************
+        function drawFillReact(c,pX,pY,angle,Gossip,length=200,width=80,height=30){
+
+            var deg = Math.PI / 180 * angle;
+            var x = pX + length * Math.cos(deg);
+            var y = pY - length * Math.sin(deg);
+
+
+            var lack = Gossip[2];
+
+            c.save();
+            c.translate(x,y);
+
+            var deg = Math.PI / 180 * -(angle+270);
+            c.rotate(deg);
+
+            // 横- 3:2:3  纵- 3:2:3:2:3 纵横- 1:2
+            var w = width;
+            var h = w * 13 / 16;
+            var w1 = w*3/8;
+            var w2 = w/4;
+            var h1 = h/13*3;
+            var h2 = h/13*2;
+
+            var xPaint = -w/2;
+            var yPaint = -h/2;
+            for(var i=0; i<3; i++){
+                if(lack[i] === 0){
+                    c.fillRect(xPaint, yPaint,w1,h1);
+
+                    xPaint += w1 + w2;
+                    c.fillRect(xPaint, yPaint,w1,h1);
+
+                    xPaint -= (w1 + w2);
+                }else{
+                    c.fillRect(xPaint, yPaint,w,h1);
+
+                }
+                yPaint += h1 + h2;
+            }
+
+            // c.fillRect(-width / 2, -height / 2,width,height);
+            c.restore();
+
+            var pp1 = 85;
+            var pp2 = 50;
+            deg = Math.PI / 180 * angle;
+            x = pX + (length+pp1) * Math.cos(deg);
+            y = pY - (length+pp1) * Math.sin(deg);
+
+            drawFont(c,Gossip[0],x,y,-(angle+270),40);
+
+            deg = Math.PI / 180 * angle;
+            x = pX + (length+pp2) * Math.cos(deg);
+            y = pY - (length+pp2) * Math.sin(deg);
+
+            drawFont(c,Gossip[1],x,y,-(angle+270),30);
+
+            deg = Math.PI / 180 * angle;
+            x = pX + (length-pp2) * Math.cos(deg);
+            y = pY - (length-pp2) * Math.sin(deg);
+
+            drawFont(c,Gossip[3],x,y,-(angle+270),30);
+
+            // c.fillRect(x-width/2,y-height/2,width,height);
+            // c.translate(x, y);
+            // c.rotate(deg);
+            // c.fillRect(width/2,height/2,width,height);
+            // c.restore();
+        }
+
+
+        /***
+        * 画太极图
+        * 对象,太极中心坐标,太极大小,太极角度
+        * 核心: 计算阴阳鱼的位置以及旋转方向
+        * 注意: arc的旋转顺时针为0,90,180,270
+        * */
+        function drawVeryPole(c,x,y,size = 50,angle = 0){
+
+            var PoleSize2 = size / 2;
+            var PoleSize4 = PoleSize2 / 2;
+            var PoleSize8 = PoleSize2 / 6.0;
+
+            var degBlack = Math.PI / 180 * angle;
+            var degWhite = Math.PI / 180 * (angle + 180);
+            var xBlack = x + PoleSize4 * Math.cos(degBlack);
+            var yBlack = y - PoleSize4 * Math.sin(degBlack);
+            var xWhite = x + PoleSize4 * Math.cos(degWhite);
+            var yWhite = y - PoleSize4 * Math.sin(degWhite);
+
+            //画个阴阳鱼
+
+            // 画半边黑脸
+            c.beginPath();
+            c.arc(x,y,PoleSize2,-angle*Math.PI/180,-(angle+180)*Math.PI/180,true);
+            c.fillStyle = "black";
+            c.fill();
+
+            // 画半边白脸
+            c.beginPath();
+            c.arc(x,y,PoleSize2,-angle*Math.PI/180,-(angle+180)*Math.PI/180,false);
+            c.fillStyle = "white";
+            c.fill();
+
+
+            // // 画白鱼头
+            c.beginPath();
+            c.arc(xWhite,yWhite,PoleSize4,0,2*Math.PI);
+            c.fillStyle = "white";
+            c.fill();
+
+            // // 画白鱼眼
+            c.beginPath();
+            c.arc(xWhite,yWhite,PoleSize8,0,2*Math.PI);
+            c.fillStyle = "black";
+            c.fill();
+
+            // // 画黑鱼头
+            c.beginPath();
+            c.arc(xBlack,yBlack,PoleSize4,0,2*Math.PI);
+            c.fillStyle = "black";
+            c.fill();
+
+            // // 画黑鱼眼
+            c.beginPath();
+            c.arc(xBlack,yBlack,PoleSize8,0,2*Math.PI);
+            c.fillStyle = "white";
+            c.fill();
+
+            c.beginPath();
+            c.arc(x,y,PoleSize2,0*Math.PI/180,360*Math.PI/180,true);
+            c.stroke();
+        }
+
+
+
+        // 绘制钟表指针,从顶点定长定角度的线段
+        function drawClockLine(c,x1,y1,length,rote,color='#000',width=1){
+            var deg = Math.PI / 180 * rote;
+            var x2 = length * Math.cos(deg);
+            var y2 = length * Math.sin(deg);
+            drawLine(c, x1, y1, x1 + x2, y1 - y2, color, width);
+        }
+
+        /**
+         *  绘制字体
+         *  对象,文本,起始坐标,旋转度数,字体大小,颜色,字体
+         */
+         function drawFont(c,Text,xText,yText,roteSize=0,fontSize=20,fontStyle='#000',familyFont='宋体'){
+            c.save();
+            c.font = `${fontSize}px `+familyFont;
+            c.fillStyle = fontStyle;
+            // c.strokeStyle = fontStyle;
+
+            var { width: wText } = c.measureText(Text);
+            // c.translate(xText + wText / 2, yText - fontSize / 2);
+            c.translate(xText, yText);
+            var deg = Math.PI / 180 * roteSize;
+            c.rotate(deg);
+            c.fillText(Text, -wText / 2, fontSize / 2 - fontSize/7.0);
+            c.restore();
+        }
+
+        /**
+         *  画直线
+         *  对象,起始坐标,结束坐标,颜色,线宽
+         */
+         function drawLine(c, x1, y1, x2, y2, color='#000', width = 1) {
+            c.beginPath();
+            c.moveTo(x1, y1);
+            c.lineTo(x2, y2);
+            c.closePath();
+            c.lineWidth = width;
+            c.strokeStyle = color;
+            c.stroke();
+        }
+
+
+    </script>
+</body>
+</html>
