@@ -196,4 +196,6 @@
         "8@SSYER素材@images/ssyer.ico@https://www.ssyer.com/",
         "8@包图网@images/ibaotu.ico@https://ibaotu.com/",
         "8@easyicon@images/easyicon.ico@https://www.easyicon.net/",
+        "8@动画@images/easyicon.ico@https://www.climber.io/",
+        "8@动画@images/easyicon.ico@https://timroussilhe.com/",
         ];
