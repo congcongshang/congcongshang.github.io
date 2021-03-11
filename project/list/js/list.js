@@ -198,4 +198,8 @@
         "8@easyicon@images/easyicon.ico@https://www.easyicon.net/",
         "8@动画@images/easyicon.ico@https://www.climber.io/",
         "8@动画@images/easyicon.ico@https://timroussilhe.com/",
+        "8@易企秀@images/eqxiu.ico@https://www.eqxiu.com/",
+        "8@H5案例@images/h5anli.ico@https://www.h5anli.com/",
+        "8@MAKA@images/maka.ico@https://www.maka.im/",
+        "8@未来应用@images/h6app.ico@https://www.h6app.com/",
         ];
