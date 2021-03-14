@@ -99,6 +99,8 @@
         "2@春原庄的雪@images/zouwang.ico@https://zouwang.vip/",
         "2@enboys@images/eyhn.png@https://eyhn.in/",
         "2@nottingham@images/mnot.png@https://www.mnot.net/",
+        "2@绿叶学习网@images/lvyestudy.ico@http://www.lvyestudy.com/",
+        "2@七空幻音@images/acgxt.ico@https://www.acgxt.com/",
 
         // 前端学习 3 /favicon.ico
         "3@在线工具@images/oschina.ico@http://tool.oschina.net/",
