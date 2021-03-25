@@ -57,6 +57,9 @@
         "0@千库网@images/588ku.ico@https://588ku.com/",
         "0@阿里图标@images/iconfont.ico@https://www.iconfont.cn/",
         "0@ZDZN@images/ZDZN.ico@https://www.zdzn.net/",
+        "0@全历史@images/allhistory.ico@https://www.allhistory.com/",
+        "0@grammarly@images/grammarly.png@https://www.grammarly.com/",
+        "0@写作猫@images/xiezuocat.ico@https://xiezuocat.com/",
 
         // 学习练习 1 /favicon.ico
         "1@高中课本@images/freecode.ico@http://www.dzkbw.com/books/gaozhong-wuli/",
