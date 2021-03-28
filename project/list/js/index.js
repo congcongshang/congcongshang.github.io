@@ -60,7 +60,7 @@ function creatItems(){
         titles[index].children[2].innerHTML=count[index];
     }
     openList(0);
-    // openList(1);
+    openList(1);
     // openList(2);
 }
 
