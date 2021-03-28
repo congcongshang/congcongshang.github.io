@@ -60,6 +60,7 @@
         "0@全历史@images/allhistory.ico@https://www.allhistory.com/",
         "0@grammarly@images/grammarly.png@https://www.grammarly.com/",
         "0@写作猫@images/xiezuocat.ico@https://xiezuocat.com/",
+        "0@PHP中文网@images/php.ico@https://www.php.cn/",
 
         // 学习练习 1 /favicon.ico
         "1@高中课本@images/freecode.ico@http://www.dzkbw.com/books/gaozhong-wuli/",
