@@ -15,7 +15,7 @@
  '{ "id":"4","name":"后端学习"},' +
  '{ "id":"5","name":"视频直播"},' +
  '{ "id":"6","name":"放松娱乐"},' +
- '{ "id":"7","name":"日常用品"},' +
+ '{ "id":"7","name":"日常生活"},' +
  '{ "id":"8","name":"UI素材"}' +
  ']}';
  var webs = [
@@ -34,9 +34,10 @@
         "-1@牛客网@images/nowcoder.png@https://www.nowcoder.com/",
         "-1@GitHub@images/github.png@https://github.com/",
         "-1@阿里云大学@images/aliyun.ico@https://edu.aliyun.com/",
-        "-1@花脸猫@images/myco.ico@https://shangcongcong.com/",
+        "-1@花脸猫@images/shangcongcong.ico@https://shangcongcong.com/",
         "-1@粉笔网@images/fenbi.ico@https://fenbi.com",
         "-1@高中物理@images/freecode.ico@http://gaozhongwuli.com/",
+        "-1@CCF CSP@images/ccfcsp.ico@http://www.cspro.org/",
         // "-1@省业务网@images/baidu.ico@http://10.13.254.168/",
         // "-1@市业务网@images/baidu.ico@http://10.8.1.13/pds/",
         // "-1@运维系统@images/baidu.ico@http://10.8.1.15:9080/topoms/WebUI.do?path=login",
@@ -53,16 +54,19 @@
         "0@新浪微博@images/weibo.ico@https://weibo.com/",
         "0@华为课堂@images/huaweixy.ico@https://classroom.devcloud.huaweicloud.com/home",
         "0@ZCOOL站酷@images/zcool.ico@https://www.zcool.com.cn/",
+        "0@seeseed@images/seeseed.png@https://www.seeseed.com/",
         "0@花瓣@images/huaban.ico@https://huaban.com/",
         "0@觅元素@images/51yuansu.ico@http://www.51yuansu.com/",
-        "0@千库网@images/588ku.ico@https://588ku.com/",
         "0@阿里图标@images/iconfont.ico@https://www.iconfont.cn/",
         "0@ZDZN@images/ZDZN.ico@https://www.zdzn.net/",
+        "0@万有导航@images/wanyouw.png@http://wanyouw.com/",
         "0@全历史@images/allhistory.ico@https://www.allhistory.com/",
         "0@grammarly@images/grammarly.png@https://www.grammarly.com/",
         "0@写作猫@images/xiezuocat.ico@https://xiezuocat.com/",
-        "0@CCF CSP@images/ccfcsp.ico@http://www.cspro.org/",
+        "0@今日热榜@images/tophub.ico@https://tophub.today/",
+        "0@wikiHow@images/wikihow.ico@https://zh.wikihow.com/",
         // 学习练习 1 /favicon.ico
+        "1@videvo@images/videvo.ico@https://www.videvo.net/",
         "1@高中课本@images/freecode.ico@http://www.dzkbw.com/books/gaozhong-wuli/",
         "1@又拍@images/yupoo.ico@https://x.yupoo.com/",
         "1@w3cschool@images/w3cschool.ico@https://www.w3cschool.cn",
@@ -71,7 +75,6 @@
         "1@FCC社区@images/freecode.ico@https://chinese.freecodecamp.org/forum/",
         "1@cn.FCC@images/freecode.ico@https://www.freecodecamp.cn/",
         "1@one.FCC@images/freecode.ico@https://learn.freecodecamp.one",
-
         "1@语雀@images/yuque.png@https://www.yuque.com/",
         "1@金山文档@images/wps.ico@https://docs.wps.cn/",
         "1@ExcelHome@images/excelhome.ico@http://www.excelhome.net/",
@@ -189,6 +192,7 @@
         "6@美剧鸟@images/meijuniao.ico@http://www.meijuniao.com/",
         "6@豆瓣官网@images/douban.ico@https://www.douban.com/",
         "6@知乎@images/zhihu.ico@https://www.zhihu.com/",
+        "6@发现中国@images/ageeye.png@https://www.ageeye.cn/",
 
         // 日常用品 7 /favicon.ico
         "7@淘宝网@images/taobao.ico@https://www.taobao.com/",
@@ -196,15 +200,22 @@
         "7@京东网@images/jd.ico@https://www.jd.com/",
         "7@孔夫子网@images/kongfz.ico@http://www.kongfz.com/",
         "7@亚马逊网@images/amazon.ico@https://www.amazon.cn/",
+        "7@下厨房@images/xiachufang.ico@https://www.xiachufang.com/",
 
 
         // UI素材  /favicon.ico
         "8@SSYER素材@images/ssyer.ico@https://www.ssyer.com/",
         "8@包图网@images/ibaotu.ico@https://ibaotu.com/",
+        "8@千库网@images/588ku.ico@https://588ku.com/",
         "8@easyicon@images/easyicon.ico@https://www.easyicon.net/",
+        "8@pixabay@images/pixabay.ico@https://pixabay.com/",
+        "8@像素网@images/pexels.ico@https://www.pexels.com/zh-cn/",
+        "8@壁纸墙@images/wallhaven.ico@https://wallhaven.cc/",
+        "8@地图区域@images/datav.ico@http://datav.aliyun.com/tools/atlas/",
         "8@动画@images/easyicon.ico@https://www.climber.io/",
         "8@动画@images/easyicon.ico@https://timroussilhe.com/",
         "8@易企秀@images/eqxiu.ico@https://www.eqxiu.com/",
+        "8@创客贴@images/chuangkit.ico@https://www.chuangkit.com/",
         "8@H5案例@images/h5anli.ico@https://www.h5anli.com/",
         "8@MAKA@images/maka.ico@https://www.maka.im/",
         "8@未来应用@images/h6app.ico@https://www.h6app.com/",
