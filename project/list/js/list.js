@@ -60,11 +60,13 @@
         "0@阿里图标@images/iconfont.ico@https://www.iconfont.cn/",
         "0@ZDZN@images/ZDZN.ico@https://www.zdzn.net/",
         "0@万有导航@images/wanyouw.png@http://wanyouw.com/",
+        "0@机器学习@images/mlhub123.png@https://www.mlhub123.com/",
         "0@全历史@images/allhistory.ico@https://www.allhistory.com/",
         "0@grammarly@images/grammarly.png@https://www.grammarly.com/",
         "0@写作猫@images/xiezuocat.ico@https://xiezuocat.com/",
         "0@今日热榜@images/tophub.ico@https://tophub.today/",
         "0@wikiHow@images/wikihow.ico@https://zh.wikihow.com/",
+
         // 学习练习 1 /favicon.ico
         "1@videvo@images/videvo.ico@https://www.videvo.net/",
         "1@高中课本@images/freecode.ico@http://www.dzkbw.com/books/gaozhong-wuli/",

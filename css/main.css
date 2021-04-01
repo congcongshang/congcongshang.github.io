@@ -86,11 +86,11 @@ nav #nav li a:visited {
     /*转换大小写*/
 }
 
-nav #nav li a:hover,
+/*nav #nav li a:hover,
 nav #nav li a:active {
-    /* background-color: #7A991A; */
+     background-color: #7A991A;
     background-color: rgba(255, 255, 255, 0.6);
-}
+}*/
 
 /* main start */
 #main {
