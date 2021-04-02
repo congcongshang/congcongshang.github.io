@@ -60,7 +60,7 @@
         "0@阿里图标@images/iconfont.ico@https://www.iconfont.cn/",
         "0@ZDZN@images/ZDZN.ico@https://www.zdzn.net/",
         "0@万有导航@images/wanyouw.png@http://wanyouw.com/",
-        "0@机器学习@images/mlhub123.png@https://www.mlhub123.com/",
+        "0@机器学习@images/mlhub123.ico@https://www.mlhub123.com/",
         "0@全历史@images/allhistory.ico@https://www.allhistory.com/",
         "0@grammarly@images/grammarly.png@https://www.grammarly.com/",
         "0@写作猫@images/xiezuocat.ico@https://xiezuocat.com/",
