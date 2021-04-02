@@ -62,12 +62,12 @@ main{
     -webkit-box-sizing: border-box;
     /* Safari */
     padding:40px 40px;
-    min-height: 900px;
+    min-height: 1900px;
 }
 
 main ul{
     display: grid;
-    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); 
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
 }
 
 main ul li{
