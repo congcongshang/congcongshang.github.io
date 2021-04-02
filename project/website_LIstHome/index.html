@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>花脸猫</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <script src="js/contentsList.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+
+</head>
+<body>
+
+    <nav>
+        <ul id="nav">
+            <img src="images/banner.png" alt="Logo">
+            <li>首页</li>
+            <li>前端</li>
+            <li>编程</li>
+            <li>生活</li>
+            <li>例子</li>
+        </ul>
+    </nav>
+
+    <div id="main">
+        <main>
+            <ul id="contentsList">
+                <li><a href="project/list/index.html">
+                    <span class="title">花脸猫收藏的网址链接</span>
+                    <span class="family">类别:小例子</span>
+                </a></li>
+                <li><a href="project/exam/index.html">
+                    <span class="title">花脸猫做的在线考试系统</span>
+                    <span class="family">类别:小例子</span>
+                </a></li>
+            </ul>
+        </main>
+
+
+        <footer>
+            <div> &copy; 2020-2021花脸猫. <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">豫ICP备18014223号</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        var contentsList = document.getElementById("contentsList");
+        for(var i =content.length -1;i>=0;i--){
+            var str = "";
+            if(content[i].familyID === 3){
+                str = `<li><a href="`+content[i].url+`" target="_blank">
+                <span class="title">`+content[i].title+`</span>
+                <span class="family">`+content[i].family+`</span>
+                </a></li>`;
+            }else{
+                str = `<li><a href="`+content[i].url+`">
+                <span class="title">`+content[i].title+`</span>
+                <span class="family">`+content[i].family+`</span>
+                </a></li>`;
+            }
+
+            contentsList.innerHTML += str;
+        }
+    </script>
+</body>
+</html>

@@ -95,7 +95,8 @@
         "1@REPL@images/repl.ico@https://repl.it/",
 
         // 个人博客 2 /favicon.ico
-        "2@杨青青@images/yangqq.ico@https://www.yangqq.com/",
+        // "2@杨青青@images/yangqq.ico@https://www.yangqq.com/",
+        "2@杨青青@images/yangqq.ico@https://www.yangqq.net/",
         "2@廖雪峰@images/liaoxuefeng.ico@https://www.liaoxuefeng.com/",
         "2@fly63前端网@images/fly63.ico@http://www.fly63.com/",
         "2@卢松松@images/lusongsong.ico@https://lusongsong.com/",

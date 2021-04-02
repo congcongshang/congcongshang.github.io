@@ -1,0 +1,131 @@
+
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background-color: rgb(41,22,14);
+    color: #ccc;
+}
+a{
+    text-decoration: none;
+    color: #ccc;
+}
+ul{
+    list-style: none;
+}
+
+/* nav start */
+nav{
+    position: fixed;
+    width: 1%;
+    min-width: 100px;
+    padding: 80px 30px;
+    /*border: 2px solid green;*/
+}
+nav ul{
+    font-size: 20px;
+    line-height: 40px;
+    /*text-align: center;*/
+}
+nav ul img{
+    border-radius: 50%;
+    border:2px solid #ddd;
+    background-color: #ddd;
+}
+nav ul li{
+    padding:10px;
+    margin-top: 20px;
+    border-bottom:2px solid #CCC;
+    cursor: pointer;
+}
+nav ul li:active {
+    background-color: #333;
+}
+/* nav end */
+
+/* main start */
+#main{
+    margin-left: 170px;
+    /*border-left: 1px solid rgb(51,32,24);*/
+    background-color: rgba(255, 255, 255, 0.1);
+}
+main{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* Firefox */
+    -webkit-box-sizing: border-box;
+    /* Safari */
+    padding:50px 80px;
+    min-height: 900px;
+}
+
+main ul{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 400px);
+
+}
+main ul li{
+
+    margin: 20px;
+    padding-left:20px;
+    /*border: 1px solid #ccc;*/
+    font-size: 18px;
+    line-height: 80px;
+    box-shadow: 2px 5px 3px #888888;
+    background-color: #ccc;
+    border-top-left-radius : 40px;
+    border-bottom-right-radius : 40px;
+}
+main ul li a{
+    color:rgb(41,22,14);
+}
+/*
+main ul li {
+    display: block;
+    width: 70%;
+    margin: 25px auto 0px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #9A8F92;
+    font-size: 0px;
+}
+
+main ul li span {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+}
+
+main ul li span.title {
+    width: 80%;
+}
+
+main ul li span.family {
+    font-size: 14px;
+    text-align: right;
+    width: 20%;
+}
+
+main ul li a:visited,
+main ul li a:link {
+    display: block;
+}
+
+main ul li a:hover,
+main ul li a:active {
+    color: #09caca;
+}
+
+*/
+/* main end */
+
+/* footer start */
+footer{
+    height: 25px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 25px;
+    /*border-top: 1px solid rgb(51,32,24);*/
+
+}
+/* footer end */
