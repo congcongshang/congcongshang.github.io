@@ -62,7 +62,7 @@ main{
     -webkit-box-sizing: border-box;
     /* Safari */
     padding:40px 40px;
-    min-height: 900px;
+    min-height: 1900px;
 }
 
 main ul{
@@ -74,7 +74,7 @@ main ul li{
     margin: 0 20px 30px;
     padding-left:20px;
     font-size: 16px;
-    line-height: 20px;
+    line-height: 50px;
     box-shadow: 2px 5px 2px #999;
     background-color: #ddd;
     border-top-left-radius : 40px;
@@ -84,7 +84,6 @@ main ul li{
 main ul li a{
     display: block;
     color:rgb(41,22,14);
-    padding:15px 5px;
 }
 
 main ul li span.family {
@@ -100,28 +99,3 @@ footer{
     line-height: 25px;
 }
 /* footer end */
-
-@media screen and (max-width: 720px) {
-    #main{
-        margin-left: 100px;
-        /*border-left: 1px solid rgb(51,32,24);*/
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-    nav{
-        position: fixed;
-        min-width: 80px;
-        padding: 80px 10px;
-    }
-    main{
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        /* Firefox */
-        -webkit-box-sizing: border-box;
-        /* Safari */
-        padding:40px 10px;
-        min-height: 900px;
-    }
-    main ul{
-        grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
-    }
-}
