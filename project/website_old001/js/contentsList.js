@@ -6,4 +6,5 @@ var content = [
 {url:"../GameFlyBird/index.html",title:"像素鸟小游戏",family:"2020.10.18",familyID:3},
 {url:"../canvas/drawClock.html",title:"Canvas绘制钟表",family:"2021.02.24",familyID:3},
 {url:"../canvas/drawGossip.html",title:"Canvas绘制八卦",family:"2021.03.03",familyID:3},
+{url:"../website_LIstHome/index.html",title:"新版的主页",family:"2021.04.02",familyID:3},
 ]
