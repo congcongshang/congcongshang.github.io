@@ -20,20 +20,17 @@ ul{
 /* nav start */
 nav{
     position: fixed;
-    width: 10%;
-    max-width: 100px;
-    padding: 10% 2%;
+    width: 1%;
+    min-width: 100px;
+    padding: 80px 30px;
 }
 
 nav ul{
     font-size: 16px;
     line-height: 30px;
-    text-align: center;
 }
 
 nav ul img{
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
     border:2px solid #ddd;
     background-color: #ddd;
@@ -53,7 +50,7 @@ nav ul li:active {
 
 /* main start */
 #main{
-    margin-left: 14%;
+    margin-left: 170px;
     /*border-left: 1px solid rgb(51,32,24);*/
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -65,7 +62,7 @@ main{
     -webkit-box-sizing: border-box;
     /* Safari */
     padding:40px 40px;
-    min-height: 900px;
+    min-height: 1900px;
 }
 
 main ul{
