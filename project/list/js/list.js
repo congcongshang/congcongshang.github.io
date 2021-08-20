@@ -192,7 +192,7 @@
         "6@腾讯视频@images/siqq.ico@https://v.qq.com/",
         "6@暴风视频@images/baofeng.ico@http://www.baofeng.com/",
         "6@美剧天堂@images/meijutt.ico@https://www.meijutt.com/",
-        "6@美剧鸟@images/meijuniao.ico@http://www.meijuniao.com/",
+        // "6@美剧鸟@images/meijuniao.ico@http://www.meijuniao.com/",
         "6@豆瓣官网@images/douban.ico@https://www.douban.com/",
         "6@知乎@images/zhihu.ico@https://www.zhihu.com/",
         "6@发现中国@images/ageeye.png@https://www.ageeye.cn/",
