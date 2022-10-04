@@ -20,7 +20,7 @@
  '{ "id":"8","name":"UI素材"}' +
  ']}';
  var webs = [
-        "-1@百度一下@images/baidu.ico@http://www.baidu.com/",
+        "-1@百度一下@百@http://www.baidu.com/",
         "-1@org.FCC@images/freecode.ico@https://www.freecodecamp.org/learn",
         "-1@LeetCode@images/leetcode.ico@https://leetcode-cn.com/",
         "-1@极客时间@images/geekbang.png@https://time.geekbang.org/",
@@ -69,7 +69,7 @@
         "0@PHP中文网@images/php.ico@https://www.php.cn/",
         "0@GitHub@images/github.png@https://github.com/",
         "0@阿里云大学@images/aliyun.ico@https://edu.aliyun.com/",
-        "0@花脸猫@images/shangcongcong.ico@https://shangcc.top/",
+        "0@花脸猫@images/shangcongcong.ico@https://shangcongcong.com/",
         "0@粉笔网@images/fenbi.ico@https://fenbi.com",
 
 
@@ -183,7 +183,7 @@
         // 放松娱乐 6 /favicon.ico
         "6@AcFun@images/acfun.ico@http://www.acfun.cn/",
         "6@美拍视频@images/meipai.ico@https://www.meipai.com/",
-        "6@斗鱼直播@images/douyu.ico@https://www.douyu.com/directory/myFollow",
+        "6@斗鱼直播@images/douyu.ico@https://www.douyu.com/2636",
         "6@vip视频解析@images/qmaile.ico@http://peng3.com/vip",
         "6@vip全民影视@images/daga.ico@https://www.daga.cc/",
         "6@在线拼图@images/jigsawplanet.ico@https://www.jigsawplanet.com/",
