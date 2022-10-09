@@ -61,7 +61,7 @@ function creatItems(){
     }
     openList(0);
     openList(1);
-    // openList(2);
+    openList(2);
 }
 
 // 查找对应的关键值

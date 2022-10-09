@@ -74,7 +74,7 @@
         "0@今日热榜@images/tophub.ico@https://tophub.today/",
         "0@wikiHow@images/wikihow.ico@https://zh.wikihow.com/",
         "0@花脸猫@images/shangcongcong.ico@https://shangcc.top/",
-        "0@粉笔网@images/fenbi.ico@https://fenbi.com",
+        
 
 
         // 学习练习 1 /favicon.ico
@@ -186,7 +186,7 @@
         "5@慕课网@images/imooc.ico@https://www.imooc.com/",
         "5@北京尚学堂@images/bjsxt.ico@http://www.bjsxt.com/",
         "5@51CTO学院@images/edu51cto.ico@https://edu.51cto.com/",
-
+        "5@粉笔网@images/fenbi.ico@https://fenbi.com",
 
         // 放松娱乐 6 /favicon.ico
         "6@AcFun@images/acfun.ico@http://www.acfun.cn/",
