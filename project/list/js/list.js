@@ -32,6 +32,7 @@
         "-1@ApeClass@images/apeclass.ico@https://www.apeclass.com/",
         "-1@微信读书@images/weread.png@https://weread.qq.com/",
         "-1@智慧教育平台@images/zxx.ico@https://www.zxx.edu.cn/",
+        "-1@高教国培@images/teacher-edu.png@https://gp.teacher-edu.cn/",
 
         // "-1@省业务网@images/baidu.ico@http://10.13.254.168/",
         // "-1@市业务网@images/baidu.ico@http://10.8.1.13/pds/",
