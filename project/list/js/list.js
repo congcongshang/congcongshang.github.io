@@ -47,7 +47,7 @@
         "0.5@geogebra@images/geogebra.ico@https://www.geogebra.org/",
         "0.5@网络画板@images/netpad.ico@https://www.netpad.net.cn/",
         "0.5@desmos@images/desmos.ico@https://www.desmos.com/",
-        "0.5@哈佛公开课@images/desmos.ico@https://pll.harvard.edu/",
+        "0.5@哈佛公开课@images/harvard.ico@https://pll.harvard.edu/",
 
 
         // 通用学习 0 /favicon.ico
