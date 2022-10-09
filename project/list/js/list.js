@@ -28,13 +28,16 @@
         "-1@学堂在线@images/xuetangx.ico@http://www.xuetangx.com/",
         "-1@哔哩哔哩@images/bilibili.ico@https://www.bilibili.com/",
         "-1@牛客网@images/nowcoder.png@https://www.nowcoder.com/",
-        "-1@机器学习@images/mlhub123.ico@https://www.mlhub123.com/",
+       //  "-1@机器学习@images/mlhub123.ico@https://www.mlhub123.com/",
+        "-1@ApeClass@images/apeclass.ico@https://www.apeclass.com/",
         "-1@微信读书@images/weread.png@https://weread.qq.com/",
+        "-1@智慧教育平台@images/zxx.ico@https://www.zxx.edu.cn/",
 
         // "-1@省业务网@images/baidu.ico@http://10.13.254.168/",
         // "-1@市业务网@images/baidu.ico@http://10.8.1.13/pds/",
         // "-1@运维系统@images/baidu.ico@http://10.8.1.15:9080/topoms/WebUI.do?path=login",
         // 有效工具 0.5 /favicon.ico
+        "0.5@语雀@images/yuque.png@https://www.yuque.com/",
         "0.5@写作猫@images/xiezuocat.ico@https://xiezuocat.com/",
         "0.5@grammarly@images/grammarly.png@https://www.grammarly.com/",
         "0.5@ProcessOn@images/processon.ico@https://www.processon.com/",
@@ -43,6 +46,7 @@
         "0.5@geogebra@images/geogebra.ico@https://www.geogebra.org/",
         "0.5@网络画板@images/netpad.ico@https://www.netpad.net.cn/",
         "0.5@desmos@images/desmos.ico@https://www.desmos.com/",
+        "0.5@哈佛公开课@images/desmos.ico@https://pll.harvard.edu/",
 
 
         // 通用学习 0 /favicon.ico
@@ -85,7 +89,7 @@
         "1@FCC社区@images/freecode.ico@https://chinese.freecodecamp.org/forum/",
         "1@cn.FCC@images/freecode.ico@https://www.freecodecamp.cn/",
         "1@one.FCC@images/freecode.ico@https://learn.freecodecamp.one",
-        "1@语雀@images/yuque.png@https://www.yuque.com/",
+        
         "1@金山文档@images/wps.ico@https://docs.wps.cn/",
         "1@ExcelHome@images/excelhome.ico@http://www.excelhome.net/",
         "1@.net官方文档@images/microsoft.png@https://docs.microsoft.com/zh-cn/dotnet/",
