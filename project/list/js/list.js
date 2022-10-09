@@ -7,8 +7,8 @@
  *        5 - 我的笔记
  *///  链接信息数组 /favicon.ico
  var text = '{ "labels" : [' +
- '{ "id":"-1","name":"不索何获"},' +
- '{ "id":"0.5","name":"有效工具"},' +
+ '{ "id":"-1","name":"常用工具"},' +
+ '{ "id":"0.5","name":"学习思考"},' +
  '{ "id":"0","name":"通用学习"},' +
  '{ "id":"1","name":"学习练习"},' +
  '{ "id":"2","name":"个人博客"},' +
@@ -20,35 +20,33 @@
  '{ "id":"8","name":"UI素材"}' +
  ']}';
  var webs = [
+       // 常用工具 -1 /favicon.ico
         "-1@百度一下@images/baidu.ico@http://www.baidu.com/",
-        "-1@org.FCC@images/freecode.ico@https://www.freecodecamp.org/learn",
-        "-1@LeetCode@images/leetcode.ico@https://leetcode-cn.com/",
-        "-1@极客时间@images/geekbang.png@https://time.geekbang.org/",
-        "-1@大鹏教育@images/ijjctyun.png@http://www.dapengjiaoyu.com/",
-        "-1@学堂在线@images/xuetangx.ico@http://www.xuetangx.com/",
-        "-1@哔哩哔哩@images/bilibili.ico@https://www.bilibili.com/",
-        "-1@牛客网@images/nowcoder.png@https://www.nowcoder.com/",
+        "-1@ProcessOn@images/processon.ico@https://www.processon.com/",
+        "-1@CODEPEN@images/codepen.ico@https://codepen.io/",
+        "-1@语雀@images/yuque.png@https://www.yuque.com/",
+        "-1@GitHub@images/github.png@https://github.com/",
+       
+       
        //  "-1@机器学习@images/mlhub123.ico@https://www.mlhub123.com/",
-        "-1@ApeClass@images/apeclass.ico@https://www.apeclass.com/",
-        "-1@微信读书@images/weread.png@https://weread.qq.com/",
-        "-1@智慧教育@images/zxx.ico@https://www.zxx.edu.cn/",
-        "-1@高教国培@images/teacher-edu.png@https://gp.teacher-edu.cn/",
+        
 
         // "-1@省业务网@images/baidu.ico@http://10.13.254.168/",
         // "-1@市业务网@images/baidu.ico@http://10.8.1.13/pds/",
         // "-1@运维系统@images/baidu.ico@http://10.8.1.15:9080/topoms/WebUI.do?path=login",
-        // 有效工具 0.5 /favicon.ico
-        "0.5@语雀@images/yuque.png@https://www.yuque.com/",
-        "0.5@写作猫@images/xiezuocat.ico@https://xiezuocat.com/",
-        "0.5@grammarly@images/grammarly.png@https://www.grammarly.com/",
-        "0.5@ProcessOn@images/processon.ico@https://www.processon.com/",
-        "0.5@CODEPEN@images/codepen.ico@https://codepen.io/",
-        "0.5@REPL@images/repl.ico@https://repl.it/",
-        "0.5@geogebra@images/geogebra.ico@https://www.geogebra.org/",
-        "0.5@网络画板@images/netpad.ico@https://www.netpad.net.cn/",
-        "0.5@desmos@images/desmos.ico@https://www.desmos.com/",
+        // 学习思考 0.5 /favicon.ico
+        
+        
         "0.5@哈佛公开课@images/harvard.ico@https://pll.harvard.edu/",
-
+        "0.5@极客时间@images/geekbang.png@https://time.geekbang.org/",
+        "0.5@大鹏教育@images/ijjctyun.png@http://www.dapengjiaoyu.com/",
+        "0.5@ApeClass@images/apeclass.ico@https://www.apeclass.com/",
+        "0.5@高教国培@images/teacher-edu.png@https://gp.teacher-edu.cn/",
+        "0.5@牛客网@images/nowcoder.png@https://www.nowcoder.com/",
+        "0.5@哔哩哔哩@images/bilibili.ico@https://www.bilibili.com/",
+        "0.5@org.FCC@images/freecode.ico@https://www.freecodecamp.org/learn",
+        "0.5@LeetCode@images/leetcode.ico@https://leetcode-cn.com/",
+        "0.5@微信读书@images/weread.png@https://weread.qq.com/",
 
         // 通用学习 0 /favicon.ico
         "0@MDN@images/mozilla.png@https://developer.mozilla.org/zh-CN/",
@@ -56,11 +54,16 @@
         "0@runoob@images/runoob.ico@http://www.runoob.com/",
         "0@JS秘密花园@images/Garden.ico@http://bonsaiden.github.io/JavaScript-Garden/zh/",
         "0@BS中文网@images/bootcss.png@http://www.bootcss.com/",
+        "0@PHP中文网@images/php.ico@https://www.php.cn/",
         "0@CSDN@images/csdn.ico@https://www.csdn.net/",
         "0@博客园@images/cnblogs.ico@https://www.cnblogs.com/",
         "0@51CTO@images/51cto.ico@http://www.51cto.com/",
         "0@新浪微博@images/weibo.ico@https://weibo.com/",
+        "0@学堂在线@images/xuetangx.ico@http://www.xuetangx.com/",
+        "0@智慧教育@images/zxx.ico@https://www.zxx.edu.cn/",
         "0@华为课堂@images/huaweixy.ico@https://classroom.devcloud.huaweicloud.com/home",
+        "0@华为学云@images/huaweixy.ico@https://ilearningx.huawei.com/",
+        "0@阿里云大学@images/aliyun.ico@https://edu.aliyun.com/",
         "0@ZCOOL站酷@images/zcool.ico@https://www.zcool.com.cn/",
         "0@seeseed@images/seeseed.png@https://www.seeseed.com/",
         "0@花瓣@images/huaban.ico@https://huaban.com/",
@@ -70,10 +73,6 @@
         "0@万有导航@images/wanyouw.png@http://wanyouw.com/",
         "0@今日热榜@images/tophub.ico@https://tophub.today/",
         "0@wikiHow@images/wikihow.ico@https://zh.wikihow.com/",
-        "0@华为学云@images/huaweixy.ico@https://ilearningx.huawei.com/",
-        "0@PHP中文网@images/php.ico@https://www.php.cn/",
-        "0@GitHub@images/github.png@https://github.com/",
-        "0@阿里云大学@images/aliyun.ico@https://edu.aliyun.com/",
         "0@花脸猫@images/shangcongcong.ico@https://shangcc.top/",
         "0@粉笔网@images/fenbi.ico@https://fenbi.com",
 
@@ -90,7 +89,6 @@
         "1@FCC社区@images/freecode.ico@https://chinese.freecodecamp.org/forum/",
         "1@cn.FCC@images/freecode.ico@https://www.freecodecamp.cn/",
         "1@one.FCC@images/freecode.ico@https://learn.freecodecamp.one",
-        
         "1@金山文档@images/wps.ico@https://docs.wps.cn/",
         "1@ExcelHome@images/excelhome.ico@http://www.excelhome.net/",
         "1@.net官方文档@images/microsoft.png@https://docs.microsoft.com/zh-cn/dotnet/",
@@ -106,7 +104,12 @@
         "1@HTML颜色@images/html-color-codes.ico@https://html-color-codes.info/",
         "1@颜色调节@images/colorme.ico@https://colorme.io/",
         "1@网页颜色@images/htmlcolorcodes.ico@https://htmlcolorcodes.com/",
-
+        "1@写作猫@images/xiezuocat.ico@https://xiezuocat.com/",
+        "1@grammarly@images/grammarly.png@https://www.grammarly.com/",
+        "1@REPL@images/repl.ico@https://repl.it/",
+        "1@geogebra@images/geogebra.ico@https://www.geogebra.org/",
+        "1@网络画板@images/netpad.ico@https://www.netpad.net.cn/",
+        "1@desmos@images/desmos.ico@https://www.desmos.com/",
 
         // 个人博客 2 /favicon.ico
         // "2@杨青青@images/yangqq.ico@https://www.yangqq.com/",
