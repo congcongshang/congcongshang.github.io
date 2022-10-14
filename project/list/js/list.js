@@ -191,7 +191,7 @@
         // 放松娱乐 6 /favicon.ico
         "6@AcFun@images/acfun.ico@http://www.acfun.cn/",
         "6@美拍视频@images/meipai.ico@https://www.meipai.com/",
-        "6@斗鱼直播@images/douyu.ico@https://www.douyu.com/directory/myFollow",
+      //   "6@斗鱼直播@images/douyu.ico@https://www.douyu.com/directory/myFollow",
         "6@vip视频解析@images/qmaile.ico@http://peng3.com/vip",
         "6@vip全民影视@images/daga.ico@https://www.daga.cc/",
         "6@在线拼图@images/jigsawplanet.ico@https://www.jigsawplanet.com/",
