@@ -26,6 +26,7 @@
         "-1@CODEPEN@images/codepen.ico@https://codepen.io/",
         "-1@语雀@images/yuque.png@https://www.yuque.com/",
         "-1@GitHub@images/github.png@https://github.com/",
+        "-1@百度飞桨@images/paddlepaddle.png@https://www.paddlepaddle.org.cn/",
        
        
        //  "-1@机器学习@images/mlhub123.ico@https://www.mlhub123.com/",
