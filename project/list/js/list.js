@@ -27,6 +27,7 @@
         "-1@语雀@images/yuque.png@https://www.yuque.com/",
         "-1@GitHub@images/github.png@https://github.com/",
         "-1@百度飞桨@images/paddlepaddle.png@https://www.paddlepaddle.org.cn/",
+        "-1@AIstudio@images/paddlepaddle.png@https://aistudio.baidu.com/",
        
        
        //  "-1@机器学习@images/mlhub123.ico@https://www.mlhub123.com/",
