@@ -1,0 +1,11 @@
+[book]
+title = "仓颉"
+authors = ["shangcc"]
+language = "zh-CN"
+
+[output.html]
+# 引入自定义样式文件
+additional-css = [
+    "src/css/block.css",
+    "src/css/code.css"
+    ]
