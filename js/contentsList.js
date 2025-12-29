@@ -1,5 +1,5 @@
 var content = [
-    { url: "project/cangjie/book/index.html", title: "仓颉编程基础知识", family: "2025.12.29", familyID: 1 },
+    { url: "cangjie/book/index.html", title: "仓颉编程基础知识", family: "2025.12.29", familyID: 1 },
     { url: "project/list3/index.html", title: "花脸猫第三版 网址链接", family: "2025.11.11", familyID: 3 },
     { url: "project/list2/index.html", title: "花脸猫第二版 新网址链接", family: "2025.02.11", familyID: 3 },
     { url: "project/newList/index.html", title: "花脸猫第二版 网址链接", family: "2023.03.18", familyID: 3 },
