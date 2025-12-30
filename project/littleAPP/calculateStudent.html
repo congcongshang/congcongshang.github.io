@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>离校留校人数统计</title>
+    <style>
+        /* 基础样式，让页面更美观 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            max-width: 700px; /* 加宽容器适配新增列 */
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        /* 新增按钮样式 */
+        .add-btn {
+            display: block;
+            margin: 0 auto 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .add-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        /* 表格样式 */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .stats-table th, .stats-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .stats-table th {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        /* 输入框样式 */
+        input[type="number"] {
+            width: 100px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        /* 班级名称输入框样式 */
+        .class-name-input {
+            width: 80px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        /* 各班总人数显示样式 */
+        .class-total {
+            font-weight: 600;
+            color: #28a745;
+        }
+        
+        /* 统计结果样式 */
+        .result-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .result-item {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .result-value {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>离校/留校人数统计</h1>
+        
+        
+        
+        <!-- 输入表格 -->
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>班级</th>
+                    <th>离校人数</th>
+                    <th>留校人数</th>
+                    <th>班级总人数</th>
+                </tr>
+            </thead>
+            <tbody id="classTableBody">
+                <!-- 初始班级行 -->
+                <tr>
+                    <td><input type="text" class="class-name-input" value="25软件1" placeholder="输入班级名"></td>
+                    <td><input type="number" class="leave" min="0" oninput="calculateAll()"></td>
+                    <td><input type="number" class="stay" min="0" oninput="calculateAll()"></td>
+                    <td class="class-total">0</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="class-name-input" value="25软件2" placeholder="输入班级名"></td>
+                    <td><input type="number" class="leave" min="0" oninput="calculateAll()"></td>
+                    <td><input type="number" class="stay" min="0" oninput="calculateAll()"></td>
+                    <td class="class-total">0</td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="class-name-input" value="25应用7" placeholder="输入班级名"></td>
+                    <td><input type="number" class="leave" min="0" oninput="calculateAll()"></td>
+                    <td><input type="number" class="stay" min="0" oninput="calculateAll()"></td>
+                    <td class="class-total">0</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 增加班级按钮 -->
+        <button class="add-btn" onclick="addClassRow()">增加班级</button>
+        
+        <!-- 统计结果 -->
+        <div class="result-section">
+            <div class="result-item">全部总人数: <span id="total" class="result-value">0</span></div>
+            <div class="result-item">离校总人数: <span id="totalLeave" class="result-value">0</span></div>
+            <div class="result-item">留校总人数: <span id="totalStay" class="result-value">0</span></div>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载时先计算一次初始值
+        window.onload = calculateAll;
+
+        // 增加班级行的函数
+        function addClassRow() {
+            const tableBody = document.getElementById('classTableBody');
+            // 创建新行
+            const newRow = document.createElement('tr');
+            // 新行内容：班级输入框+离校+留校+总人数
+            newRow.innerHTML = `
+                <td><input type="text" class="class-name-input" placeholder="输入班级名"></td>
+                <td><input type="number" class="leave" min="0" oninput="calculateAll()"></td>
+                <td><input type="number" class="stay" min="0" oninput="calculateAll()"></td>
+                <td class="class-total">0</td>
+            `;
+            // 添加到表格
+            tableBody.appendChild(newRow);
+            // 新增行后重新计算统计数据
+            calculateAll();
+        }
+
+        // 计算所有统计结果的核心函数（适配动态行数）
+        function calculateAll() {
+            // 1. 获取所有行的元素
+            const rows = document.querySelectorAll('#classTableBody tr');
+            let totalLeave = 0;
+            let totalStay = 0;
+
+            // 2. 遍历每一行计算班级总人数和总计
+            rows.forEach((row, index) => {
+                // 获取当前行的离校、留校输入框
+                const leaveInput = row.querySelector('.leave');
+                const stayInput = row.querySelector('.stay');
+                const totalCell = row.querySelector('.class-total');
+
+                // 转换为数字（空值按0处理）
+                const leaveNum = Number(leaveInput.value) || 0;
+                const stayNum = Number(stayInput.value) || 0;
+                const classTotal = leaveNum + stayNum;
+
+                // 更新当前班级总人数
+                totalCell.textContent = classTotal;
+
+                // 累加全校总计
+                totalLeave += leaveNum;
+                totalStay += stayNum;
+            });
+
+            // 3. 计算全校总人数
+            const total = totalLeave + totalStay;
+
+            // 4. 更新页面显示
+            document.getElementById('total').textContent = total;
+            document.getElementById('totalLeave').textContent = totalLeave;
+            document.getElementById('totalStay').textContent = totalStay;
+        }
+    </script>
+</body>
+</html>
