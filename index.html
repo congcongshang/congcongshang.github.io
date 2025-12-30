@@ -42,7 +42,7 @@
                     </a></li>
                 <li><a href="project/exam/index.html">
                         <span class="title">花脸猫做的在线考试系统</span>
-                        <span class="family">类别:小例子</span>
+                        <span class="family">2025.5.5</span>
                     </a></li>
             </ul>
         </main>
@@ -57,24 +57,29 @@
     </div>
 
     <script>
+        function add_content(url, title, family,  target="_blank"){
+            return `<li><a href="` + url +`" target="`+target+ `">
+                        <span class="title">`+ title + ` </span>
+                        <span class="family"> `+ family + `</span>
+                        </a></li>`;
+        }
+
         var contentsList = document.getElementById("contentsList");
         function action(id) {
             contentsList.innerHTML = "";
             if (id === 4) {
                 for (var i = content.length - 1; i >= 0; i--) {
-                    contentsList.innerHTML += `<li><a href="` + content[i].url + `">
-                        <span class="title">`+ content[i].title + ` </span>
-                        <span class="family"> `+ content[i].family + `</span>
-                        </a></li>`;
+                    if (content[i].familyID === 5) {
+                        contentsList.innerHTML += add_content(content[i].url, content[i].title, content[i].family,"_self");
+                    }else{
+                        contentsList.innerHTML += add_content(content[i].url, content[i].title, content[i].family);
+                    }
 
                 }
             } else {
                 for (var i = content.length - 1; i >= 0; i--) {
                     if (content[i].familyID === id) {
-                        contentsList.innerHTML += `<li><a href="` + content[i].url + `">
-                            <span class="title">`+ content[i].title + ` </span>
-                            <span class="family"> `+ content[i].family + `</span>
-                            </a></li>`;
+                        contentsList.innerHTML += add_content(content[i].url, content[i].title, content[i].family);
                     }
                 }
             }
