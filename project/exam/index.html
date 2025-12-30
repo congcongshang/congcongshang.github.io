@@ -149,15 +149,16 @@
             var chooses = document.querySelectorAll("#body div");
 
             for (var i = 0; i < chooses.length; i++) {
-                chooses[i].addEventListener("click", function (obj) {
+                chooses[i].addEventListener("click", function () {
                     if (state) {
-                        var objMsg = obj.path[0].getAttribute('msg');
+                       
+                        var objMsg = this.getAttribute('msg');
 
                         var index = setChoose(userChoose, objMsg);
                         if (index === 1) {
-                            obj.path[0].style.borderColor = "green";
+                            this.style.borderColor = "green";
                         } else {
-                            obj.path[0].style.borderColor = "#ccc";
+                            this.style.borderColor = "#ccc";
                         }
                     }
                 })
