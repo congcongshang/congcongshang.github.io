@@ -68,7 +68,7 @@
         function action(id) {
             contentsList.innerHTML = "";
             if (id === 4) {
-                for (var i = content.length - 1; i >= 0; i--) {
+                for (var i = 0; i < content.length; i++) {
                     if (content[i].familyID === 5) {
                         contentsList.innerHTML += add_content(content[i].url, content[i].title, content[i].family,"_self");
                     }else{
@@ -77,7 +77,7 @@
 
                 }
             } else {
-                for (var i = content.length - 1; i >= 0; i--) {
+                for (var i = 0; i < content.length; i++) {
                     if (content[i].familyID === id) {
                         contentsList.innerHTML += add_content(content[i].url, content[i].title, content[i].family);
                     }
