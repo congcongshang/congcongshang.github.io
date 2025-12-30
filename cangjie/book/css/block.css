@@ -1,0 +1,35 @@
+/* 高亮块基础样式 */
+.admonition {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border-left: 4px solid #666;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+  }
+  
+  /* 提示块：蓝色 */
+  .admonition-note {
+    border-left-color: #4299e1;
+    background-color: #ebf8ff;
+  }
+  
+  /* 警告块：黄色 */
+  .admonition-warning {
+    border-left-color: #ecc94b;
+    background-color: #fefcbf;
+  }
+  
+  /* 危险块：红色 */
+  .admonition-danger {
+    border-left-color: #e53e3e;
+    background-color: #fee2e2;
+  }
+  
+  /* 高亮块标题 */
+  .admonition-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  /* 我是分割线下面写标题 */
+  

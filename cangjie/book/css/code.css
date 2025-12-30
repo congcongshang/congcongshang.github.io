@@ -1,0 +1,87 @@
+/* ========== mdBook 代码块样式（超大字号+宽松间距版） ========== */
+/* 全局代码块基础样式（mdBook 核心代码块容器） */
+pre {
+    /* 基础布局 - 增加内边距（原1rem→1.5rem），更宽松 */
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-radius: 8px; /* 保持圆角风格 */
+    overflow-x: auto;   /* 横向滚动（适配长代码） */
+    /* 视觉样式 - 核心：字号调至1.25rem（原1.1rem，比初始版大32%） */
+    background-color: #1e293b !important; /* 深色背景 */
+    color: #e2e8f0;                      /* 代码默认文字颜色 */
+    font-family: "Fira Code", "Consolas", "Monaco", "Courier New", monospace;
+    font-size: 1.6rem;                  /* 核心：超大字号 */
+    line-height: 1.2;                    /* 核心：增加行高（原1.6→1.8），文字上下间距更大 */
+    /* 阴影 + 边框 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #334155;
+    /* 过渡效果 */
+    transition: box-shadow 0.2s ease;
+  }
+  
+  /* 代码块 hover 效果 */
+  pre:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* 行内代码样式 - 同步放大+宽松 */
+  code {
+    padding: 0.3rem 0.5rem; /* 增加内边距（原0.2×0.4），更饱满 */
+    border-radius: 4px;
+    background-color: #f1f5f9 !important;
+    color: #e11d48 !important;
+    font-family: "Fira Code", "Consolas", monospace;
+    font-size: 1.15rem;     /* 行内代码字号调至1.15rem（原1rem） */
+    line-height: 1.5;       /* 行内代码行高适配 */
+  }
+  
+  /* 修复 mdBook 代码块内文字换行问题 */
+  pre code {
+    padding: 0;
+    background-color: transparent !important;
+    color: inherit !important;
+    font-size: inherit; /* 继承 pre 的超大字号 */
+    line-height: inherit; /* 继承 pre 的宽松行高 */
+    white-space: pre;
+  }
+  
+  /* 自定义代码块滚动条 */
+  pre::-webkit-scrollbar {
+    height: 10px; /* 滚动条加宽（原8px），更易点击 */
+  }
+  pre::-webkit-scrollbar-track {
+    background: #273449;
+    border-radius: 5px;
+  }
+  pre::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 5px;
+  }
+  pre::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+  
+  /* 语法高亮适配 */
+  pre .kw { color: #93c5fd; }
+  pre .st { color: #a7f3d0; }
+  pre .co { color: #94a3b8; font-style: italic; }
+  pre .fn { color: #fcd34d; }
+  pre .dv, pre .va { color: #fdba74; }
+  pre .dt { color: #c4b5fd; }
+  
+  /* 移动端适配 - 同步超大字号+宽松间距 */
+  @media (max-width: 768px) {
+    pre {
+      padding: 1.2rem; /* 移动端内边距略减，但仍宽松 */
+      font-size: 1.15rem; /* 移动端代码块字号（比桌面略小，但仍大） */
+      line-height: 1.7; /* 移动端行高适配 */
+      border-radius: 6px;
+    }
+    code {
+      font-size: 1.05rem; /* 移动端行内代码字号 */
+      padding: 0.25rem 0.45rem;
+    }
+    pre::-webkit-scrollbar {
+      height: 8px; /* 移动端滚动条略窄 */
+    }
+  }
