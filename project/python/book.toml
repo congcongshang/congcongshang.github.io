@@ -1,0 +1,12 @@
+[book]
+title = "Python"
+authors = ["shangcc"]
+language = "ZH-CN"
+
+
+[output.html]
+# 引入自定义样式文件
+additional-css = [
+    "src/css/block.css",
+    "src/css/code.css"
+    ]

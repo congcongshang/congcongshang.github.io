@@ -1,0 +1,27 @@
+/* 代码块容器样式 */
+pre {
+    position: relative;
+    padding-left: 4em !important; /* 为行号留出空间 */
+}
+
+/* 行号样式 */
+.line-numbers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5em; 
+    height: 100%;
+    text-align: center;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+    border-right: 1px solid #802020;
+    background-color: #8f2424;
+    color: #999;
+    user-select: none; /* 禁止选中行号 */
+}
+
+/* 单个行号样式 */
+.line-numbers span {
+    display: block;
+    line-height: 1.5; /* 与代码行高一致 */
+}
