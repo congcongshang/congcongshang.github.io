@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>班级名单选择复制</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+            background: #f5f7fa;
+        }
+
+        .title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .tool-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        #copyBtn {
+            background: #409eff;
+            color: white;
+            flex: 1;
+        }
+
+        #selectAllBtn {
+            background: #67c23a;
+            color: white;
+        }
+
+        #reverseBtn {
+            background: #f56c6c;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        /* 🔥 自适应竖排核心：自动根据宽度分列，从上到下排列 */
+        .name-list {
+            columns: auto;
+            /* 自适应列数 */
+            column-width: 150px;
+            /* 每列最小宽度，自动适配 */
+            column-gap: 12px;
+        }
+
+        .name-item {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+            margin-bottom: 12px;
+            break-inside: avoid;
+            /* 防止名字被拆分到两列 */
+        }
+
+        .name-item input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .tip {
+            margin-top: 15px;
+            color: #67c23a;
+            text-align: center;
+            font-size: 15px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">班级名单选择复制</h1>
+
+    <div class="tool-bar">
+        <button id="copyBtn">📋 一键复制</button>
+        <button id="selectAllBtn">✅ 全选</button>
+
+        <button id="reverseBtn">🔄 反选</button>
+    </div>
+
+    <div class="name-list" id="nameList"></div>
+    <div class="tip" id="tip"></div>
+
+    <script>
+        const studentNames = [
+            "夏凯鑫", "白潞潞", "常圆想", "高寅川", "刘登佳",
+            "朱蒙恩", "乔子航", "田颜博", "卢俊", "赛东周",
+            "王锦航", "杨远航", "薛冰洋", "杨朋", "朱子豪",
+            "毕世豪", "程霖祺", "宋科皓", "李玉龙", "杨万幸",
+            "张龙", "王子昊", "徐昆辉", "陈思齐", "李俊琦"
+        ];
+
+        const nameList = document.getElementById("nameList");
+        const copyBtn = document.getElementById("copyBtn");
+        const selectAllBtn = document.getElementById("selectAllBtn");
+
+        const reverseBtn = document.getElementById("reverseBtn");
+        const tip = document.getElementById("tip");
+
+        function renderNames() {
+            nameList.innerHTML = "";
+            studentNames.forEach(name => {
+                const item = document.createElement("div");
+                item.className = "name-item";
+                item.innerHTML = `
+                    <input type="checkbox" value="${name}">
+                    <span>${name}</span>
+                `;
+
+                item.addEventListener("click", (e) => {
+                    if (e.target.tagName !== "INPUT") {
+                        const checkbox = item.querySelector('input[type="checkbox"]');
+                        checkbox.checked = !checkbox.checked;
+                    }
+                });
+
+                nameList.appendChild(item);
+            });
+        }
+
+        function safeCopy(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+        }
+
+        copyBtn.addEventListener("click", () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const selectedNames = Array.from(checkboxes).map(cb => cb.value);
+
+            if (selectedNames.length === 0) {
+                tip.textContent = "⚠️ 请先选择要复制的名字";
+                tip.style.color = "#f56c6c";
+                return;
+            }
+
+            try {
+                safeCopy(selectedNames.join(", "));
+                tip.textContent = `✅ 复制成功！共复制 ${selectedNames.length} 人`;
+                tip.style.color = "#67c23a";
+                alert(`✅ 复制成功！共复制 ${selectedNames.length} 人`);
+            } catch (err) {
+                tip.textContent = "❌ 复制失败，请手动复制";
+                tip.style.color = "#f56c6c";
+            }
+
+            setTimeout(() => tip.textContent = "", 3000);
+        });
+
+        selectAllBtn.addEventListener("click", () => {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+        });
+
+
+
+        reverseBtn.addEventListener("click", () => {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                cb.checked = !cb.checked;
+            });
+        });
+
+        renderNames();
+    </script>
+</body>
+
+</html>
