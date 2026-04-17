@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>班级名单复制工具</title>
+    <title>班级名单选择复制</title>
     <style>
         * {
             box-sizing: border-box;
@@ -59,26 +58,33 @@
             color: white;
         }
 
+        #reverseBtn {
+            background: #e6a23c;
+            color: white;
+        }
+
         button:hover {
             opacity: 0.9;
         }
 
+        /* 竖排核心样式：多列，从上到下排 */
         .name-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 12px;
+            column-count: 4;        /* 4列 */
+            column-gap: 12px;
         }
 
         .name-item {
             background: white;
             padding: 12px;
             border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
             gap: 8px;
             cursor: pointer;
             user-select: none;
+            margin-bottom: 12px;
+            break-inside: avoid; /* 防止名字被拆成两列 */
         }
 
         .name-item input {
@@ -96,7 +102,6 @@
         }
     </style>
 </head>
-
 <body>
     <h1 class="title">班级名单选择复制</h1>
 
@@ -104,13 +109,13 @@
         <button id="copyBtn">📋 一键复制选中名字</button>
         <button id="selectAllBtn">✅ 全选</button>
         <button id="cancelAllBtn">❌ 取消全选</button>
+        <button id="reverseBtn">🔄 反选</button>
     </div>
 
     <div class="name-list" id="nameList"></div>
     <div class="tip" id="tip"></div>
 
     <script>
-        // ====================== 在这里修改你的班级名单 ======================
         const studentNames = [
             "邢慧君", "苏文凯", "张馨戈", "袁乐颖", "崔志涵",
             "张韶涵", "李佳宁", "孙艺洳", "杨诗雨", "韩彤彤",
@@ -123,15 +128,14 @@
             "张聪", "吕汶磊", "陈振宇", "王希博", "姚佳",
             "李韩涛", "张军保"
         ];
-        // ===================================================================
 
         const nameList = document.getElementById("nameList");
         const copyBtn = document.getElementById("copyBtn");
         const selectAllBtn = document.getElementById("selectAllBtn");
         const cancelAllBtn = document.getElementById("cancelAllBtn");
+        const reverseBtn = document.getElementById("reverseBtn");
         const tip = document.getElementById("tip");
 
-        // 渲染名单 + 点击名字勾选
         function renderNames() {
             nameList.innerHTML = "";
             studentNames.forEach(name => {
@@ -141,20 +145,18 @@
                     <input type="checkbox" value="${name}">
                     <span>${name}</span>
                 `;
-
-                // 🔥 核心：点击名字就自动勾选/取消
+                
                 item.addEventListener("click", (e) => {
                     if (e.target.tagName !== "INPUT") {
                         const checkbox = item.querySelector('input[type="checkbox"]');
                         checkbox.checked = !checkbox.checked;
                     }
                 });
-
+                
                 nameList.appendChild(item);
             });
         }
 
-        // 万能复制函数
         function safeCopy(text) {
             const textArea = document.createElement("textarea");
             textArea.value = text;
@@ -167,7 +169,6 @@
             document.body.removeChild(textArea);
         }
 
-        // 复制按钮
         copyBtn.addEventListener("click", () => {
             const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
             const selectedNames = Array.from(checkboxes).map(cb => cb.value);
@@ -179,7 +180,7 @@
             }
 
             try {
-                safeCopy(selectedNames.join(", "));
+                safeCopy(selectedNames.join("\n"));
                 tip.textContent = `✅ 复制成功！共复制 ${selectedNames.length} 人`;
                 tip.style.color = "#67c23a";
                 alert(`✅ 复制成功！共复制 ${selectedNames.length} 人`);
@@ -191,18 +192,21 @@
             setTimeout(() => tip.textContent = "", 3000);
         });
 
-        // 全选
         selectAllBtn.addEventListener("click", () => {
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
         });
 
-        // 取消全选
         cancelAllBtn.addEventListener("click", () => {
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        });
+
+        reverseBtn.addEventListener("click", () => {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                cb.checked = !cb.checked;
+            });
         });
 
         renderNames();
     </script>
 </body>
-
 </html>
