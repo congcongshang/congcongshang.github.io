@@ -108,7 +108,6 @@
     <div class="tool-bar">
         <button id="copyBtn">📋 一键复制选中名字</button>
         <button id="selectAllBtn">✅ 全选</button>
-        <button id="cancelAllBtn">❌ 取消全选</button>
         <button id="reverseBtn">🔄 反选</button>
     </div>
 
@@ -132,7 +131,6 @@
         const nameList = document.getElementById("nameList");
         const copyBtn = document.getElementById("copyBtn");
         const selectAllBtn = document.getElementById("selectAllBtn");
-        const cancelAllBtn = document.getElementById("cancelAllBtn");
         const reverseBtn = document.getElementById("reverseBtn");
         const tip = document.getElementById("tip");
 
@@ -180,7 +178,7 @@
             }
 
             try {
-                safeCopy(selectedNames.join("\n"));
+                safeCopy(selectedNames.join(", "));
                 tip.textContent = `✅ 复制成功！共复制 ${selectedNames.length} 人`;
                 tip.style.color = "#67c23a";
                 alert(`✅ 复制成功！共复制 ${selectedNames.length} 人`);
@@ -194,10 +192,6 @@
 
         selectAllBtn.addEventListener("click", () => {
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
-        });
-
-        cancelAllBtn.addEventListener("click", () => {
-            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
         });
 
         reverseBtn.addEventListener("click", () => {
