@@ -53,13 +53,8 @@
             color: white;
         }
 
-        #cancelAllBtn {
-            background: #f56c6c;
-            color: white;
-        }
-
         #reverseBtn {
-            background: #e6a23c;
+            background: #f56c6c;
             color: white;
         }
 
@@ -67,9 +62,10 @@
             opacity: 0.9;
         }
 
-        /* 竖排核心样式：多列，从上到下排 */
+        /* 🔥 自适应竖排核心：自动根据宽度分列，从上到下排列 */
         .name-list {
-            column-count: 4;        /* 4列 */
+            columns: auto;          /* 自适应列数 */
+            column-width: 150px;    /* 每列最小宽度，自动适配 */
             column-gap: 12px;
         }
 
@@ -84,7 +80,7 @@
             cursor: pointer;
             user-select: none;
             margin-bottom: 12px;
-            break-inside: avoid; /* 防止名字被拆成两列 */
+            break-inside: avoid; /* 防止名字被拆分到两列 */
         }
 
         .name-item input {
@@ -108,6 +104,7 @@
     <div class="tool-bar">
         <button id="copyBtn">📋 一键复制选中名字</button>
         <button id="selectAllBtn">✅ 全选</button>
+        
         <button id="reverseBtn">🔄 反选</button>
     </div>
 
@@ -131,6 +128,7 @@
         const nameList = document.getElementById("nameList");
         const copyBtn = document.getElementById("copyBtn");
         const selectAllBtn = document.getElementById("selectAllBtn");
+       
         const reverseBtn = document.getElementById("reverseBtn");
         const tip = document.getElementById("tip");
 
@@ -193,6 +191,8 @@
         selectAllBtn.addEventListener("click", () => {
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
         });
+
+       
 
         reverseBtn.addEventListener("click", () => {
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
