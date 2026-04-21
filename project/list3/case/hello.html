@@ -23,8 +23,10 @@
         }
 
         .container {
-            width: 80vw;   /* 屏幕宽度的 80% */
-            max-width: 800px;  /* 最大不超过 800px */
+            width: 80vw;
+            /* 屏幕宽度的 80% */
+            max-width: 800px;
+            /* 最大不超过 800px */
             margin: 0 auto 60px;
             background: linear-gradient(135deg, #02214f 0%, #02214f 50%, #310156 100%);
             padding: 60px 40px;
@@ -95,11 +97,11 @@
         }
 
         // 页面加载自动显示一句
-        window.onload = showRandomQuote;
+        showRandomQuote();
 
-        document.querySelectorAll(".container")[1].addEventListener("click", function () {
-        window.location.href = "https://shangcc.top/project/list3/index.html";
-    });
+        window.onload = document.querySelectorAll(".container")[1].addEventListener("click", function () {
+            window.location.href = "https://shangcc.top/project/list3/index.html";
+        });
     </script>
 </body>
 
