@@ -84,7 +84,7 @@
     <h2 id="title">&sect; Hello My Word!</h2>
     <div id="like">
         <div class="box">
-            <div class="left">工&nbsp;作</div>
+            <div id="quote" class="left">工&nbsp;作</div>
             <div class="right">
                 <a href="https://www.zlxy.edu.cn/">河南质量工程职业学院</a>
                 <a href="http://192.168.200.222:8080/">学校OA</a>
@@ -201,6 +201,9 @@
     createColor();
     document.querySelector("#title").addEventListener("click", function () {
         window.location.href = "https://shangcc.top/";
+    });
+    document.querySelector("#quote").addEventListener("click", function () {
+        window.location.href = "https://shangcc.top/project/list3/case/hello.html";
     });
     document.querySelector("#secret").addEventListener("click", function () {
         window.location.href = "https://shangcc.top/project/list3/secret.html";
