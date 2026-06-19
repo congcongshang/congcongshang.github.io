@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五行相生相克图 - 五边形顶点布局</title>
+    <style>
+        body {
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "微软雅黑", sans-serif;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+            background: #fff;
+            border-radius: 8px;
+        }
+
+        h3 {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>五行相生相克图（五边形顶点布局）</h3>
+    <canvas id="fiveElement" width="650" height="650"></canvas>
+
+    <script>
+        const canvas = document.getElementById('fiveElement');
+        const ctx = canvas.getContext('2d');
+        const W = canvas.width;
+        const H = canvas.height;
+        const centerX = W / 2;
+        const centerY = H / 2;
+        const pentR = 240;    // 五边形顶点半径
+        const nodeR = 48;     // 五行节点圆大小
+
+        // 初始化五个顶点角度
+        const elements = [];
+        const fiveCount = 5;
+        for (let i = 0; i < fiveCount; i++) {
+            const rad = -Math.PI / 2 + (Math.PI * 2 / fiveCount) * i;
+            elements.push({ rad });
+        }
+        // 五行名称与配色
+        const eleInfo = [
+            { name: '木', color: '#27ae60' },
+            { name: '火', color: '#e74c3c' },
+            { name: '土', color: '#f39c12' },
+            { name: '金', color: '#7f8c8d' },
+            { name: '水', color: '#3498db' }
+        ];
+        elements.forEach((item, idx) => {
+            Object.assign(item, eleInfo[idx]);
+        });
+
+        // 相生、相克顺序
+        const generateOrder = [0, 1, 2, 3, 4, 0];
+        const restrainOrder = [0, 2, 4, 1, 3, 0];
+
+        // 绘制正五边形轮廓
+        function drawPentagon() {
+            ctx.beginPath();
+            elements.forEach((ele, idx) => {
+                const x = centerX + pentR * Math.cos(ele.rad);
+                const y = centerY + pentR * Math.sin(ele.rad);
+                idx === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            });
+            ctx.closePath();
+            ctx.strokeStyle = '#dcdcdc';
+            ctx.lineWidth = 2;
+            ctx.setLineDash([4, 4]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+        }
+
+        // 绘制顶点五行节点
+        function drawNode(ele) {
+            const x = centerX + pentR * Math.cos(ele.rad);
+            const y = centerY + pentR * Math.sin(ele.rad);
+
+            const grad = ctx.createRadialGradient(x, y, 0, x, y, nodeR);
+            grad.addColorStop(0, ele.color);
+            grad.addColorStop(1, ele.color + '99');
+
+            ctx.beginPath();
+            ctx.arc(x, y, nodeR, 0, Math.PI * 2);
+            ctx.fillStyle = grad;
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 30px 微软雅黑';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(ele.name, x, y);
+        }
+
+        // 绘制单个箭头图形
+        function drawArrowShape(x, y, angle, size, color) {
+            const wingAngle = Math.PI / 5;
+            ctx.beginPath();
+            ctx.fillStyle = color;
+            ctx.moveTo(x, y);
+            ctx.lineTo(
+                x - size * Math.cos(angle - wingAngle),
+                y - size * Math.sin(angle - wingAngle)
+            );
+            ctx.lineTo(
+                x - size * 0.5 * Math.cos(angle),
+                y - size * 0.5 * Math.sin(angle)
+            );
+            ctx.lineTo(
+                x - size * Math.cos(angle + wingAngle),
+                y - size * Math.sin(angle + wingAngle)
+            );
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        // 绘制连线 + 中点箭头 + 终点箭头
+        function drawNiceArrow(startIdx, endIdx, color, lineW, isDash = false) {
+            const sEle = elements[startIdx];
+            const eEle = elements[endIdx];
+            const offset = 1.02;
+
+            // 起点、终点坐标
+            const startX = centerX + pentR * offset * Math.cos(sEle.rad);
+            const startY = centerY + pentR * offset * Math.sin(sEle.rad);
+            const endX = centerX + pentR * offset * Math.cos(eEle.rad);
+            const endY = centerY + pentR * offset * Math.sin(eEle.rad);
+
+            // 设置虚线/实线
+            if (isDash) ctx.setLineDash([10, 6]);
+            else ctx.setLineDash([]);
+
+            // 绘制主线
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = lineW;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            // 计算角度、中点
+            const angle = Math.atan2(endY - startY, endX - startX);
+            const midX = (startX + endX) / 2;
+            const midY = (startY + endY) / 2;
+            const arrowSize = 14;
+
+            // 线上中间箭头
+            drawArrowShape(midX, midY, angle, arrowSize, color);
+            // 终点箭头
+            drawArrowShape(endX, endY, angle, arrowSize + 2, color);
+
+            ctx.setLineDash([]);
+        }
+
+        // 主绘制
+        function draw() {
+            ctx.clearRect(0, 0, W, H);
+
+            drawPentagon();
+
+            // 相生 实线
+            for (let i = 0; i < generateOrder.length - 1; i++) {
+                drawNiceArrow(generateOrder[i], generateOrder[i + 1], '#16a085', 3.5, false);
+            }
+
+            // 相克 虚线
+            for (let i = 0; i < restrainOrder.length - 1; i++) {
+                drawNiceArrow(restrainOrder[i], restrainOrder[i + 1], '#c0392b', 2.5, true);
+            }
+
+            // 绘制五行节点
+            elements.forEach(drawNode);
+
+            // 图例
+            ctx.textAlign = 'left';
+            ctx.font = '17px 微软雅黑';
+            ctx.fillStyle = '#16a085';
+            ctx.fillText('▶ 实线箭头：五行相生', 35, 45);
+            ctx.fillStyle = '#c0392b';
+            ctx.fillText('▶ 虚线箭头：五行相克', 35, 75);
+        }
+
+        draw();
+    </script>
+</body>
+
+</html>
