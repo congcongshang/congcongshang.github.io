@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>随机数字生成器（Excel竖列专用）</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #f5f7fa;
+        }
+        .box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .item {
+            flex: 1;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+            font-weight: 500;
+        }
+        input {
+            width: 100%;
+            height: 42px;
+            padding: 0 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        button {
+            flex: 1;
+            height: 44px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        #genBtn {
+            background: #2563eb;
+            color: white;
+        }
+        #copyBtn {
+            background: #10b981;
+            color: white;
+        }
+        #clearBtn {
+            background: #9ca3af;
+            color: white;
+        }
+        textarea {
+            width: 100%;
+            height: 320px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            resize: none;
+        }
+        .tip {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>随机数字生成器（Excel竖列粘贴）</h2>
+        <div class="row">
+            <div class="item">
+                <label>最小值</label>
+                <input type="number" id="min" value="65">
+            </div>
+            <div class="item">
+                <label>最大值</label>
+                <input type="number" id="max" value="85">
+            </div>
+            <div class="item">
+                <label>生成数量</label>
+                <input type="number" id="count" value="80">
+            </div>
+        </div>
+        <div class="btn-group">
+            <button id="genBtn">生成随机数</button>
+            <button id="copyBtn">一键复制结果</button>
+            <button id="clearBtn">清空全部</button>
+        </div>
+        <textarea id="result" placeholder="生成后的数字会在此分行显示，复制后直接粘贴Excel单列"></textarea>
+        <div class="tip">提示：复制文本框内容，打开Excel选中A1单元格粘贴，数字自动排成一整列</div>
+    </div>
+
+    <script>
+        const minInput = document.getElementById('min');
+        const maxInput = document.getElementById('max');
+        const countInput = document.getElementById('count');
+        const resultArea = document.getElementById('result');
+        const genBtn = document.getElementById('genBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const clearBtn = document.getElementById('clearBtn');
+
+        // 生成随机整数
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // 生成按钮
+        genBtn.onclick = function() {
+            const min = parseInt(minInput.value);
+            const max = parseInt(maxInput.value);
+            const count = parseInt(countInput.value);
+
+            // 简单校验
+            if (isNaN(min) || isNaN(max) || isNaN(count)) {
+                alert('请填写合法数字！');
+                return;
+            }
+            if (min > max) {
+                alert('最小值不能大于最大值！');
+                return;
+            }
+            if (count <= 0 || count > 10000) {
+                alert('生成数量需在1~10000之间');
+                return;
+            }
+
+            // 批量生成，换行分隔（Excel竖列格式）
+            let arr = [];
+            for (let i = 0; i < count; i++) {
+                arr.push(getRandomInt(min, max));
+            }
+            resultArea.value = arr.join('\n');
+        }
+
+        // 复制到剪贴板
+        copyBtn.onclick = async function() {
+            if (!resultArea.value) {
+                alert('暂无生成数据，请先生成数字！');
+                return;
+            }
+            try {
+                await navigator.clipboard.writeText(resultArea.value);
+                alert('复制成功！去Excel粘贴即可');
+            } catch (err) {
+                // 兼容旧浏览器
+                resultArea.select();
+                document.execCommand('copy');
+                alert('复制成功！');
+            }
+        }
+
+        // 清空
+        clearBtn.onclick = function() {
+            resultArea.value = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 var content = [
     { url: "project/chalk/index2.html", title: "粉笔字书写", family: "2026.01.11", familyID: 3 },
     { url: "project/littleAPP/calculateStudent.html", title: "离校学生数统计", family: "2025.12.30", familyID: 3 },
+    { url: "project/littleAPP/randomman.html", title: "生成随机数字", family: "2026.06.23", familyID: 3 },
     { url: "project/cangjie/book/index.html", title: "仓颉编程基础知识", family: "2025.12.29", familyID: 1 },
     { url: "project/exam/index.html", title: "花脸猫做的在线考试系统", family: "2020.09.04", familyID: 3 },
     { url: "project/word/WebProduction.html", title: "涉及网页制作的基础问题", family: "2020.10.13", familyID: 0 },
