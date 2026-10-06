@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <script src="../js/siderbar.js" defer></script>
+</head>
+
+<body>
+    <aside></aside>
+
+    <!-- 移动端遮罩 -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- 右侧导航容器，JS自动填充目录 -->
+    <div class="page-toc">
+        <div>📑 页面导航</div>
+        <ul id="toc-list"></ul>
+    </div>
+
+    <main>
+        <article>
+
+            <h1>241201记一次街边音乐</h1>
+            <p>
+                <span>2024年12月1日</span>日记 · 信阳
+            </p>
+
+            <h2>1. 你好</h2>
+            <p>2024年12月1日，信阳的一个小村子里，悠闲的时光，一个街边音乐，音乐还是挺能激起人们心中的情感的。</p>
+            <div class="quote">
+                <span class="q-label">背景</span>
+                借研学之名，沿途感受信阳的风土人情，看人家的新村建设非常不错，同行人：王俊才、李姗姗、孙凯、刘书红、郭静、李彦君、曹佳铭、刘嘉、李姝仪、李贝贝、黄泽明。同游累，小憩一会，偶遇街边音乐。
+            </div>
+            <div class="mark-block">
+                <p>沉闷的课堂固然可以让你掌握扎实的专业基础知识，但紧张的比赛才能为你插上腾飞的翅膀！</p>
+                <p>不好好逼自己一把，你怎么知道自己不可以展翅翱翔！</p>
+            </div>
+
+            <h2>2. 我是测试</h2>
+            <pre><code class="language-python">
+print("hello")
+print("hello")
+if a < b:
+    print("你好")
+print("hello")
+print("hello")
+print("hello")</code></pre>
+            <h3>2.2 还没完呢</h3>
+            <pre><code class="language-arkts">
+@Entry
+@Component
+struct DemoPage {
+  @State count: number = 0;
+  @Builder titleTip(msg: string) {
+    Text(msg).fontSize(24)
+  }
+  &lt;T&gt;&amp;测试&lt;/T&gt;
+  build() {
+    Column() {
+      Text(`计数：${this.count}`)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+      Button(&quot;点我+1&quot;)
+        .onClick(()=&gt;{
+          this.count++
+        })
+    }
+  }
+}
+</code></pre>
+            <pre><code class="language-arkts">
+#ifndef MYAPPLICATION_ARKUIGRIDNODE_H
+#define MYAPPLICATION_ARKUIGRIDNODE_H
+
+#include &quot;ArkUINode.h&quot;
+#include &quot;ArkUINodeAdapter.h&quot;
+
+namespace NativeModule {
+class ArkUIGridNode : public ArkUINode {
+public:
+    ArkUIGridNode() : ArkUINode((NativeModuleInstance::GetInstance()-&gt;GetNativeNodeAPI())-&gt;createNode(ARKUI_NODE_GRID))
+    {
+    }
+
+    ~ArkUIGridNode() override {}
+
+    void SetColumnsTemplate(const std::string &amp;str)
+    {
+        ArkUI_AttributeItem item = {.string = str.c_str()};
+        nativeModule_-&gt;setAttribute(handle_, NODE_GRID_COLUMN_TEMPLATE, &amp;item);
+    }
+
+    void SetRowsTemplate(const std::string &amp;str)
+    {
+        ArkUI_AttributeItem item = {.string = str.c_str()};
+        nativeModule_-&gt;setAttribute(handle_, NODE_GRID_ROW_TEMPLATE, &amp;item);
+    }
+
+    void SetColumnsGap(float val)
+    {
+        ArkUI_NumberValue value[] = {{.f32 = val}};
+        ArkUI_AttributeItem item = {value, 1};
+        nativeModule_-&gt;setAttribute(handle_, NODE_GRID_COLUMN_GAP, &amp;item);
+    }
+
+    void SetRowsGap(float val)
+    {
+        ArkUI_NumberValue value[] = {{.f32 = val}};
+        ArkUI_AttributeItem item = {value, 1};
+        nativeModule_-&gt;setAttribute(handle_, NODE_GRID_ROW_GAP, &amp;item);
+    }
+
+    void SetLayoutOptions(ArkUI_GridLayoutOptions *option)
+    {
+        if (option == nullptr) {
+            return;
+        }
+        ArkUI_AttributeItem item = {.object = option};
+        nativeModule_-&gt;setAttribute(handle_, NODE_GRID_LAYOUT_OPTIONS, &amp;item);
+    }
+
+    void SetScrollBar(int32_t barState)
+    {
+        ArkUI_NumberValue value[] = {{.i32 = barState}};
+        ArkUI_AttributeItem item = {value, 1};
+        nativeModule_-&gt;setAttribute(handle_, NODE_SCROLL_BAR_DISPLAY_MODE, &amp;item);
+    }
+
+    void SetLazyAdapter(const std::shared_ptr&lt;ArkUINodeAdapter&gt; &amp;adapter)
+    {
+        if (!IsNotNull(adapter)) {
+            return;
+        }
+        ArkUI_AttributeItem item{nullptr, 0, nullptr, adapter-&gt;GetAdapter()};
+        nativeModule_-&gt;setAttribute(handle_, NODE_GRID_NODE_ADAPTER, &amp;item);
+        _adapter = adapter;
+    }
+
+    void ReleaseAdapter() { return _adapter.reset(); }
+
+private:
+    std::shared_ptr&lt;ArkUINodeAdapter&gt; _adapter;
+};
+} // namespace NativeModule
+
+#endif // MYAPPLICATION_ARKUIGRIDNODE_H
+</code></pre>
+            <pre><code class="language-html">
+&lt;h1&gt;这是一个标题。&lt;/h1&gt;
+&lt;h2&gt;这是一个标题。&lt;/h2&gt;
+&lt;h3&gt;这是一个标题。&lt;/h3&gt;
+</code></pre>
+            <p>村子很安静，屋舍整洁，路边栽着金黄的行道树。我们走了一上午，正靠在路边歇脚的时候，一阵吉他声从街角传来。有人搬了小板凳坐在树下，膝上抱着琴，身前摆着打开的琴盒。</p>
+            <h3>2.3 有完没完啊</h3>
+            <p>我原本只觉得这是旅途里平常的一幕，可当熟悉的旋律响起，同行的人都停了下来。那一刻大家都安静了，谁也没说话，就那么听着。音乐就是有这种力量，把一群赶路的人，轻轻按在原地。</p>
+            <figure>
+                <img src="images/test.png" alt="测试图片">
+                <figcaption>测试图片</figcaption>
+            </figure>
+            <p>歇够了，我们继续上路。那阵琴声还飘在身后，像这趟旅程里最轻、也最难忘的一页。中</p>
+            <figure>
+                <img src="https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/FAbPb9GWboZuttxJmQOc4FO4noc"
+                    alt="信阳乡村街边的音乐场景">
+                <figcaption>信阳 · 村口街边的午后琴声</figcaption>
+            </figure>
+
+
+        </article>
+    </main>
+</body>
+
+</html>
