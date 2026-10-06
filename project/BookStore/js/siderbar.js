@@ -33,7 +33,7 @@ const navGroups = [
         name: "工具箱",
         folder: "tools",
         open: false,
-        items: [{ text: "常用工具清单", file: "toolkit.html" }]
+        items: [{ text: "示例网页", file: "demo.html" }]
     }
 ];
 
@@ -89,7 +89,7 @@ if (aside) {
 
 /* ===== 生成顶栏（按钮 + 标题），插到 article 前面 ===== */
 const main = document.querySelector("main");
-if (main && !main.querySelector("header") && !allOpen) {      // 防重复插入
+if (main && !main.querySelector("header")) {      // 防重复插入
     const header = document.createElement("header");
 
     const btn = document.createElement("button"); // ☰ 按钮
@@ -158,7 +158,9 @@ const article = document.querySelector("article");
 if (article && !article.querySelector("footer")) {   // 防重复追加
     const footer = document.createElement("footer");
     footer.textContent = countWords(article.innerHTML) + " 字";
-    article.appendChild(footer);
+    if (!allOpen) {
+        article.appendChild(footer);
+    }
 }
 
 
@@ -320,47 +322,52 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 // <!-- ========= 右侧目录导航JS ========= -->
-
 function buildToc() {
-  const tocList = document.getElementById('toc-list');
-  const headers = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-  const headerArr = Array.from(headers);
+    const tocList = document.getElementById('toc');
+    // 限定只抓取 main article 内部标题，防止拿到页面其他地方的h标签
+    const headers = document.querySelectorAll('main article h1, h2, h3, h4, h5, h6');
+    const headerArr = Array.from(headers);
+    headerArr.forEach((h, idx) => {
+        if (!h.id) {
+            h.id = `toc-heading-${idx}`;
+        }
+        const li = document.createElement('li');
+        li.classList.add(`level-${h.tagName.toLowerCase()}`);
+        const a = document.createElement('a');
+        a.href = `#${h.id}`;
+        a.textContent = h.textContent;
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById(h.id).scrollIntoView({
+                behavior: 'smooth'
+            })
+        })
+        li.appendChild(a);
+        tocList.appendChild(li);
+    })
 
-  headerArr.forEach((h, idx) => {
-    if (!h.id) {
-      h.id = `toc-heading-${idx}`;
-    }
-    const li = document.createElement('li');
-    li.classList.add(`level-${h.tagName.toLowerCase()}`);
-    const a = document.createElement('a');
-    a.href = `#${h.id}`;
-    a.textContent = h.textContent;
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      document.getElementById(h.id).scrollIntoView({
-        behavior: 'smooth'
-      })
+    const scrollContainer = document.querySelector('main article');
+    // 滚动监听，高亮当前标题
+    scrollContainer.addEventListener('scroll', () => {
+        let currentId = '';
+        // 倒序遍历，找到第一个符合条件的标题，break跳出
+        for (let i = headerArr.length - 1; i >= 0; i--) {
+            const h = headerArr[i];
+            // 标题相对于滚动容器顶部的距离（纯数字）
+            const relativeTop = h.offsetTop - scrollContainer.scrollTop;
+            if (relativeTop <= 120) {
+                currentId = h.id;
+                break;
+            }
+        }
+        // ✅ 修改选择器，从 #toc-list 改成 #toc
+        document.querySelectorAll('#toc a').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentId}`) {
+                link.classList.add('active');
+            }
+        })
     })
-    li.appendChild(a);
-    tocList.appendChild(li);
-  })
-
-  const scrollContainer = document.querySelector('main article');
-  // 滚动监听，高亮当前标题
-  scrollContainer.addEventListener('scroll', ()=>{
-    let currentId = '';
-    headerArr.forEach(h => {
-      const rect = h.getBoundingClientRect();
-      if(rect.top <= 120) {
-        currentId = h.id;
-      }
-    })
-    document.querySelectorAll('#toc-list a').forEach(link=>{
-      link.classList.remove('active');
-      if(link.getAttribute('href') === `#${currentId}`){
-        link.classList.add('active');
-      }
-    })
-  })
 }
 buildToc();
+

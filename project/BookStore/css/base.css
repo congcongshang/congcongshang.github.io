@@ -156,7 +156,7 @@ main header {
     /* 顶栏 */
     flex: 0 0 0px;
     /* 固定高度，不伸缩 */
-    height: 30px;
+    height: 39px;
     display: flex;
     align-items: center;
     padding: 0 16px;
@@ -217,7 +217,7 @@ article::-webkit-scrollbar-thumb {
 }
 
 /* ===== 移动端：显示按钮 + 侧栏变抽屉 ===== */
-@media (max-width: 820px) {
+@media (max-width: 1000px) {
     main header button {
         display: block;
     }
@@ -243,13 +243,10 @@ article::-webkit-scrollbar-thumb {
     /* 滑进来 */
 
     main header {
-        flex: 0 0 30px;
+        flex: 0 0 39px;
     }
 
-    /* 侧边导航消失 */
-    .page-toc {
-        display: none !important;
-    }
+
 }
 
 
@@ -481,94 +478,103 @@ article footer {
     padding-top: 16px
 }
 
-/* ========== 右侧悬浮目录导航 ========== */
-.page-toc {
-    position: fixed;
-    top: 120px;
-    right: 16px;
+/* ================= 右：目录 ================= */
+#toc {
     width: 200px;
-    max-height: 80vh;
+    flex: 0 0 200px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
     overflow-y: auto;
-    padding: 12px;
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    z-index: 99;
-}
-
-.page-toc ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.page-toc li {
+#toc p {
+    font-size: 15px;
+    color: var(--gray);
+    margin-bottom: 10px;
+    padding: 8px 0px;
+    border-bottom: 1px solid var(--line);
+
+}
+
+#toc li {
     margin: 6px 0;
     line-height: 1.5;
 }
 
-.page-toc li a {
+#toc li a {
     font-size: 13px;
     color: #444;
     text-decoration: none;
     display: block;
     padding: 3px 4px;
-    border-radius: 4px;
+    border-radius: 0 5px 5px 0;
+    border-left: 2px solid transparent;
 }
 
-#toc-list li.level-h1 {
+
+#toc li a:hover,
+#toc li a.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: #F1ECDF
+}
+#toc li.level-h1 {
     margin-left: 0px;
 }
 
-#toc-list li.level-h2 {
+#toc li.level-h2 {
     margin-left: 12px;
 }
 
-#toc-list li.level-h3 {
+#toc li.level-h3 {
     margin-left: 24px;
 }
 
-#toc-list li.level-h4 {
+#toc li.level-h4 {
     margin-left: 36px;
 }
 
-#toc-list li.level-h5 {
+#toc li.level-h5 {
     margin-left: 48px;
 }
 
-#toc-list li.level-h6 {
+#toc li.level-h6 {
     margin-left: 60px;
 }
 
-#toc-list a.active {
-    color: #b45309;
-    font-weight: bold;
-}
-
-@media (max-width: 1300px) {
-
-    /* 侧边导航消失 */
-    .page-toc {
+@media (max-width: 800px) {
+     /* 侧边导航消失 */
+    #toc {
         display: none !important;
     }
 }
-
-
 /* ====自定义高亮块====== */
 /* 自定义高亮文本块，匹配截图样式 */
 .mark-block {
-    background-color: #dbeca1;  /* 淡浅绿色底色，和图一致 */
+    background-color: #dbeca1;
+    /* 淡浅绿色底色，和图一致 */
     border-radius: 8px;
     padding: 20px 24px;
     margin: 16px 0;
 }
+
 .mark-block p {
     margin: 8px 0;
     font-size: 1.4em;
-    color: #7b2cbf; /* 紫蓝色文字，和截图匹配 */
+    color: #7b2cbf;
+    /* 紫蓝色文字，和截图匹配 */
     font-weight: 500;
 }
+
 /* 去掉第一行/最后一行多余间距 */
-.mark-block p:first-child {margin-top:0;}
-.mark-block p:last-child {margin-bottom:0;}
+.mark-block p:first-child {
+    margin-top: 0;
+}
+
+.mark-block p:last-child {
+    margin-bottom: 0;
+}

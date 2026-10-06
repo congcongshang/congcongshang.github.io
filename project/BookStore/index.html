@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
@@ -8,19 +8,30 @@
     <script>window.NAV_ALL_OPEN = true;</script>
     <script src="js/siderbar.js" defer></script>
     <link rel="stylesheet" href="css/base.css">
+    <style>
+        article pre.language-python {
+            min-height: 200px;
+            /* min-width: 300px; */
+            padding: 80px 24px;
+            font-size: 1.3em;
+        }
+    </style>
 </head>
 
 <body>
 
-    <aside>
-    </aside>
+    <aside></aside>
 
     <!-- 移动端遮罩 -->
     <div class="overlay" id="overlay"></div>
 
     <main>
-        
-        <article>...</article>      <!-- 正文 -->
+        <article style="display:flex;flex-direction:column;min-height:100%;">
+            <pre
+                style="margin:auto 0; width:100%;"><code class="language-python">print("Less interests, more interest")</code></pre>
+        </article>
+
+        </article>
     </main>
 
 
