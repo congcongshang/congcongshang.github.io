@@ -282,21 +282,32 @@ document.addEventListener('DOMContentLoaded', function () {
             let successFlag = false;
 
             try {
-                // 降级：DocumentFragment 内存复制，不插入body
-                const frag = document.createDocumentFragment();
-                const textNode = document.createTextNode(rawCode);
-                frag.appendChild(textNode);
 
-                const range = document.createRange();
-                range.selectNodeContents(textNode);
+                const textArea = document.createElement("textarea");
+                textArea.value = rawCode;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-9999px";
+                textArea.style.opacity = "0";
+                document.body.appendChild(textArea);
+                textArea.select();
+                successFlag = document.execCommand("copy");
+                document.body.removeChild(textArea);
 
-                const sel = window.getSelection();
-                sel.removeAllRanges();
-                sel.addRange(range);
+                // // 降级：DocumentFragment 内存复制，不插入body
+                // const frag = document.createDocumentFragment();
+                // const textNode = document.createTextNode(rawCode);
+                // frag.appendChild(textNode);
+
+                // const range = document.createRange();
+                // range.selectNodeContents(textNode);
+
+                // const sel = window.getSelection();
+                // sel.removeAllRanges();
+                // sel.addRange(range);
 
                 // execCommand返回布尔，标记是否成功
-                successFlag = document.execCommand('copy');
-                sel.removeAllRanges();
+                // successFlag = document.execCommand('copy');
+                // sel.removeAllRanges();
 
             } catch (e) {
                 await navigator.clipboard.writeText(rawCode);
