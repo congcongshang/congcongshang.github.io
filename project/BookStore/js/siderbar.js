@@ -282,9 +282,6 @@ document.addEventListener('DOMContentLoaded', function () {
             let successFlag = false;
 
             try {
-                await navigator.clipboard.writeText(rawCode);
-                successFlag = true;
-            } catch (e) {
                 // 降级：DocumentFragment 内存复制，不插入body
                 const frag = document.createDocumentFragment();
                 const textNode = document.createTextNode(rawCode);
@@ -300,6 +297,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 // execCommand返回布尔，标记是否成功
                 successFlag = document.execCommand('copy');
                 sel.removeAllRanges();
+
+            } catch (e) {
+                await navigator.clipboard.writeText(rawCode);
+                successFlag = true;
             } finally {
                 // finally 无论成功失败，都会执行
                 if (successFlag) {
