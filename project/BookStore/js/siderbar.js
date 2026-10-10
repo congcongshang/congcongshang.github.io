@@ -11,7 +11,7 @@ const navGroups = [
         folder: "essays",          // 文件夹是组的属性，写一次
         open: true,
         items: [
-            { text: "思维花园（2026年8月22日）", file: "PaintedCat@202610042219.html" },
+            { text: "回忆过去（2026年10）", file: "PaintedCat@20261008.html" ,asg:"关键时刻还是要逼自己一把"},
             { text: "内心独白（2025）", file: "inner-2025.html" }
         ]
     },
@@ -26,7 +26,7 @@ const navGroups = [
         name: "读书笔记",
         folder: "reading",
         open: false,
-        items: [{ text: "《C#入门经典（第7版）》", file: "cs-classic-7th.html" }]
+        items: [{ text: "《鸿蒙HarmonyOS 6应用开发：从零基础到App上线》", file: "PaintedCat@202610091012.html" }]
     },
 
     {
@@ -75,6 +75,7 @@ if (aside) {
             a.href = upPrefix() + g.folder + "/" + item.file;        // 相对路径，点击跳转
             a.textContent = item.text; // textContent 防特殊字符
             /* 高亮只在本组内判断：组文件夹 = 当前文件夹 且 文件名 = 当前页文件名 */
+
             if (g.folder === activeFolder && item.file === currentFile) {
                 a.className = "active";
                 articleTitle = item.text;

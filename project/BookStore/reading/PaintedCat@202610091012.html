@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <script src="../js/siderbar.js" defer></script>
+</head>
+
+<body>
+    <aside></aside>
+
+    <!-- 移动端遮罩 -->
+    <div class="overlay" id="overlay"></div>
+
+
+    <main>
+        <article>
+
+            <h1>《鸿蒙HarmonyOS 6应用开发：从零基础到App上线》读书笔记</h1>
+            <p>
+                <span>2026年10月9日</span>笔记 · 平顶山 · 晴天
+            </p>
+
+            <h2>第2章 开发基础</h2>
+            <ul>
+                <li>鸿蒙App开发特点</li>
+                <li>鸿蒙App项目结构</li>
+                <li>鸿蒙App调试打包</li>
+            </ul>
+            <h2>第3章 ArkTS语言编程基础</h2>
+            <h3>3.1.1 基本数据类型</h3>
+            <p>ArkTS的基本数据类型有3种：number、boolean、string</p>
+            <pre><code class="language-arkts">
+// 声明局部变量，必须加 let，如果不赋初始值必须显式标注变量数据类型
+let a:number = 1;
+let bool:boolean = true;
+let str:string = &#039;你好&#039;;
+</code></pre>
+            <h3>3.1.2 数组类型</h3>
+            <p>ArkTS中有两种数组写法：T[] 和 Array&lt;T&gt;</p>
+            <pre><code class="language-arkts">
+// 声明数组
+let a : number[] = [1,2,3]
+let b : Array&lt;number&gt; = [1,2,3]
+let c = [&#039;A&#039;,&#039;B&#039;,&#039;C&#039;]
+</code></pre>
+            <h3>3.1.3 类及对象</h3>
+            <p>ArkTS支持使用interface关键字来定义具体的接口结构</p>
+            <pre><code class="language-arkts">
+// interface 内部只能定义属性，不能定义方法
+interface UserInterface {
+    name: string
+    isMale: boolean
+    age: number
+}
+
+// 接口变量的声明必须指定数据类型
+// 修改时必须对所有字段重新赋值
+let xiaoming: UserInterface = { name: &#039;小明&#039;, isMale: true, age: 20 }
+</code></pre>
+            <p>ArkTS支持使用class关键字来定义具体的类结构</p>
+            <pre><code class="language-arkts">
+// class内部既能定义属性，又能定义方法
+class UserClass {
+    name: string
+    isMale: boolean = true
+    age: number
+
+    // 不允许出现未初始化属性字段
+    constructor() {
+        this.name = &#039;&#039;
+        this.age = 0
+    }
+}
+
+let xiaohong : UserClass = new UserClass()
+xiaohong.name = &#039;小红&#039;
+xiaohong.isMale = false
+xiaohong.age = 18
+</code></pre>
+            <h3>3.2.1 分支语句</h3>
+            
+
+
+
+        </article>
+    </main>
+    <!-- 右：目录（对应正文里的 <h2 id="xxx">） -->
+    <ul id="toc">
+        <p>本页目录</p>
+    </ul>
+
+</body>
+
+</html>
