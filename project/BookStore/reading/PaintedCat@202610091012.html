@@ -82,7 +82,52 @@ xiaohong.isMale = false
 xiaohong.age = 18
 </code></pre>
             <h3>3.2.1 分支语句</h3>
-            
+            <p>ArkTS中的分支语句与C/C++语言是类似的</p>
+<pre><code class="language-arkts">
+if(xiaohong.isMale){
+    xiaohong.name = &quot;大哥&quot;
+}else{
+    xiaohong.name = &#039;大姐&#039;
+}
+
+xiaohong.name = xiaoming.isMale ? &quot;大哥&quot;:&quot;大姐&quot;;
+</code></pre>
+            <h3>3.2.2 循环语句</h3>
+            <p>下标方式遍历</p>
+<pre><code class="language-arkts">
+let str: string[] = [&#039;天&#039;, &#039;地&#039;, &#039;人&#039;]
+// 声明临时的递增变量i，通过数组下标获取数组元素
+for (let i=0; i&lt;str.length; i++) {
+    console.info(`i=${i}, value=${str[i]}`)
+}
+</code></pre>
+            <p>let/of方式遍历</p>
+            <pre><code class="language-arkts">
+let str: string[] = [&#039;天&#039;, &#039;地&#039;, &#039;人&#039;]
+// 使用of关键字，遍历数组里的所有元素
+for (let item of str) {
+    console.info(`item=${item}`)
+}
+</code></pre>
+            <p>while方式遍历</p>
+            <pre><code class="language-arkts">
+let i = 0
+// 单个while的判断语句在每次循环之前执行
+while (i &lt; str.length) {
+    console.info(`i=${i}, value=${str[i]}`)
+    i++
+}
+</code></pre>
+            <p>do/while方式遍历</p>
+            <pre><code class="language-arkts">
+let j = 0
+// do/while的判断语句在每次循环之后执行
+do {
+    console.info(`j=${j}, value=${str[j]}`)
+    j++
+} while (j &lt; str.length)
+</code></pre>
+
 
 
 
