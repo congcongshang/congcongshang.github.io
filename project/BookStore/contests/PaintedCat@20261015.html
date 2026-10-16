@@ -62,7 +62,9 @@
             </figure>
             <h2>2. MQTTX连接云端设备</h2>
             <h3>2.1. 创建连接</h3>
-            <p>创建连接网址：https://iot-tool.obs-website.cn-north-4.myhuaweicloud.com/ </p>
+            <p>创建连接网址：<a
+                    href="https://iot-tool.obs-website.cn-north-4.myhuaweicloud.com/">https://iot-tool.obs-website.cn-north-4.myhuaweicloud.com/</a>
+            </p>
             <p>进入刚注册的设备页面复制设备id和密码，生成用于连接的连接id以及用户名密码</p>
             <figure>
                 <img src="images/PaintedCat@202610151958.png" alt="新增属性">
@@ -425,6 +427,104 @@ import { http } from &#039;@kit.NetworkKit&#039;
                 <img src="images/PaintedCat@202610161120.png" alt="新增属性">
             </figure>
 
+            <h3>5.3. 查询影子设备</h3>
+            <p>使用获取到的token，访问华为云直接获取设备的影子数据</p>
+            <p>可以参考这个文档 <a
+                    href="https://support.huaweicloud.com/api-iothub/iot_06_v5_0079.html">https://support.huaweicloud.com/api-iothub/iot_06_v5_0079.html</a>
+            </p>
+            <p class="red">（注意这里面需要修改三个信息为你自己的：接入地址，项目id，设备id ）</p>
+            <p><span class="red">拼接成下面字符串形式：</span> https://{接入地址}/v5/iot/{project_id}/devices/{device_id}/shadow</p>
+
+            <h4>5.3.1. 接入地址</h4>
+            <figure>
+                <img src="images/PaintedCat@202610161440.png" alt="接入地址">
+            </figure>
+
+            <h4>5.3.2. project_id</h4>
+            <p>（这里需要注意选择你的项目所属区域）</p>
+            <figure>
+                <img src="images/PaintedCat@202610161441.png" alt="接入地址">
+            </figure>
+
+            <h4>5.3.3. device_id</h4>
+            <figure>
+                <img src="images/PaintedCat@202610161930.png" alt="接入地址">
+            </figure>
+
+            <h4>5.3.4. 示例代码</h4>
+            <pre><code class="language-arkts">
+  /**
+   * 查询设备影子数据
+   */
+  async getShadowData() {
+    let project_id = &#039;0746ad0198000f642fc6c000fba2c1d7&#039;
+    let device_id = &#039;Test01&#039;
+    let url = &#039;https://1da476473d.st1.iotda-app.cn-east-3.myhuaweicloud.com/v5/iot/&#039; + project_id + &#039;/devices/&#039; + device_id + &#039;/shadow&#039;
+    let httpRequest = http.createHttp()
+    let options: http.HttpRequestOptions = {
+      method: http.RequestMethod.GET,
+      expectDataType: http.HttpDataType.OBJECT,
+      header: {
+        &#039;X-Auth-Token&#039;: this.hw_token
+      }
+    }
+    let response: http.HttpResponse = await httpRequest.request(url, options)
+    this.properties = response.result[&#039;shadow&#039;][0].reported.properties as Properties
+    console.log(&#039;shadow data:&#039;, JSON.stringify(this.properties))
+  }
+
+</code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610161931.png" alt="接入地址">
+            </figure>
+            <p>最后就可以直接通过http请求到设备数据如下图所示</p>
+            <figure>
+                <img src="images/PaintedCat@2026101619311.png" alt="接入地址">
+            </figure>
+
+            <h3>5.4. 远程下发命令</h3>
+            <p>跟查询影子设备信息类似，采用HTTP请求的方式上传命令，下发到设备端</p>
+            <p>区别：下发命令采用的是POST方式，需要传数据到云端（需要一个结构），MQTT需要20秒内响应</p>
+            <figure>
+                <img src="images/PaintedCat@202610161933.png" alt="接入地址">
+            </figure>
+            <pre><code class="language-arkts">
+  /**
+   * 下发命令（同样修改成你自己的项目id，设备id，接入地址）
+   */
+  async sendCommand() {
+    let project_id = &#039;0b2394027680f5b72fc2c01953fe5f94&#039;
+    let device_id = &#039;68fb0a83e41f2979315b3703_0001&#039;
+    let serviceId: string = &#039;sss&#039;
+    let commandName: string = &#039;switchLamp&#039;
+    let command: Command = {
+      service_id: serviceId,
+      command_name: commandName,
+      paras: {
+        switch: !this.switchLamp
+      }
+    }
+    let url = &#039;https://f355aa03f3.st1.iotda-app.cn-north-4.myhuaweicloud.com/v5/iot/&#039; + project_id + &#039;/devices/&#039; + device_id + &#039;/commands&#039;
+    let httpRequest = http.createHttp()
+    let options: http.HttpRequestOptions = {
+      method: http.RequestMethod.POST,
+      extraData: command, // 设置命令数据
+      expectDataType: http.HttpDataType.OBJECT,
+      header: {
+        &#039;X-Auth-Token&#039;: this.hw_token
+      }
+    }
+    let response: http.HttpResponse = await httpRequest.request(url, options)
+    if (response.result[&#039;response&#039;].paras.result) {
+      console.log(&#039;设备执行命令成功....&#039;)
+    }
+    console.log(&#039;command response:&#039;, JSON.stringify(response.result))
+  }
+</code></pre>
+            <p>参考MQTT连接云端设备中下发命令，就可以获取到MQTT的响应消息</p>
+            <figure>
+                <img src="images/PaintedCat@202610161934.png" alt="接入地址">
+            </figure>
 
 
 
