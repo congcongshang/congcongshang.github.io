@@ -127,7 +127,19 @@ do {
     j++
 } while (j &lt; str.length)
 </code></pre>
+            <h3>3.2.3 匿名函数</h3>
+            <p>简单匿名函数</p>
+            <pre><code class="language-arkts">
+// 第二个参数event是个函数，外部调用时要实现该函数参数
+function testFunction1(x: number, event: () =&gt; void) {
+    console.info(`testFunction1 x=${x}`)
+    event() // 这个函数参数没有输入
+}
 
+testFunction1(1, () =&gt; {
+    console.info(`这是个没有输入的函数参数`)
+})
+</code></pre>
 
 
 

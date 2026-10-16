@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <script src="../js/siderbar.js" defer></script>
+</head>
+
+<body>
+    <aside></aside>
+
+    <!-- 移动端遮罩 -->
+    <div class="overlay" id="overlay"></div>
+
+
+    <main>
+        <article>
+
+            <h1>华为云平台数据打通参考文档</h1>
+            <p>
+                <span>2026年10月15日</span>文档 · 鸿蒙 · 南向开发
+            </p>
+
+            <h2>1. 华为云注册与云端配置</h2>
+            <p>华为云官网：https://www.huaweicloud.com/ </p>
+            <p>选择产品->IoT物联网->设备接入IoTDA</p>
+            <figure>
+                <img src="images/PaintedCat@202610151939.png" alt="设备接入IoTDA">
+                <figcaption>设备接入IoTDA</figcaption>
+            </figure>
+            <h3>1.1. 创建IoTDA实例</h3>
+            <p>点击控制台->购买实例->{购买一个免费的实例单元}</p>
+            <figure>
+                <img src="images/PaintedCat@202610151942.png" alt="创建IoTDA实例">
+                <img src="images/PaintedCat@2026101519421.png" alt="创建IoTDA实例">
+                <img src="images/PaintedCat@202610151943.png" alt="创建IoTDA实例">
+                <figcaption>创建IoTDA实例</figcaption>
+            </figure>
+            <h3>1.2. 创建产品</h3>
+            <figure>
+                <img src="images/PaintedCat@202610151945.png" alt="创建产品">
+            </figure>
+            <p>点击实例名称进入实例->点击产品创建产品</p>
+            <figure>
+                <img src="images/PaintedCat@202610151946.png" alt="创建产品">
+            </figure>
+            <p>进入产品->创建自定义模型->设置服务ID</p>
+            <figure>
+                <img src="images/PaintedCat@202610151947.png" alt="设置服务ID">
+            </figure>
+            <p>新增属性</p>
+            <figure>
+                <img src="images/PaintedCat@202610151948.png" alt="新增属性">
+            </figure>
+            <h3>1.3. 注册设备</h3>
+            <p>所有设备->注册设备->选择产品，自己编写一个设备标识码，输入密码</p>
+            <figure>
+                <img src="images/PaintedCat@202610151949.png" alt="新增属性">
+            </figure>
+            <h2>2. MQTTX连接云端设备</h2>
+            <h3>2.1. 创建连接</h3>
+            <p>创建连接网址：https://iot-tool.obs-website.cn-north-4.myhuaweicloud.com/ </p>
+            <p>进入刚注册的设备页面复制设备id和密码，生成用于连接的连接id以及用户名密码</p>
+            <figure>
+                <img src="images/PaintedCat@202610151958.png" alt="新增属性">
+            </figure>
+
+            <h3>2.2. 建立连接</h3>
+            <p>将刚生成的客户端id，用户名，密码填入MQTTX新建立的连接上面</p>
+            <figure>
+                <img src="images/PaintedCat@202610152000.png" alt="新增属性">
+            </figure>
+            <p>去华为云实例详情页面，将mqtt网址添加到MQTTX的服务器地址中</p>
+            <figure>
+                <img src="images/PaintedCat@202610152001.png" alt="新增属性">
+                <img src="images/PaintedCat@2026101520011.png" alt="新增属性">
+            </figure>
+            <p>然后点击连接即可</p>
+
+            <h3>2.3. 上传消息</h3>
+            <p>设置topic信息（注意替换设备id，服务id，以及属性信息）</p>
+            <pre><code class="language-bash">
+$oc/devices/68de831fef46cd424ce07093_2314/sys/properties/report
+</code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610152003.png" alt="新增属性">
+            </figure>
+            <p>上传成功后，服务端就会更新数据</p>
+            <figure>
+                <img src="images/PaintedCat@202610152004.png" alt="新增属性">
+            </figure>
+
+            <h3>2.4. 命令下发</h3>
+            <p>首先在产品详情界面创建命令</p>
+            <figure>
+                <img src="images/PaintedCat@202610152005.png" alt="新增属性">
+            </figure>
+            <p>然后在设备界面选择云端下发-命令下发-选择命令并下发</p>
+            <figure>
+                <img src="images/PaintedCat@202610152006.png" alt="新增属性">
+            </figure>
+            <p>这个时候MQTTX会收到消息，这个时候有20秒的手速时间，将命令的返回从mqtt发回去就会成功</p>
+            <p>（1）提前准备好响应消息</p>
+            <figure>
+                <img src="images/PaintedCat@202610152007.png" alt="新增属性">
+            </figure>
+            <p>（2）当收到消息后，立马粘贴id到topic上面就可以响应了</p>
+            <figure>
+                <img src="images/PaintedCat@2026101520071.png" alt="新增属性">
+            </figure>
+
+            <h2>3. AMQP数据转发</h2>
+            <h3>3.1. 创建转发规则</h3>
+            <p>规则-》数据转发-》创建规则</p>
+            <figure>
+                <img src="images/PaintedCat@202610161018.png" alt="新增属性">
+            </figure>
+            <p>设备属性-》设备属性上报-》转发目标选择AMQP推送消息队列</p>
+            <figure>
+                <img src="images/PaintedCat@202610161019.png" alt="新增属性">
+            </figure>
+
+            <h3>3.2. 创建AMQP客户端</h3>
+            <h4>(1)创建空文件夹 </h4>
+            <p>创建一个文本文档将后缀改为 .js</p>
+            <figure>
+                <img src="images/PaintedCat@202610161020.png" alt="新增属性">
+            </figure>
+            <figure>
+                <img src="images/PaintedCat@2026101610201.png" alt="新增属性">
+            </figure>
+
+            <h4>(2)粘贴代码</h4>
+            <p>将下面代码粘贴到文本文档中，根据注释修改四个位置</p>
+            <figure>
+                <img src="images/PaintedCat@202610161021.png" alt="新增属性">
+            </figure>
+            <pre><code class="language-javascript">
+const container = require(&#039;rhea&#039;);
+const WebSocket = require(&#039;ws&#039;);
+const wss = new WebSocket.Server({ port: 8083 });
+const timestamp = Math.round(new Date());
+// 华为云 AMQP 1.0 连接配置
+var connect = container.connect({
+  // 这里接IoTDA实例/实例详情  AMQPS  的接入地址
+  host: &#039;f355aa03f3.st1.iotda-app.cn-north-4.myhuaweicloud.com&#039;,
+
+  port: 5671,
+  transport: &#039;tls&#039;,
+  reconnect: true,
+  idle_time_out: 8000,
+
+  // 这里接预接入凭证的 Key 和 password  还有IoTDA实例id
+  username: `accessKey=KQZ1Bap2|timestamp=${timestamp}|instanceId=e0fa531f-d3fc-4d21-b5c6-854985cba727`,
+  password: &#039;XBcdOH8msVhoKjOXGXewzAzZcUtk4U8r&#039;,
+  saslMechanisms: &#039;PLAIN&#039;,
+  rejectUnauthorized: false,
+  hostname: &#039;default&#039;
+});
+// 初始化连接
+connect.open_receiver({
+  source: {
+    address: &#039;DefaultQueue&#039;,
+    durable: true, // 确保队列持久化
+    filter: &#039;amqp.annotation.x-match = &quot;all&quot;&#039; // 匹配所有标签
+  }
+});
+// WebSocket 广播函数
+function broadcastToClients(data) {
+  wss.clients.forEach(client =&gt; {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify(data));
+    }
+  });
+}
+container.on(&#039;connection_open&#039;, () =&gt; console.log(&#039;连接成功&#039;));
+container.on(&#039;error&#039;, (err) =&gt; console.error(&#039;AMQP 错误:&#039;, err));
+// AMQP 消息处理
+container.on(&#039;message&#039;, (context) =&gt; {
+  try {
+    const msg = context.message;
+    const body = JSON.parse(`${msg.body}`);
+    console.log(body.notify_data.body.services);
+    broadcastToClients({
+      deviceId: body.notify_data.header.device_id,
+      timestamp: new Date(body.event_time_ms).getTime(),
+      data: body.notify_data.body.services
+    });
+    context.delivery.accept();
+  } catch (e) {
+    context.delivery.release();
+  }
+});
+// 断线重连机制
+container.on(&#039;connection_close&#039;, () =&gt; {
+  setTimeout(() =&gt; connect.open_receiver(&#039;DefaultQueue&#039;), 5000);
+});
+
+/*
+npm install rhea
+npm install ws
+
+*/
+</code></pre>
+            <h4>(3)执行两个命令</h4>
+            <p>在文件夹打开命令行，第一次先执行下面两个命令</p>
+            <figure>
+                <img src="images/PaintedCat@202610161024.png" alt="新增属性">
+            </figure>
+            <pre><code class="language-bash">
+npm install rhea
+npm install ws
+</code></pre>
+            <figure>
+                <img src="images/PaintedCat@2026101610241.png" alt="新增属性">
+            </figure>
+
+            <h4>(4) 运行AMQP</h4>
+            <p>执行node 运行AMQP客户端</p>
+            <pre><code class="language-bash">
+node AMQP.js
+</code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610161026.png" alt="新增属性">
+            </figure>
+            <p>这时候我们就可以收到AMQP传递过来的消息了</p>
+
+            <h2>4. 北向APP连接AMQP</h2>
+            <p>北向开发APP通过Websocket实时获取AMQP客户端数据</p>
+            <h3>4.1. 声明获取网络的权限</h3>
+            <p>使用网络管理模块的相关功能时，需要请求相应的权限。</p>
+            <figure>
+                <img src="images/PaintedCat@202610161103.png" alt="新增属性">
+            </figure>
+            <p>在module.json5中增加黄框中部分代码（下面代码框可以直接复制）</p>
+            <figure>
+                <img src="images/PaintedCat@202610161104.png" alt="新增属性">
+            </figure>
+            <pre><code class="language-arkts">
+&quot;requestPermissions&quot;: [{
+      &quot;name&quot;: &quot;ohos.permission.INTERNET&quot;
+    }],
+</code></pre>
+            <h3>4.2. 获取websocket数据</h3>
+            <p>在index.ets文件中添加黄框中代码，代码插入到build( )上方，</p>
+            <p>注意IP地址和端口号改成你自己的</p>
+            <figure>
+                <img src="images/PaintedCat@202610161107.png" alt="新增属性">
+            </figure>
+            <pre><code class="language-arkts">
+ws:webSocket.WebSocket = webSocket.createWebSocket();
+
+// 这个函数是加载页面时自动执行
+aboutToAppear(): void {
+  this.getDeviceMessage();
+}
+
+//设置在这个函数去实时获取websocket消息
+getDeviceMessage(){
+  let defaultIpAddress = &quot;ws://192.168.48.200:8083/&quot;;
+  this.ws.on(&#039;open&#039;, (err: BusinessError, value: Object) =&gt; {
+    console.log(&quot;wsConnectServer open, status:&quot; + JSON.stringify(value))
+  });
+  this.ws.on(&#039;message&#039;, (err: BusinessError, value: string | ArrayBuffer) =&gt; {
+    console.log(&quot;wsConnectServer message, message:&quot; + value);
+    if (!err &amp;&amp; typeof value === &#039;string&#039;) {
+      console.log(&quot;wsConnectServer 收到数据:&quot;, value);
+      const data:ESObject = JSON.parse(`${value}`);
+      console.log(&quot;wsConnectServer deviceId:&quot;, data.deviceId);
+      // this.getWebSocketData = data.data[0].properties;
+      // console.log(&quot;wsConnectServer 设备属性:&quot;, this.getWebSocketData.liget);
+      // console.log(&quot;wsConnectServer 设备属性:&quot;,this.smartHome.lightStatus==&quot;ON&quot;)
+    }
+  });
+  this.ws.on(&#039;close&#039;, (err: BusinessError, value: webSocket.CloseResult) =&gt; {
+    console.log(&quot;wsConnectServer close, code is &quot; + value.code + &quot;, reason is &quot; + value.reason);
+  });
+  this.ws.on(&#039;error&#039;, (err: BusinessError) =&gt; {
+    console.log(&quot;wsConnectServer error, error:&quot; + JSON.stringify(err));
+  });
+  this.ws.connect(defaultIpAddress, (err: BusinessError, value) =&gt; {
+    if (!err) {
+      console.log(&quot;wsConnectServer Connected successfully&quot;);
+    } else {
+      console.log(&quot;wsConnectServer Connection failed. Err:&quot; + JSON.stringify(err));
+    }
+  });
+}
+</code></pre>
+            <p>直接粘贴代码的话，还需要导入两个包</p>
+            <pre><code class="language-arkts">
+import { webSocket } from &#039;@kit.NetworkKit&#039;;
+import { BusinessError } from &#039;@kit.BasicServicesKit&#039;;
+</code></pre>
+            <h3>4.3. 创建接收对象</h3>
+            <p>接收websocket转发的数据</p>
+            <p>首先要查看下数据的类型，通过log可以查看接收到的数据如下图</p>
+            <figure>
+                <img src="images/PaintedCat@202610161110.png" alt="新增属性">
+            </figure>
+            <p>所以创建下面的结构来存储websocket数据 </p>
+            <p>（PS：如果你有更多设备属性，可以创建更多参数的对象）</p>
+            <figure>
+                <img src="images/PaintedCat@202610161111.png" alt="新增属性">
+            </figure>
+            <p>最后就可以接收数据到对象中，根据自己的使用场景去使用数据</p>
+            <figure>
+                <img src="images/PaintedCat@202610161112.png" alt="新增属性">
+            </figure>
+
+            <h2>5. 北向APP连接华为云</h2>
+            <p>北向开发APP通过http请求华为云，直接使用HTTP请求的时候，
+                会需要一个认证鉴权，
+                因此在开始之前咱们需要先创建一个认证用户，并赋予该用户一定权限；
+                然后按照华为云认证鉴权的格式设置相应请求字符串，获取认证token；
+                最后再做HTTP请求时带着这个token就可以顺利请求到华为云了。</p>
+            <h3>5.1. 创建认证用户</h3>
+            <figure>
+                <img src="images/PaintedCat@202610161116.png" alt="新增属性">
+            </figure>
+            <p>在统一身份认证中创建一个用户</p>
+            <figure>
+                <img src="images/PaintedCat@2026101611161.png" alt="新增属性">
+            </figure>
+            <p>让它拥有所有的权限</p>
+            <figure>
+                <img src="images/PaintedCat@202610161117.png" alt="新增属性">
+            </figure>
+
+            <h3>5.2. 获取认证token</h3>
+            <p>首先定义出获取token字符串格式（这个不用变直接用）</p>
+            <pre><code class="language-arkts">
+class User {
+  auth: Auth
+
+  constructor(name: string, password: string, domain: string) {
+    this.auth = {
+      identity: {
+        methods: [&quot;password&quot;],
+        password: {
+          user: {
+            name: name,
+            password: password,
+            domain: {
+              name: domain
+            }
+          }
+        },
+      },
+      scope: {
+        domain: {
+          name: domain
+        }
+      }
+    }
+  }
+}
+
+interface Auth {
+  identity: Identity
+  scope: Scope
+}
+
+interface Identity {
+  methods: string[]
+  password: Password
+}
+
+interface IAMUser {
+  name: string
+  password: string
+  domain: Domain
+}
+
+interface Password {
+  user: IAMUser
+}
+
+interface Domain {
+  name: string
+}
+
+interface Scope {
+  domain: Domain
+}
+</code></pre>
+            <p>然后创建对象请求华为云touken（这个里面需要改：用户名，密码，账户名） </p>
+            <p>注意：用户名和密码就是统一身份认证创建的</p>
+            <pre><code class="language-arkts">
+import { http } from &#039;@kit.NetworkKit&#039;
+
+
+  @State hw_token: string = &#039;&#039;
+
+  async onPageShow() {
+    await this.getToken()
+    this.hw_token = AppStorage.get&lt;string&gt;(&#039;hw_token&#039;) ?? &#039;获取失败&#039;
+  }
+
+  /**
+   * 认证鉴权
+   */
+  async getToken() {
+    let url: string = &#039;https://iam.myhuaweicloud.com/v3/auth/tokens&#039;
+    let hw_user: User = new User(&#039;abc&#039;, &#039;12345678&#039;, &#039;xyz_domain&#039;) // 改成自己的
+
+    let httpRequest = http.createHttp()
+    let options: http.HttpRequestOptions = {
+      method: http.RequestMethod.POST,
+      extraData: hw_user,
+      expectDataType: http.HttpDataType.OBJECT
+    }
+    let response: http.HttpResponse = await httpRequest.request(url, options)
+    console.log(&#039;token response:&#039;, JSON.stringify(response.header[&#039;x-subject-token&#039;]))
+
+    // 放入应用级缓存
+    AppStorage.setOrCreate&lt;string&gt;(&#039;hw_token&#039;, response.header[&#039;x-subject-token&#039;])
+  }
+</code></pre>
+            <p>获取成功后是一长串字符串如下图所示</p>
+            <figure>
+                <img src="images/PaintedCat@202610161120.png" alt="新增属性">
+            </figure>
+
+
+
+
+
+
+
+
+        </article>
+    </main>
+    <!-- 右：目录（对应正文里的 <h2 id="xxx">） -->
+    <ul id="toc">
+        <p>本页目录</p>
+    </ul>
+
+</body>
+
+</html>
