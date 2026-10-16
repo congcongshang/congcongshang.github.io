@@ -526,6 +526,160 @@ import { http } from &#039;@kit.NetworkKit&#039;
                 <img src="images/PaintedCat@202610161934.png" alt="接入地址">
             </figure>
 
+            <h2>6. 南向数据打通</h2>
+            <h3>6.1. 安装WSL</h3>
+            <p>以管理员方式启动 PowerShell，并运行 wsl --install</p>
+            <figure>
+                <img src="images/PaintedCat@202610161940.png" alt="接入地址">
+            </figure>
+
+            <h3>6.2. 安装Ubuntu</h3>
+            <p>（还是上面的命令，自动就会下载Ubuntu）</p>
+            <figure>
+                <img src="images/PaintedCat@202610161941.png" alt="接入地址">
+            </figure>
+            <p>如果没有下载，或者下载卡住不动，可以取消，去Windows store 下载</p>
+            <figure>
+                <img src="images/PaintedCat@2026101619411.png" alt="接入地址">
+            </figure>
+
+            <h3>6.3. 安装docker desktop</h3>
+
+            <p>在这个链接下面可以下载 docker 桌面版<br>
+                <a
+                    href="https://docs.docker.com/desktop/setup/install/windows-install/">https://docs.docker.com/desktop/setup/install/windows-install/</a>
+            </p>
+            <figure>
+                <img src="images/PaintedCat@202610161943.png" alt="接入地址">
+            </figure>
+            <p>安装过程就直接下一步下一步就行，检查安装参看下图</p>
+            <figure>
+                <img src="images/PaintedCat@202610161945.png" alt="接入地址">
+            </figure>
+
+            <p class="red">注意：使用 WSL 需要开启 docker 配置</p>
+            <figure>
+                <img src="images/PaintedCat@202610161953.png" alt="接入地址">
+            </figure>
+
+            <p>另外：如果想限制 WSL 占用空间可以设置配置项</p>
+            <pre><code class="language-bash">
+[wsl2]
+memory=4GB
+swap=2GB
+localhostForwarding=true
+</code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610161957.png" alt="接入地址">
+            </figure>
+
+
+            <h3>6.4. 获取开发板源码</h3>
+            <p class="red">在Ubuntu中运行</p>
+            <p>创建rsa公钥</p>
+            <pre><code class="language-bash">
+ssh-keygen -t rsa -C &quot;1390095882@qq.com&quot;
+</code></pre>
+
+            <p>获取公钥</p>
+            <pre><code class="language-bash">
+cat ~/.ssh/id_rsa.pub
+</code></pre>
+
+            <p>粘贴到码云仓库</p>
+
+            <p>配置全局邮箱和用户名</p>
+            <pre><code class="language-bash">
+git config --global user.name &quot;shangcc&quot;
+git config --global user.email &quot;1390095882@qq.com&quot;
+</code></pre>
+
+            <p>拉取代码</p>
+            <pre><code class="language-bash">
+git clone https://gitee.com/isoh_edu/txsmartropenharmony.git
+</code></pre>
+
+
+            <h3>6.5. 拉取开源鸿蒙镜像</h3>
+            <h4>6.5.1. 拉取镜像</h4>
+            <p>在Ubuntu命令窗口输入下面命令拉取openHarmony环境docker镜像文件</p>
+            <pre><code class="language-bash">
+# 拉取华为云openharmony镜像
+docker pull swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker:1.0.0
+</code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610162008.png" alt="接入地址">
+            </figure>
+
+            <h4>6.5.2. 修改名称</h4>
+            <p>修改镜像别名方便使用</p>
+            <pre><code class="language-bash">
+# 给镜像起一个短一点的别名
+docker image tag swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker:1.0.0 openharmony-docker:1.0.0
+
+# 删除名字比较长的这个镜像（使用docker images查看   使用docker rmi  删除）
+docker images
+
+docker rmi swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker:1.0.0
+</code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610162012.png" alt="接入地址">
+            </figure>
+
+            <h4>6.5.3. 启动容器</h4>
+            <p>使用镜像创建容器，以及关联Ubuntu中的代码</p>
+            <p class="red">注意：路径名称改成你自己环境的</p>
+            <pre><code class="language-bash">
+# 创建链接Ubuntu磁盘文件的openharmony 容器 （并给容器命名 oh-rk2206）
+docker run -itd -v /home/shangcc/iot_2206:/home/openharmony --name oh-rk2206 openharmony-docker:1.0.0
+</code></pre>
+
+            <h4>6.5.4. Docker常用</h4>
+            <p>Docker日常使用以及常用命令</p>
+            <pre><code class="language-bash">
+
+# 查看正在运行docker容器
+docker ps
+# 查看所有容器
+docker ps -a
+
+# 启动容器
+docker start oh-rk2206
+
+# 进入Docker容器
+docker exec -it oh-rk2206 bash
+
+docker start oh-rk2206 &amp;&amp; docker exec -it oh-rk2206 bash
+
+# 退出Docker容器
+exit
+
+# 需要关机时停止容器
+docker stop oh-rk2206
+
+</code></pre>
+            <p>其他Docker命令</p>
+            <pre><code class="language-bash">
+# 一次性清理所有停止的容器
+docker container prune
+
+# 查看本地镜像
+docker images
+
+# 拉取镜像
+docker pull 镜像名:版本
+
+# 给镜像打标签（别名，你刚才用到的）
+docker tag 原镜像名:版本 新名字:版本
+
+# 删除镜像（镜像没有被容器占用时才能删）
+docker rmi 镜像ID/镜像名:版本
+</code></pre>
+
+
+
+
+
 
 
 
