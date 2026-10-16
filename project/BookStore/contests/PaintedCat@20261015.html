@@ -576,28 +576,42 @@ localhostForwarding=true
 
             <h3>6.4. 获取开发板源码</h3>
             <p class="red">在Ubuntu中运行</p>
-            <p>创建rsa公钥</p>
+            <p>（1）创建rsa公钥</p>
             <pre><code class="language-bash">
-ssh-keygen -t rsa -C &quot;1390095882@qq.com&quot;
+ssh-keygen -t rsa -C &quot;xxxxxxxx@qq.com&quot;
 </code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610162102.png" alt="接入地址">
+            </figure>
 
-            <p>获取公钥</p>
+            <p>（2）获取公钥</p>
             <pre><code class="language-bash">
 cat ~/.ssh/id_rsa.pub
 </code></pre>
+            <figure>
+                <img src="images/PaintedCat@2026101621021.png" alt="接入地址">
+            </figure>
 
-            <p>粘贴到码云仓库</p>
+            <p>（3）粘贴到码云仓库</p>
+            <figure>
+                <img src="images/PaintedCat@202610162103.png" alt="接入地址">
+            </figure>
 
-            <p>配置全局邮箱和用户名</p>
+
+            <p>（4）配置全局邮箱和用户名</p>
             <pre><code class="language-bash">
 git config --global user.name &quot;shangcc&quot;
-git config --global user.email &quot;1390095882@qq.com&quot;
+git config --global user.email &quot;xxxxxxxx@qq.com&quot;
 </code></pre>
+
 
             <p>拉取代码</p>
             <pre><code class="language-bash">
 git clone https://gitee.com/isoh_edu/txsmartropenharmony.git
 </code></pre>
+            <figure>
+                <img src="images/PaintedCat@2026101621031.png" alt="接入地址">
+            </figure>
 
 
             <h3>6.5. 拉取开源鸿蒙镜像</h3>
@@ -626,6 +640,7 @@ docker rmi swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docke
                 <img src="images/PaintedCat@202610162012.png" alt="接入地址">
             </figure>
 
+
             <h4>6.5.3. 启动容器</h4>
             <p>使用镜像创建容器，以及关联Ubuntu中的代码</p>
             <p class="red">注意：路径名称改成你自己环境的</p>
@@ -633,6 +648,9 @@ docker rmi swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docke
 # 创建链接Ubuntu磁盘文件的openharmony 容器 （并给容器命名 oh-rk2206）
 docker run -itd -v /home/shangcc/iot_2206:/home/openharmony --name oh-rk2206 openharmony-docker:1.0.0
 </code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610162107.png" alt="接入地址">
+            </figure>
 
             <h4>6.5.4. Docker常用</h4>
             <p>Docker日常使用以及常用命令</p>
@@ -676,9 +694,46 @@ docker tag 原镜像名:版本 新名字:版本
 docker rmi 镜像ID/镜像名:版本
 </code></pre>
 
+            <h3>6.6. 编译代码</h3>
+            <p>下载hb工具（在容器中）（在通晓文件夹下面）</p>
+            <p>（1）首先进入容器</p>
+            <pre><code class="language-bash">
+# 启动并进入Docker容器
+docker start oh-rk2206 && docker exec -it oh-rk2206 bash
+</code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610162116.png" alt="接入地址">
+            </figure>
+
+            <p>（2）然后进入通晓文件夹，并下载hb工具</p>
+            <pre><code class="language-bash">
+pip3 install build/lite
+</code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610162121.png" alt="接入地址">
+            </figure>
 
 
+            <p>（3）使用hb set指令编译固件</p>
+            <pre><code class="language-bash">
+hb set
+.
+hb build -f
+</code></pre>
+            <figure>
+                <img src="images/PaintedCat@202610162126.png" alt="接入地址">
+            </figure>
+            <figure>
+                <img src="images/PaintedCat@202610162127.png" alt="接入地址">
+            </figure>
 
+            <p>（4） 后面你修改了代码就可以使用编译命令重新编译源码了</p>
+            <pre><code class="language-bash">
+hb build -f
+</code></pre>
+            <p>只要看到 success 说明编译成功了</p>
+
+            
 
 
 
