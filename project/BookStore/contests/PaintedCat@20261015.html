@@ -2,145 +2,145 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <script src="../js/siderbar.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <script src="../js/siderbar.js" defer></script>
 </head>
 
 <body>
-    <aside></aside>
+  <aside></aside>
 
-    <!-- 移动端遮罩 -->
-    <div class="overlay" id="overlay"></div>
+  <!-- 移动端遮罩 -->
+  <div class="overlay" id="overlay"></div>
 
 
-    <main>
-        <article>
+  <main>
+    <article>
 
-            <h1>华为云平台数据打通参考文档</h1>
-            <p>
-                <span>2026年10月15日</span>文档 · 鸿蒙 · 南向开发
-            </p>
+      <h1>华为云平台数据打通参考文档</h1>
+      <p>
+        <span>2026年10月15日</span>文档 · 鸿蒙 · 南向开发
+      </p>
 
-            <h2>1. 华为云注册与云端配置</h2>
-            <p>华为云官网：https://www.huaweicloud.com/ </p>
-            <p>选择产品->IoT物联网->设备接入IoTDA</p>
-            <figure>
-                <img src="images/PaintedCat@202610151939.png" alt="设备接入IoTDA">
-                <figcaption>设备接入IoTDA</figcaption>
-            </figure>
-            <h3>1.1. 创建IoTDA实例</h3>
-            <p>点击控制台->购买实例->{购买一个免费的实例单元}</p>
-            <figure>
-                <img src="images/PaintedCat@202610151942.png" alt="创建IoTDA实例">
-                <img src="images/PaintedCat@2026101519421.png" alt="创建IoTDA实例">
-                <img src="images/PaintedCat@202610151943.png" alt="创建IoTDA实例">
-                <figcaption>创建IoTDA实例</figcaption>
-            </figure>
-            <h3>1.2. 创建产品</h3>
-            <figure>
-                <img src="images/PaintedCat@202610151945.png" alt="创建产品">
-            </figure>
-            <p>点击实例名称进入实例->点击产品创建产品</p>
-            <figure>
-                <img src="images/PaintedCat@202610151946.png" alt="创建产品">
-            </figure>
-            <p>进入产品->创建自定义模型->设置服务ID</p>
-            <figure>
-                <img src="images/PaintedCat@202610151947.png" alt="设置服务ID">
-            </figure>
-            <p>新增属性</p>
-            <figure>
-                <img src="images/PaintedCat@202610151948.png" alt="新增属性">
-            </figure>
-            <h3>1.3. 注册设备</h3>
-            <p>所有设备->注册设备->选择产品，自己编写一个设备标识码，输入密码</p>
-            <figure>
-                <img src="images/PaintedCat@202610151949.png" alt="新增属性">
-            </figure>
-            <h2>2. MQTTX连接云端设备</h2>
-            <h3>2.1. 创建连接</h3>
-            <p>创建连接网址：<a
-                    href="https://iot-tool.obs-website.cn-north-4.myhuaweicloud.com/">https://iot-tool.obs-website.cn-north-4.myhuaweicloud.com/</a>
-            </p>
-            <p>进入刚注册的设备页面复制设备id和密码，生成用于连接的连接id以及用户名密码</p>
-            <figure>
-                <img src="images/PaintedCat@202610151958.png" alt="新增属性">
-            </figure>
+      <h2>1. 华为云注册与云端配置</h2>
+      <p>华为云官网：https://www.huaweicloud.com/ </p>
+      <p>选择产品->IoT物联网->设备接入IoTDA</p>
+      <figure>
+        <img src="images/PaintedCat@202610151939.png" alt="设备接入IoTDA">
+        <figcaption>设备接入IoTDA</figcaption>
+      </figure>
+      <h3>1.1. 创建IoTDA实例</h3>
+      <p>点击控制台->购买实例->{购买一个免费的实例单元}</p>
+      <figure>
+        <img src="images/PaintedCat@202610151942.png" alt="创建IoTDA实例">
+        <img src="images/PaintedCat@2026101519421.png" alt="创建IoTDA实例">
+        <img src="images/PaintedCat@202610151943.png" alt="创建IoTDA实例">
+        <figcaption>创建IoTDA实例</figcaption>
+      </figure>
+      <h3>1.2. 创建产品</h3>
+      <figure>
+        <img src="images/PaintedCat@202610151945.png" alt="创建产品">
+      </figure>
+      <p>点击实例名称进入实例->点击产品创建产品</p>
+      <figure>
+        <img src="images/PaintedCat@202610151946.png" alt="创建产品">
+      </figure>
+      <p>进入产品->创建自定义模型->设置服务ID</p>
+      <figure>
+        <img src="images/PaintedCat@202610151947.png" alt="设置服务ID">
+      </figure>
+      <p>新增属性</p>
+      <figure>
+        <img src="images/PaintedCat@202610151948.png" alt="新增属性">
+      </figure>
+      <h3>1.3. 注册设备</h3>
+      <p>所有设备->注册设备->选择产品，自己编写一个设备标识码，输入密码</p>
+      <figure>
+        <img src="images/PaintedCat@202610151949.png" alt="新增属性">
+      </figure>
+      <h2>2. MQTTX连接云端设备</h2>
+      <h3>2.1. 创建连接</h3>
+      <p>创建连接网址：<a
+          href="https://iot-tool.obs-website.cn-north-4.myhuaweicloud.com/">https://iot-tool.obs-website.cn-north-4.myhuaweicloud.com/</a>
+      </p>
+      <p>进入刚注册的设备页面复制设备id和密码，生成用于连接的连接id以及用户名密码</p>
+      <figure>
+        <img src="images/PaintedCat@202610151958.png" alt="新增属性">
+      </figure>
 
-            <h3>2.2. 建立连接</h3>
-            <p>将刚生成的客户端id，用户名，密码填入MQTTX新建立的连接上面</p>
-            <figure>
-                <img src="images/PaintedCat@202610152000.png" alt="新增属性">
-            </figure>
-            <p>去华为云实例详情页面，将mqtt网址添加到MQTTX的服务器地址中</p>
-            <figure>
-                <img src="images/PaintedCat@202610152001.png" alt="新增属性">
-                <img src="images/PaintedCat@2026101520011.png" alt="新增属性">
-            </figure>
-            <p>然后点击连接即可</p>
+      <h3>2.2. 建立连接</h3>
+      <p>将刚生成的客户端id，用户名，密码填入MQTTX新建立的连接上面</p>
+      <figure>
+        <img src="images/PaintedCat@202610152000.png" alt="新增属性">
+      </figure>
+      <p>去华为云实例详情页面，将mqtt网址添加到MQTTX的服务器地址中</p>
+      <figure>
+        <img src="images/PaintedCat@202610152001.png" alt="新增属性">
+        <img src="images/PaintedCat@2026101520011.png" alt="新增属性">
+      </figure>
+      <p>然后点击连接即可</p>
 
-            <h3>2.3. 上传消息</h3>
-            <p>设置topic信息（注意替换设备id，服务id，以及属性信息）</p>
-            <pre><code class="language-bash">
+      <h3>2.3. 上传消息</h3>
+      <p>设置topic信息（注意替换设备id，服务id，以及属性信息）</p>
+      <pre><code class="language-bash">
 $oc/devices/68de831fef46cd424ce07093_2314/sys/properties/report
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610152003.png" alt="新增属性">
-            </figure>
-            <p>上传成功后，服务端就会更新数据</p>
-            <figure>
-                <img src="images/PaintedCat@202610152004.png" alt="新增属性">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@202610152003.png" alt="新增属性">
+      </figure>
+      <p>上传成功后，服务端就会更新数据</p>
+      <figure>
+        <img src="images/PaintedCat@202610152004.png" alt="新增属性">
+      </figure>
 
-            <h3>2.4. 命令下发</h3>
-            <p>首先在产品详情界面创建命令</p>
-            <figure>
-                <img src="images/PaintedCat@202610152005.png" alt="新增属性">
-            </figure>
-            <p>然后在设备界面选择云端下发-命令下发-选择命令并下发</p>
-            <figure>
-                <img src="images/PaintedCat@202610152006.png" alt="新增属性">
-            </figure>
-            <p>这个时候MQTTX会收到消息，这个时候有20秒的手速时间，将命令的返回从mqtt发回去就会成功</p>
-            <p>（1）提前准备好响应消息</p>
-            <figure>
-                <img src="images/PaintedCat@202610152007.png" alt="新增属性">
-            </figure>
-            <p>（2）当收到消息后，立马粘贴id到topic上面就可以响应了</p>
-            <figure>
-                <img src="images/PaintedCat@2026101520071.png" alt="新增属性">
-            </figure>
+      <h3>2.4. 命令下发</h3>
+      <p>首先在产品详情界面创建命令</p>
+      <figure>
+        <img src="images/PaintedCat@202610152005.png" alt="新增属性">
+      </figure>
+      <p>然后在设备界面选择云端下发-命令下发-选择命令并下发</p>
+      <figure>
+        <img src="images/PaintedCat@202610152006.png" alt="新增属性">
+      </figure>
+      <p>这个时候MQTTX会收到消息，这个时候有20秒的手速时间，将命令的返回从mqtt发回去就会成功</p>
+      <p>（1）提前准备好响应消息</p>
+      <figure>
+        <img src="images/PaintedCat@202610152007.png" alt="新增属性">
+      </figure>
+      <p>（2）当收到消息后，立马粘贴id到topic上面就可以响应了</p>
+      <figure>
+        <img src="images/PaintedCat@2026101520071.png" alt="新增属性">
+      </figure>
 
-            <h2>3. AMQP数据转发</h2>
-            <h3>3.1. 创建转发规则</h3>
-            <p>规则-》数据转发-》创建规则</p>
-            <figure>
-                <img src="images/PaintedCat@202610161018.png" alt="新增属性">
-            </figure>
-            <p>设备属性-》设备属性上报-》转发目标选择AMQP推送消息队列</p>
-            <figure>
-                <img src="images/PaintedCat@202610161019.png" alt="新增属性">
-            </figure>
+      <h2>3. AMQP数据转发</h2>
+      <h3>3.1. 创建转发规则</h3>
+      <p>规则-》数据转发-》创建规则</p>
+      <figure>
+        <img src="images/PaintedCat@202610161018.png" alt="新增属性">
+      </figure>
+      <p>设备属性-》设备属性上报-》转发目标选择AMQP推送消息队列</p>
+      <figure>
+        <img src="images/PaintedCat@202610161019.png" alt="新增属性">
+      </figure>
 
-            <h3>3.2. 创建AMQP客户端</h3>
-            <h4>(1)创建空文件夹 </h4>
-            <p>创建一个文本文档将后缀改为 .js</p>
-            <figure>
-                <img src="images/PaintedCat@202610161020.png" alt="新增属性">
-            </figure>
-            <figure>
-                <img src="images/PaintedCat@2026101610201.png" alt="新增属性">
-            </figure>
+      <h3>3.2. 创建AMQP客户端</h3>
+      <h4>(1)创建空文件夹 </h4>
+      <p>创建一个文本文档将后缀改为 .js</p>
+      <figure>
+        <img src="images/PaintedCat@202610161020.png" alt="新增属性">
+      </figure>
+      <figure>
+        <img src="images/PaintedCat@2026101610201.png" alt="新增属性">
+      </figure>
 
-            <h4>(2)粘贴代码</h4>
-            <p>将下面代码粘贴到文本文档中，根据注释修改四个位置</p>
-            <figure>
-                <img src="images/PaintedCat@202610161021.png" alt="新增属性">
-            </figure>
-            <pre><code class="language-javascript">
+      <h4>(2)粘贴代码</h4>
+      <p>将下面代码粘贴到文本文档中，根据注释修改四个位置</p>
+      <figure>
+        <img src="images/PaintedCat@202610161021.png" alt="新增属性">
+      </figure>
+      <pre><code class="language-javascript">
 const container = require(&#039;rhea&#039;);
 const WebSocket = require(&#039;ws&#039;);
 const wss = new WebSocket.Server({ port: 8083 });
@@ -207,52 +207,52 @@ npm install ws
 
 */
 </code></pre>
-            <h4>(3)执行两个命令</h4>
-            <p>在文件夹打开命令行，第一次先执行下面两个命令</p>
-            <figure>
-                <img src="images/PaintedCat@202610161024.png" alt="新增属性">
-            </figure>
-            <pre><code class="language-bash">
+      <h4>(3)执行两个命令</h4>
+      <p>在文件夹打开命令行，第一次先执行下面两个命令</p>
+      <figure>
+        <img src="images/PaintedCat@202610161024.png" alt="新增属性">
+      </figure>
+      <pre><code class="language-bash">
 npm install rhea
 npm install ws
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@2026101610241.png" alt="新增属性">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@2026101610241.png" alt="新增属性">
+      </figure>
 
-            <h4>(4) 运行AMQP</h4>
-            <p>执行node 运行AMQP客户端</p>
-            <pre><code class="language-bash">
+      <h4>(4) 运行AMQP</h4>
+      <p>执行node 运行AMQP客户端</p>
+      <pre><code class="language-bash">
 node AMQP.js
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610161026.png" alt="新增属性">
-            </figure>
-            <p>这时候我们就可以收到AMQP传递过来的消息了</p>
+      <figure>
+        <img src="images/PaintedCat@202610161026.png" alt="新增属性">
+      </figure>
+      <p>这时候我们就可以收到AMQP传递过来的消息了</p>
 
-            <h2>4. 北向APP连接AMQP</h2>
-            <p>北向开发APP通过Websocket实时获取AMQP客户端数据</p>
-            <h3>4.1. 声明获取网络的权限</h3>
-            <p>使用网络管理模块的相关功能时，需要请求相应的权限。</p>
-            <figure>
-                <img src="images/PaintedCat@202610161103.png" alt="新增属性">
-            </figure>
-            <p>在module.json5中增加黄框中部分代码（下面代码框可以直接复制）</p>
-            <figure>
-                <img src="images/PaintedCat@202610161104.png" alt="新增属性">
-            </figure>
-            <pre><code class="language-arkts">
+      <h2>4. 北向APP连接AMQP</h2>
+      <p>北向开发APP通过Websocket实时获取AMQP客户端数据</p>
+      <h3>4.1. 声明获取网络的权限</h3>
+      <p>使用网络管理模块的相关功能时，需要请求相应的权限。</p>
+      <figure>
+        <img src="images/PaintedCat@202610161103.png" alt="新增属性">
+      </figure>
+      <p>在module.json5中增加黄框中部分代码（下面代码框可以直接复制）</p>
+      <figure>
+        <img src="images/PaintedCat@202610161104.png" alt="新增属性">
+      </figure>
+      <pre><code class="language-arkts">
 &quot;requestPermissions&quot;: [{
       &quot;name&quot;: &quot;ohos.permission.INTERNET&quot;
     }],
 </code></pre>
-            <h3>4.2. 获取websocket数据</h3>
-            <p>在index.ets文件中添加黄框中代码，代码插入到build( )上方，</p>
-            <p>注意IP地址和端口号改成你自己的</p>
-            <figure>
-                <img src="images/PaintedCat@202610161107.png" alt="新增属性">
-            </figure>
-            <pre><code class="language-arkts">
+      <h3>4.2. 获取websocket数据</h3>
+      <p>在index.ets文件中添加黄框中代码，代码插入到build( )上方，</p>
+      <p>注意IP地址和端口号改成你自己的</p>
+      <figure>
+        <img src="images/PaintedCat@202610161107.png" alt="新增属性">
+      </figure>
+      <pre><code class="language-arkts">
 ws:webSocket.WebSocket = webSocket.createWebSocket();
 
 // 这个函数是加载页面时自动执行
@@ -292,49 +292,49 @@ getDeviceMessage(){
   });
 }
 </code></pre>
-            <p>直接粘贴代码的话，还需要导入两个包</p>
-            <pre><code class="language-arkts">
+      <p>直接粘贴代码的话，还需要导入两个包</p>
+      <pre><code class="language-arkts">
 import { webSocket } from &#039;@kit.NetworkKit&#039;;
 import { BusinessError } from &#039;@kit.BasicServicesKit&#039;;
 </code></pre>
-            <h3>4.3. 创建接收对象</h3>
-            <p>接收websocket转发的数据</p>
-            <p>首先要查看下数据的类型，通过log可以查看接收到的数据如下图</p>
-            <figure>
-                <img src="images/PaintedCat@202610161110.png" alt="新增属性">
-            </figure>
-            <p>所以创建下面的结构来存储websocket数据 </p>
-            <p>（PS：如果你有更多设备属性，可以创建更多参数的对象）</p>
-            <figure>
-                <img src="images/PaintedCat@202610161111.png" alt="新增属性">
-            </figure>
-            <p>最后就可以接收数据到对象中，根据自己的使用场景去使用数据</p>
-            <figure>
-                <img src="images/PaintedCat@202610161112.png" alt="新增属性">
-            </figure>
+      <h3>4.3. 创建接收对象</h3>
+      <p>接收websocket转发的数据</p>
+      <p>首先要查看下数据的类型，通过log可以查看接收到的数据如下图</p>
+      <figure>
+        <img src="images/PaintedCat@202610161110.png" alt="新增属性">
+      </figure>
+      <p>所以创建下面的结构来存储websocket数据 </p>
+      <p>（PS：如果你有更多设备属性，可以创建更多参数的对象）</p>
+      <figure>
+        <img src="images/PaintedCat@202610161111.png" alt="新增属性">
+      </figure>
+      <p>最后就可以接收数据到对象中，根据自己的使用场景去使用数据</p>
+      <figure>
+        <img src="images/PaintedCat@202610161112.png" alt="新增属性">
+      </figure>
 
-            <h2>5. 北向APP连接华为云</h2>
-            <p>北向开发APP通过http请求华为云，直接使用HTTP请求的时候，
-                会需要一个认证鉴权，
-                因此在开始之前咱们需要先创建一个认证用户，并赋予该用户一定权限；
-                然后按照华为云认证鉴权的格式设置相应请求字符串，获取认证token；
-                最后再做HTTP请求时带着这个token就可以顺利请求到华为云了。</p>
-            <h3>5.1. 创建认证用户</h3>
-            <figure>
-                <img src="images/PaintedCat@202610161116.png" alt="新增属性">
-            </figure>
-            <p>在统一身份认证中创建一个用户</p>
-            <figure>
-                <img src="images/PaintedCat@2026101611161.png" alt="新增属性">
-            </figure>
-            <p>让它拥有所有的权限</p>
-            <figure>
-                <img src="images/PaintedCat@202610161117.png" alt="新增属性">
-            </figure>
+      <h2>5. 北向APP连接华为云</h2>
+      <p>北向开发APP通过http请求华为云，直接使用HTTP请求的时候，
+        会需要一个认证鉴权，
+        因此在开始之前咱们需要先创建一个认证用户，并赋予该用户一定权限；
+        然后按照华为云认证鉴权的格式设置相应请求字符串，获取认证token；
+        最后再做HTTP请求时带着这个token就可以顺利请求到华为云了。</p>
+      <h3>5.1. 创建认证用户</h3>
+      <figure>
+        <img src="images/PaintedCat@202610161116.png" alt="新增属性">
+      </figure>
+      <p>在统一身份认证中创建一个用户</p>
+      <figure>
+        <img src="images/PaintedCat@2026101611161.png" alt="新增属性">
+      </figure>
+      <p>让它拥有所有的权限</p>
+      <figure>
+        <img src="images/PaintedCat@202610161117.png" alt="新增属性">
+      </figure>
 
-            <h3>5.2. 获取认证token</h3>
-            <p>首先定义出获取token字符串格式（这个不用变直接用）</p>
-            <pre><code class="language-arkts">
+      <h3>5.2. 获取认证token</h3>
+      <p>首先定义出获取token字符串格式（这个不用变直接用）</p>
+      <pre><code class="language-arkts">
 class User {
   auth: Auth
 
@@ -389,9 +389,9 @@ interface Scope {
   domain: Domain
 }
 </code></pre>
-            <p>然后创建对象请求华为云touken（这个里面需要改：用户名，密码，账户名） </p>
-            <p>注意：用户名和密码就是统一身份认证创建的</p>
-            <pre><code class="language-arkts">
+      <p>然后创建对象请求华为云touken（这个里面需要改：用户名，密码，账户名） </p>
+      <p>注意：用户名和密码就是统一身份认证创建的</p>
+      <pre><code class="language-arkts">
 import { http } from &#039;@kit.NetworkKit&#039;
 
 
@@ -422,37 +422,37 @@ import { http } from &#039;@kit.NetworkKit&#039;
     AppStorage.setOrCreate&lt;string&gt;(&#039;hw_token&#039;, response.header[&#039;x-subject-token&#039;])
   }
 </code></pre>
-            <p>获取成功后是一长串字符串如下图所示</p>
-            <figure>
-                <img src="images/PaintedCat@202610161120.png" alt="新增属性">
-            </figure>
+      <p>获取成功后是一长串字符串如下图所示</p>
+      <figure>
+        <img src="images/PaintedCat@202610161120.png" alt="新增属性">
+      </figure>
 
-            <h3>5.3. 查询影子设备</h3>
-            <p>使用获取到的token，访问华为云直接获取设备的影子数据</p>
-            <p>可以参考这个文档 <a
-                    href="https://support.huaweicloud.com/api-iothub/iot_06_v5_0079.html">https://support.huaweicloud.com/api-iothub/iot_06_v5_0079.html</a>
-            </p>
-            <p class="red">（注意这里面需要修改三个信息为你自己的：接入地址，项目id，设备id ）</p>
-            <p><span class="red">拼接成下面字符串形式：</span> https://{接入地址}/v5/iot/{project_id}/devices/{device_id}/shadow</p>
+      <h3>5.3. 查询影子设备</h3>
+      <p>使用获取到的token，访问华为云直接获取设备的影子数据</p>
+      <p>可以参考这个文档 <a
+          href="https://support.huaweicloud.com/api-iothub/iot_06_v5_0079.html">https://support.huaweicloud.com/api-iothub/iot_06_v5_0079.html</a>
+      </p>
+      <p class="red">（注意这里面需要修改三个信息为你自己的：接入地址，项目id，设备id ）</p>
+      <p><span class="red">拼接成下面字符串形式：</span> https://{接入地址}/v5/iot/{project_id}/devices/{device_id}/shadow</p>
 
-            <h4>5.3.1. 接入地址</h4>
-            <figure>
-                <img src="images/PaintedCat@202610161440.png" alt="接入地址">
-            </figure>
+      <h4>5.3.1. 接入地址</h4>
+      <figure>
+        <img src="images/PaintedCat@202610161440.png" alt="接入地址">
+      </figure>
 
-            <h4>5.3.2. project_id</h4>
-            <p>（这里需要注意选择你的项目所属区域）</p>
-            <figure>
-                <img src="images/PaintedCat@202610161441.png" alt="接入地址">
-            </figure>
+      <h4>5.3.2. project_id</h4>
+      <p>（这里需要注意选择你的项目所属区域）</p>
+      <figure>
+        <img src="images/PaintedCat@202610161441.png" alt="接入地址">
+      </figure>
 
-            <h4>5.3.3. device_id</h4>
-            <figure>
-                <img src="images/PaintedCat@202610161930.png" alt="接入地址">
-            </figure>
+      <h4>5.3.3. device_id</h4>
+      <figure>
+        <img src="images/PaintedCat@202610161930.png" alt="接入地址">
+      </figure>
 
-            <h4>5.3.4. 示例代码</h4>
-            <pre><code class="language-arkts">
+      <h4>5.3.4. 示例代码</h4>
+      <pre><code class="language-arkts">
   /**
    * 查询设备影子数据
    */
@@ -474,21 +474,21 @@ import { http } from &#039;@kit.NetworkKit&#039;
   }
 
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610161931.png" alt="接入地址">
-            </figure>
-            <p>最后就可以直接通过http请求到设备数据如下图所示</p>
-            <figure>
-                <img src="images/PaintedCat@2026101619311.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@202610161931.png" alt="接入地址">
+      </figure>
+      <p>最后就可以直接通过http请求到设备数据如下图所示</p>
+      <figure>
+        <img src="images/PaintedCat@2026101619311.png" alt="接入地址">
+      </figure>
 
-            <h3>5.4. 远程下发命令</h3>
-            <p>跟查询影子设备信息类似，采用HTTP请求的方式上传命令，下发到设备端</p>
-            <p>区别：下发命令采用的是POST方式，需要传数据到云端（需要一个结构），MQTT需要20秒内响应</p>
-            <figure>
-                <img src="images/PaintedCat@202610161933.png" alt="接入地址">
-            </figure>
-            <pre><code class="language-arkts">
+      <h3>5.4. 远程下发命令</h3>
+      <p>跟查询影子设备信息类似，采用HTTP请求的方式上传命令，下发到设备端</p>
+      <p>区别：下发命令采用的是POST方式，需要传数据到云端（需要一个结构），MQTT需要20秒内响应</p>
+      <figure>
+        <img src="images/PaintedCat@202610161933.png" alt="接入地址">
+      </figure>
+      <pre><code class="language-arkts">
   /**
    * 下发命令（同样修改成你自己的项目id，设备id，接入地址）
    */
@@ -521,113 +521,113 @@ import { http } from &#039;@kit.NetworkKit&#039;
     console.log(&#039;command response:&#039;, JSON.stringify(response.result))
   }
 </code></pre>
-            <p>参考MQTT连接云端设备中下发命令，就可以获取到MQTT的响应消息</p>
-            <figure>
-                <img src="images/PaintedCat@202610161934.png" alt="接入地址">
-            </figure>
+      <p>参考MQTT连接云端设备中下发命令，就可以获取到MQTT的响应消息</p>
+      <figure>
+        <img src="images/PaintedCat@202610161934.png" alt="接入地址">
+      </figure>
 
-            <h2>6. 南向数据打通</h2>
-            <h3>6.1. 安装WSL</h3>
-            <p>以管理员方式启动 PowerShell，并运行 wsl --install</p>
-            <figure>
-                <img src="images/PaintedCat@202610161940.png" alt="接入地址">
-            </figure>
+      <h2>6. 南向数据打通</h2>
+      <h3>6.1. 安装WSL</h3>
+      <p>以管理员方式启动 PowerShell，并运行 wsl --install</p>
+      <figure>
+        <img src="images/PaintedCat@202610161940.png" alt="接入地址">
+      </figure>
 
-            <h3>6.2. 安装Ubuntu</h3>
-            <p>（还是上面的命令，自动就会下载Ubuntu）</p>
-            <figure>
-                <img src="images/PaintedCat@202610161941.png" alt="接入地址">
-            </figure>
-            <p>如果没有下载，或者下载卡住不动，可以取消，去Windows store 下载</p>
-            <figure>
-                <img src="images/PaintedCat@2026101619411.png" alt="接入地址">
-            </figure>
+      <h3>6.2. 安装Ubuntu</h3>
+      <p>（还是上面的命令，自动就会下载Ubuntu）</p>
+      <figure>
+        <img src="images/PaintedCat@202610161941.png" alt="接入地址">
+      </figure>
+      <p>如果没有下载，或者下载卡住不动，可以取消，去Windows store 下载</p>
+      <figure>
+        <img src="images/PaintedCat@2026101619411.png" alt="接入地址">
+      </figure>
 
-            <h3>6.3. 安装docker desktop</h3>
+      <h3>6.3. 安装docker desktop</h3>
 
-            <p>在这个链接下面可以下载 docker 桌面版<br>
-                <a
-                    href="https://docs.docker.com/desktop/setup/install/windows-install/">https://docs.docker.com/desktop/setup/install/windows-install/</a>
-            </p>
-            <figure>
-                <img src="images/PaintedCat@202610161943.png" alt="接入地址">
-            </figure>
-            <p>安装过程就直接下一步下一步就行，检查安装参看下图</p>
-            <figure>
-                <img src="images/PaintedCat@202610161945.png" alt="接入地址">
-            </figure>
+      <p>在这个链接下面可以下载 docker 桌面版<br>
+        <a
+          href="https://docs.docker.com/desktop/setup/install/windows-install/">https://docs.docker.com/desktop/setup/install/windows-install/</a>
+      </p>
+      <figure>
+        <img src="images/PaintedCat@202610161943.png" alt="接入地址">
+      </figure>
+      <p>安装过程就直接下一步下一步就行，检查安装参看下图</p>
+      <figure>
+        <img src="images/PaintedCat@202610161945.png" alt="接入地址">
+      </figure>
 
-            <p class="red">注意：使用 WSL 需要开启 docker 配置</p>
-            <figure>
-                <img src="images/PaintedCat@202610161953.png" alt="接入地址">
-            </figure>
+      <p class="red">注意：使用 WSL 需要开启 docker 配置</p>
+      <figure>
+        <img src="images/PaintedCat@202610161953.png" alt="接入地址">
+      </figure>
 
-            <p>另外：如果想限制 WSL 占用空间可以设置配置项</p>
-            <pre><code class="language-bash">
+      <p>另外：如果想限制 WSL 占用空间可以设置配置项</p>
+      <pre><code class="language-bash">
 [wsl2]
 memory=4GB
 swap=2GB
 localhostForwarding=true
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610161957.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@202610161957.png" alt="接入地址">
+      </figure>
 
 
-            <h3>6.4. 获取开发板源码</h3>
-            <p class="red">在Ubuntu中运行</p>
-            <p>（1）创建rsa公钥</p>
-            <pre><code class="language-bash">
+      <h3>6.4. 获取开发板源码</h3>
+      <p class="red">在Ubuntu中运行</p>
+      <p>（1）创建rsa公钥</p>
+      <pre><code class="language-bash">
 ssh-keygen -t rsa -C &quot;xxxxxxxx@qq.com&quot;
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610162102.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@202610162102.png" alt="接入地址">
+      </figure>
 
-            <p>（2）获取公钥</p>
-            <pre><code class="language-bash">
+      <p>（2）获取公钥</p>
+      <pre><code class="language-bash">
 cat ~/.ssh/id_rsa.pub
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@2026101621021.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@2026101621021.png" alt="接入地址">
+      </figure>
 
-            <p>（3）粘贴到码云仓库</p>
-            <figure>
-                <img src="images/PaintedCat@202610162103.png" alt="接入地址">
-            </figure>
+      <p>（3）粘贴到码云仓库</p>
+      <figure>
+        <img src="images/PaintedCat@202610162103.png" alt="接入地址">
+      </figure>
 
 
-            <p>（4）配置全局邮箱和用户名</p>
-            <pre><code class="language-bash">
+      <p>（4）配置全局邮箱和用户名</p>
+      <pre><code class="language-bash">
 git config --global user.name &quot;shangcc&quot;
 git config --global user.email &quot;xxxxxxxx@qq.com&quot;
 </code></pre>
 
 
-            <p>拉取代码</p>
-            <pre><code class="language-bash">
+      <p>拉取代码</p>
+      <pre><code class="language-bash">
 git clone https://gitee.com/isoh_edu/txsmartropenharmony.git
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@2026101621031.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@2026101621031.png" alt="接入地址">
+      </figure>
 
 
-            <h3>6.5. 拉取开源鸿蒙镜像</h3>
-            <h4>6.5.1. 拉取镜像</h4>
-            <p>在Ubuntu命令窗口输入下面命令拉取openHarmony环境docker镜像文件</p>
-            <pre><code class="language-bash">
+      <h3>6.5. 拉取开源鸿蒙镜像</h3>
+      <h4>6.5.1. 拉取镜像</h4>
+      <p>在Ubuntu命令窗口输入下面命令拉取openHarmony环境docker镜像文件</p>
+      <pre><code class="language-bash">
 # 拉取华为云openharmony镜像
 docker pull swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker:1.0.0
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610162008.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@202610162008.png" alt="接入地址">
+      </figure>
 
-            <h4>6.5.2. 修改名称</h4>
-            <p>修改镜像别名方便使用</p>
-            <pre><code class="language-bash">
+      <h4>6.5.2. 修改名称</h4>
+      <p>修改镜像别名方便使用</p>
+      <pre><code class="language-bash">
 # 给镜像起一个短一点的别名
 docker image tag swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker:1.0.0 openharmony-docker:1.0.0
 
@@ -636,25 +636,25 @@ docker images
 
 docker rmi swr.cn-south-1.myhuaweicloud.com/openharmony-docker/openharmony-docker:1.0.0
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610162012.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@202610162012.png" alt="接入地址">
+      </figure>
 
 
-            <h4>6.5.3. 启动容器</h4>
-            <p>使用镜像创建容器，以及关联Ubuntu中的代码</p>
-            <p class="red">注意：路径名称改成你自己环境的</p>
-            <pre><code class="language-bash">
+      <h4>6.5.3. 启动容器</h4>
+      <p>使用镜像创建容器，以及关联Ubuntu中的代码</p>
+      <p class="red">注意：路径名称改成你自己环境的</p>
+      <pre><code class="language-bash">
 # 创建链接Ubuntu磁盘文件的openharmony 容器 （并给容器命名 oh-rk2206）
 docker run -itd -v /home/shangcc/iot_2206:/home/openharmony --name oh-rk2206 openharmony-docker:1.0.0
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610162107.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@202610162107.png" alt="接入地址">
+      </figure>
 
-            <h4>6.5.4. Docker常用</h4>
-            <p>Docker日常使用以及常用命令</p>
-            <pre><code class="language-bash">
+      <h4>6.5.4. Docker常用</h4>
+      <p>Docker日常使用以及常用命令</p>
+      <pre><code class="language-bash">
 
 # 查看正在运行docker容器
 docker ps
@@ -676,8 +676,8 @@ exit
 docker stop oh-rk2206
 
 </code></pre>
-            <p>其他Docker命令</p>
-            <pre><code class="language-bash">
+      <p>其他Docker命令</p>
+      <pre><code class="language-bash">
 # 一次性清理所有停止的容器
 docker container prune
 
@@ -694,46 +694,110 @@ docker tag 原镜像名:版本 新名字:版本
 docker rmi 镜像ID/镜像名:版本
 </code></pre>
 
-            <h3>6.6. 编译代码</h3>
-            <p>下载hb工具（在容器中）（在通晓文件夹下面）</p>
-            <p>（1）首先进入容器</p>
-            <pre><code class="language-bash">
+      <h3>6.6. 编译代码</h3>
+      <p>下载hb工具（在容器中）（在通晓文件夹下面）</p>
+      <p>（1）首先进入容器</p>
+      <pre><code class="language-bash">
 # 启动并进入Docker容器
 docker start oh-rk2206 && docker exec -it oh-rk2206 bash
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610162116.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@202610162116.png" alt="接入地址">
+      </figure>
 
-            <p>（2）然后进入通晓文件夹，并下载hb工具</p>
-            <pre><code class="language-bash">
+      <p>（2）然后进入通晓文件夹，并下载hb工具</p>
+      <pre><code class="language-bash">
 pip3 install build/lite
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610162121.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@202610162121.png" alt="接入地址">
+      </figure>
 
 
-            <p>（3）使用hb set指令编译固件</p>
-            <pre><code class="language-bash">
+      <p>（3）使用hb set指令编译固件</p>
+      <pre><code class="language-bash">
 hb set
 .
 hb build -f
 </code></pre>
-            <figure>
-                <img src="images/PaintedCat@202610162126.png" alt="接入地址">
-            </figure>
-            <figure>
-                <img src="images/PaintedCat@202610162127.png" alt="接入地址">
-            </figure>
+      <figure>
+        <img src="images/PaintedCat@202610162126.png" alt="接入地址">
+      </figure>
+      <figure>
+        <img src="images/PaintedCat@202610162127.png" alt="接入地址">
+      </figure>
 
-            <p>（4） 后面你修改了代码就可以使用编译命令重新编译源码了</p>
-            <pre><code class="language-bash">
+      <p>（4） 后面你修改了代码就可以使用编译命令重新编译源码了</p>
+      <pre><code class="language-bash">
 hb build -f
 </code></pre>
-            <p>只要看到 success 说明编译成功了</p>
+      <p>只要看到 success 说明编译成功了</p>
 
-            
+      <h3>6.7. 烧录调试</h3>
+      <p>工具：</p>
+      <p>1. 串口驱动工具 <a
+          href="https://www.wch.cn/downloads/CH341SER_EXE.html">https://www.wch.cn/downloads/CH341SER_EXE.html</a></p>
+      <p>2. 调试查看工具 <a href="https://mobaxterm.mobatek.net/download.html">https://mobaxterm.mobatek.net/download.html</a>
+      </p>
+      <p>3. rk2206源代码（含烧录工具） <a href=" https://gitee.com/isoh_edu/txsmartropenharmony">
+          https://gitee.com/isoh_edu/txsmartropenharmony</a></p>
+      <br>
+      <h4>6.7.1. 下载工具</h4>
+      <p>这个就是烧录工具的位置，可以复制到桌面</p>
+      <p>（其实烧录工具在Ubuntu中下载的源码中就有，按照下面截图路径复制到桌面运行）</p>
+      <figure>
+        <img src="images/PaintedCat@202610171052.png" alt="接入地址">
+      </figure>
+      <figure>
+        <img src="images/PaintedCat@202610171054.png" alt="接入地址">
+      </figure>
+
+      <h4>6.7.2. 下载烧录文件</h4>
+      <p>烧录程序其实就是将这里的编译文件烧录到开发板</p>
+      <figure>
+        <img src="images/PaintedCat@202610171057.png" alt="接入地址">
+      </figure>
+
+      <h4>6.7.3. 烧录程序</h4>
+      <p>（1）首先准备好两个文件夹（复制到Windows桌面）</p>
+      <figure>
+        <img src="images/PaintedCat@202610171103.png" alt="接入地址">
+      </figure>
+      <figure>
+        <img src="images/PaintedCat@202610171104.png" alt="接入地址">
+      </figure>
+      <p>（2）连接开发板</p>
+      <figure>
+        <img src="images/PaintedCat@202610171108.png" alt="接入地址">
+      </figure>
+      <p>（3）打开烧录工具</p>
+      <figure>
+        <img src="images/PaintedCat@202610171112.png" alt="接入地址">
+      </figure>
+      <figure>
+        <img src="images/PaintedCat@202610171114.png" alt="接入地址">
+      </figure>
+      <figure>
+        <img src="images/PaintedCat@202610171115.png" alt="接入地址">
+      </figure>
+      <p>（4）烧录</p>
+      <p>开发板操作</p>
+      <figure>
+        <img src="images/PaintedCat@202610171119.png" alt="接入地址">
+      </figure>
+      <p>然后烧录软件就会发现设备</p>
+      <figure>
+        <img src="images/PaintedCat@202610171120.png" alt="接入地址">
+      </figure>
+      <figure>
+        <img src="images/PaintedCat@202610171121.png" alt="接入地址">
+      </figure>
+      <p>这就完成了烧录，<span class="red">
+          如果你的没有发现设备就安装下图的驱动程序</span></p>
+      <p class="red">(注意： 这个串口驱动，安装一次就可以了，以后再烧录程序就不用重复安装了)</p>
+      <figure>
+        <img src="images/PaintedCat@202610171124.png" alt="接入地址">
+      </figure>
 
 
 
@@ -741,12 +805,17 @@ hb build -f
 
 
 
-        </article>
-    </main>
-    <!-- 右：目录（对应正文里的 <h2 id="xxx">） -->
-    <ul id="toc">
-        <p>本页目录</p>
-    </ul>
+
+
+
+
+
+    </article>
+  </main>
+  <!-- 右：目录（对应正文里的 <h2 id="xxx">） -->
+  <ul id="toc">
+    <p>本页目录</p>
+  </ul>
 
 </body>
 
