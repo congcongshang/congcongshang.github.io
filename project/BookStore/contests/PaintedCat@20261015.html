@@ -694,6 +694,7 @@ docker tag 原镜像名:版本 新名字:版本
 docker rmi 镜像ID/镜像名:版本
 </code></pre>
 
+
       <h3>6.6. 编译代码</h3>
       <p>下载hb工具（在容器中）（在通晓文件夹下面）</p>
       <p>（1）首先进入容器</p>
@@ -728,6 +729,7 @@ hb build -f
       </figure>
 
       <p>（4） 后面你修改了代码就可以使用编译命令重新编译源码了</p>
+      <p class="red">（注意：这个工具不用每次都下载，后面改代码后，只用使用下面命令编译就行了）</p>
       <pre><code class="language-bash">
 hb build -f
 </code></pre>
@@ -741,7 +743,7 @@ hb build -f
       </p>
       <p>3. rk2206源代码（含烧录工具） <a href=" https://gitee.com/isoh_edu/txsmartropenharmony">
           https://gitee.com/isoh_edu/txsmartropenharmony</a></p>
-      <br>
+
       <h4>6.7.1. 下载工具</h4>
       <p>这个就是烧录工具的位置，可以复制到桌面</p>
       <p>（其实烧录工具在Ubuntu中下载的源码中就有，按照下面截图路径复制到桌面运行）</p>
@@ -798,6 +800,31 @@ hb build -f
       <figure>
         <img src="images/PaintedCat@202610171124.png" alt="接入地址">
       </figure>
+
+      <h4>6.7.4. 串口调试</h4>
+      <p>（1）连接开发板串口</p>
+      <figure>
+        <img src="images/PaintedCat@202610171155.png" alt="接入地址">
+      </figure>
+      <p>（2）下载并启动串口调试工具</p>
+      <figure>
+        <img src="images/PaintedCat@202610171156.png" alt="接入地址">
+      </figure>
+      <figure>
+        <img src="images/PaintedCat@202610171201.png" alt="接入地址">
+      </figure>
+
+
+      <p>（3）按照下面的设置新建连接</p>
+      <figure>
+        <img src="images/PaintedCat@202610171152.png" alt="接入地址">
+      </figure>
+
+      <p>（4）RESET 开发板就可以看到串口的调试信息了</p>
+      <figure>
+        <img src="images/PaintedCat@202610171157.png" alt="接入地址">
+      </figure>
+
 
 
 
