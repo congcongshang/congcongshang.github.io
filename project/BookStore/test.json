@@ -1,0 +1,21 @@
+
+$oc/devices/6ad31190cbb0cf6bb98dfe60_0001/sys/properties/report
+
+{
+    "services":[{
+        "service_id":"sever",
+        "properties":{
+            "light":true
+        }
+
+    }]
+}
+
+$oc/devices/6ad31190cbb0cf6bb98dfe60_0001/sys/commands/response/request_id=
+{
+    "result_code": 0,
+    "response_name":"openlight",
+    "paras":{
+        "result":true
+    }
+}

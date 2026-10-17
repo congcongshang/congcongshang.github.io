@@ -25,8 +25,8 @@
       </p>
 
       <h2>1. 华为云注册与云端配置</h2>
-      <p>华为云官网：https://www.huaweicloud.com/ </p>
-      <p>选择产品->IoT物联网->设备接入IoTDA</p>
+      <p>华为云官网：<a href="https://www.huaweicloud.com/" target="_blank">https://www.huaweicloud.com/</a> </p>
+      <p>选择产品->企业应用->设备接入IoTDA</p>
       <figure>
         <img src="images/PaintedCat@202610151939.png" alt="设备接入IoTDA">
         <figcaption>设备接入IoTDA</figcaption>
@@ -84,8 +84,17 @@
 
       <h3>2.3. 上传消息</h3>
       <p>设置topic信息（注意替换设备id，服务id，以及属性信息）</p>
-      <pre><code class="language-bash">
-$oc/devices/68de831fef46cd424ce07093_2314/sys/properties/report
+      <pre><code class="language-javascript">
+$oc/devices/6ad31190cbb0cf6bb98dfe60_0001/sys/properties/report
+
+{
+    &quot;services&quot;:[{
+        &quot;service_id&quot;:&quot;sever&quot;,
+        &quot;properties&quot;:{
+            &quot;light&quot;:13.4
+        }
+    }]
+}
 </code></pre>
       <figure>
         <img src="images/PaintedCat@202610152003.png" alt="新增属性">
@@ -106,6 +115,17 @@ $oc/devices/68de831fef46cd424ce07093_2314/sys/properties/report
       </figure>
       <p>这个时候MQTTX会收到消息，这个时候有20秒的手速时间，将命令的返回从mqtt发回去就会成功</p>
       <p>（1）提前准备好响应消息</p>
+      <pre><code class="language-javascript">
+$oc/devices/6ad31190cbb0cf6bb98dfe60_0001/sys/commands/response/request_id=
+
+{
+    &quot;result_code&quot;: 0,
+    &quot;response_name&quot;:&quot;switchLamp&quot;,
+    &quot;paras&quot;:{
+        &quot;result&quot;:true
+    }
+}
+</code></pre>
       <figure>
         <img src="images/PaintedCat@202610152007.png" alt="新增属性">
       </figure>

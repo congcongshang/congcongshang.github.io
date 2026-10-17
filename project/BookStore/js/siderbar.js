@@ -4,7 +4,10 @@ const navGroups = [
         name: "参加比赛",
         folder: "contests",
         open: false,
-        items: [{ text: "鸿蒙南向打通", file: "PaintedCat@20261015.html" }]
+        items: [
+            { text: "鸿蒙南向打通", file: "PaintedCat@20261015.html" },
+            { text: "南向开发参考", file: "PaintedCat@20261017.html" }
+        ]
     },
     {
         name: "心情随笔",

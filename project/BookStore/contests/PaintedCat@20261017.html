@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <script src="../js/siderbar.js" defer></script>
+</head>
+
+<body>
+    <aside></aside>
+
+    <!-- 移动端遮罩 -->
+    <div class="overlay" id="overlay"></div>
+
+
+    <main>
+        <article>
+
+            <h1>openharmony 南向开发参考文档</h1>
+            <p>
+                <span>2026年10月17日</span>比赛 · 平顶山 · 模版使用
+            </p>
+
+            <h2>1. 代码基本使用规则</h2>
+            <p>第一步：将项目的gn文件中，项目源码以及头文件都链接进去</p>
+            <figure>
+                <img src="images/PaintedCat@202610171744.png" alt="修改头文件链接">
+            </figure>
+
+            <p>第二步：在samples下面的gn文件中将我们的项目链接进去</p>
+            <figure>
+                <img src="images/PaintedCat@202610171759.png" alt="修改头文件链接">
+            </figure>
+
+            <p>第三步：在device文件夹中将makefile文件中 -l 链接我们的项目</p>
+            <figure>
+                <img src="images/PaintedCat@202610171800.png" alt="修改头文件链接">
+            </figure>
+
+            <p>第四步：最后就可以编译我们的文件了</p>
+            <span class="red">（要在Docker容器中执行）</span>
+            <figure>
+                <img src="images/PaintedCat@202610171805.png" alt="修改头文件链接">
+            </figure>
+
+            <p>第五步：将编译好的文件烧录到开发板</p>
+            <p>下面路径找到images文件夹复制到桌面</p>
+            <p>txsmartropenharmony\out\rk2206\isoftstone-rk2206\images</p>
+            <p>使用烧录工具烧录到开发板就可以了</p>
+            <figure>
+                <img src="images/PaintedCat@202610171112.png" alt="修改头文件链接">
+            </figure>
+
+            <h2>2. 编译内核开发-任务</h2>
+            <p>参考文档：<a href="https://gitee.com/isoh_edu/txsmartropenharmony/tree/main/vendor/isoftstone/rk2206/samples/a1_kernel_task">https://gitee.com/isoh_edu/txsmartropenharmony/tree/main/vendor/isoftstone/rk2206/samples/a1_kernel_task</a></p>
+            <p>第一步：修改build文件和makefile文件</p>
+            <p class="red">（注意路径，别改错了）</p>
+            <figure>
+                <img src="images/PaintedCat@202610172039.png" alt="修改头文件链接">
+                <figcaption>注释第67行，打开第20行</figcaption>
+            </figure>
+            <figure>
+                <img src="images/PaintedCat@202610172041.png" alt="修改头文件链接">
+            </figure>
+
+            <p>第二步：编译源代码</p>
+            <figure>
+                <img src="images/PaintedCat@202610172044.png" alt="修改头文件链接">
+            </figure>
+            <figure>
+                <img src="images/PaintedCat@202610172045.png" alt="修改头文件链接">
+            </figure>
+
+            <p>第三步：烧录程序</p>
+            <p>从下面项目路径下，将源码复制到Windows桌面，然后再烧录</p>
+            <p>txsmartropenharmony\out\rk2206\isoftstone-rk2206\images</p>
+            <figure>
+                <img src="images/PaintedCat@202610172054.png" alt="修改头文件链接">
+            </figure>
+
+            <p>第四步：串口调试</p>
+            <p>新建一个连接<span class="red">注意：开发板连接线要插串口</span></p>
+            <figure>
+                <img src="images/PaintedCat@202610172057.png" alt="修改头文件链接">
+            </figure>
+            <p>连接后显示的结果就是 任务1 和任务2 交替出现</p>
+            <figure>
+                <img src="images/PaintedCat@202610172058.png" alt="修改头文件链接">
+            </figure>
+
+
+
+
+        </article>
+    </main>
+    <!-- 右：目录（对应正文里的 <h2 id="xxx">） -->
+    <ul id="toc">
+        <p>本页目录</p>
+    </ul>
+
+</body>
+
+</html>
