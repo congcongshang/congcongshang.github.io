@@ -340,6 +340,7 @@ article p {
 article a{color:#1677ff;text-decoration:underline;word-break:break-all}  /* 超链接：蓝色带下划线，长网址自动换行 */
 article .red{color:#e03131}                                             /* 红字提示：<p class="warn"> */
 article .bgred{background-color:#e03131}                                             /* 红字提示：<p class="warn"> */
+article .bgyellow{background-color:#e8f00c}                                             /* 红字提示：<p class="warn"> */
 
 
 /* ===== 引用 ===== */

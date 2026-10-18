@@ -353,7 +353,7 @@ import { BusinessError } from &#039;@kit.BasicServicesKit&#039;;
       </figure>
 
       <h3>5.2. 获取认证token</h3>
-      <p>首先定义出获取token字符串格式（这个不用变直接用）</p>
+      <p>首先定义出获取token字符串格式 <span class="red">（这个不用变直接用）</span></p>
       <pre><code class="language-arkts">
 class User {
   auth: Auth
@@ -410,7 +410,7 @@ interface Scope {
 }
 </code></pre>
       <p>然后创建对象请求华为云touken（这个里面需要改：用户名，密码，账户名） </p>
-      <p>注意：用户名和密码就是统一身份认证创建的</p>
+      <p class="red">注意：用户名和密码就是统一身份认证创建的，账户名就是华为云 <span class="bgyellow">主账号</span> 的名称</p>
       <pre><code class="language-arkts">
 import { http } from &#039;@kit.NetworkKit&#039;
 
@@ -427,7 +427,7 @@ import { http } from &#039;@kit.NetworkKit&#039;
    */
   async getToken() {
     let url: string = &#039;https://iam.myhuaweicloud.com/v3/auth/tokens&#039;
-    let hw_user: User = new User(&#039;abc&#039;, &#039;12345678&#039;, &#039;xyz_domain&#039;) // 改成自己的
+    let hw_user: User = new User(&#039;用户名&#039;, &#039;密码&#039;, &#039;主账号&#039;) // 改成自己的
 
     let httpRequest = http.createHttp()
     let options: http.HttpRequestOptions = {
@@ -455,13 +455,13 @@ import { http } from &#039;@kit.NetworkKit&#039;
       <p class="red">（注意这里面需要修改三个信息为你自己的：接入地址，项目id，设备id ）</p>
       <p><span class="red">拼接成下面字符串形式：</span> https://{接入地址}/v5/iot/{project_id}/devices/{device_id}/shadow</p>
 
-      <h4>5.3.1. 接入地址</h4>
+      <h4>5.3.1. 接入地址（endpoint）</h4>
       <figure>
         <img src="images/PaintedCat@202610161440.png" alt="接入地址">
       </figure>
 
       <h4>5.3.2. project_id</h4>
-      <p>（这里需要注意选择你的项目所属区域）</p>
+      <p class="red">（这里需要注意选择你的项目所属区域，这个在华为云 <span class="bgyellow">我的凭证</span> 中查找）</p>
       <figure>
         <img src="images/PaintedCat@202610161441.png" alt="接入地址">
       </figure>
@@ -473,26 +473,44 @@ import { http } from &#039;@kit.NetworkKit&#039;
 
       <h4>5.3.4. 示例代码</h4>
       <pre><code class="language-arkts">
-  /**
-   * 查询设备影子数据
-   */
-  async getShadowData() {
-    let project_id = &#039;0746ad0198000f642fc6c000fba2c1d7&#039;
-    let device_id = &#039;Test01&#039;
-    let url = &#039;https://1da476473d.st1.iotda-app.cn-east-3.myhuaweicloud.com/v5/iot/&#039; + project_id + &#039;/devices/&#039; + device_id + &#039;/shadow&#039;
+interface Properties {
+    &quot;illumination&quot;?: string
+    &quot;temperature&quot;?: string
+    &quot;humidity&quot;?: string
+    &quot;motorStatus&quot;?: string
+    &quot;lightStatus&quot;?: string
+    &quot;autoStatus&quot;?: string
+}
+
+@State properties: Properties = {
+    illumination: &quot;string&quot;,
+    temperature: &quot;string&quot;,
+    humidity: &quot;string&quot;,
+    motorStatus: &quot;string&quot;,
+    lightStatus: &quot;string&quot;,
+    autoStatus: &quot;string&quot;,
+}
+
+ /**
+  * 查询设备影子数据
+  */
+async getShadowData() {
+    let endpoint = &#039;f355aa03f3.st1.iotda-app.cn-north-4.myhuaweicloud.com&#039;
+    let project_id = &#039;0b2394027680f5b72fc2c01953fe5f94&#039;
+    let device_id = &#039;6ad39ec88f2e6c302fa4171d_0001&#039;
+    let url = &#039;https://&#039; + endpoint + &#039;/v5/iot/&#039; + project_id + &#039;/devices/&#039; + device_id + &#039;/shadow&#039;
     let httpRequest = http.createHttp()
     let options: http.HttpRequestOptions = {
-      method: http.RequestMethod.GET,
-      expectDataType: http.HttpDataType.OBJECT,
-      header: {
-        &#039;X-Auth-Token&#039;: this.hw_token
-      }
+        method: http.RequestMethod.GET,
+        expectDataType: http.HttpDataType.OBJECT,
+        header: {
+            &#039;X-Auth-Token&#039;: this.hw_token
+        }
     }
     let response: http.HttpResponse = await httpRequest.request(url, options)
     this.properties = response.result[&#039;shadow&#039;][0].reported.properties as Properties
     console.log(&#039;shadow data:&#039;, JSON.stringify(this.properties))
-  }
-
+}
 </code></pre>
       <figure>
         <img src="images/PaintedCat@202610161931.png" alt="接入地址">
@@ -508,38 +526,52 @@ import { http } from &#039;@kit.NetworkKit&#039;
       <figure>
         <img src="images/PaintedCat@202610161933.png" alt="接入地址">
       </figure>
-      <pre><code class="language-arkts">
-  /**
-   * 下发命令（同样修改成你自己的项目id，设备id，接入地址）
-   */
-  async sendCommand() {
+     <pre><code class="language-arkts">
+interface Command {
+    service_id: string
+    command_name: string
+    paras: Paras
+}
+
+interface Paras {
+    onoff: string
+}
+
+@State lightState: boolean = true
+
+/**
+ * 下发命令（同样修改成你自己的项目id，设备id，接入地址）
+ */
+async sendCommand() {
+    let endpoint = &#039;f355aa03f3.st1.iotda-app.cn-north-4.myhuaweicloud.com&#039;
     let project_id = &#039;0b2394027680f5b72fc2c01953fe5f94&#039;
-    let device_id = &#039;68fb0a83e41f2979315b3703_0001&#039;
-    let serviceId: string = &#039;sss&#039;
-    let commandName: string = &#039;switchLamp&#039;
+    let device_id = &#039;6ad39ec88f2e6c302fa4171d_0001&#039;
+    let serviceId: string = &#039;smartHome&#039;
+    let commandName: string = &#039;light_control&#039;
     let command: Command = {
-      service_id: serviceId,
-      command_name: commandName,
-      paras: {
-        switch: !this.switchLamp
-      }
+        service_id: serviceId,
+        command_name: commandName,
+        paras: {
+            onoff: this.lightState ? &quot;OFF&quot; : &quot;ON&quot;
+        }
     }
-    let url = &#039;https://f355aa03f3.st1.iotda-app.cn-north-4.myhuaweicloud.com/v5/iot/&#039; + project_id + &#039;/devices/&#039; + device_id + &#039;/commands&#039;
+    let url = &#039;https://&#039; + endpoint + &#039;/v5/iot/&#039; + project_id + &#039;/devices/&#039; + device_id + &#039;/commands&#039;
     let httpRequest = http.createHttp()
     let options: http.HttpRequestOptions = {
-      method: http.RequestMethod.POST,
-      extraData: command, // 设置命令数据
-      expectDataType: http.HttpDataType.OBJECT,
-      header: {
-        &#039;X-Auth-Token&#039;: this.hw_token
-      }
+        method: http.RequestMethod.POST,
+        extraData: command, // 设置命令数据
+        expectDataType: http.HttpDataType.OBJECT,
+        header: {
+            &#039;X-Auth-Token&#039;: this.hw_token
+        }
     }
     let response: http.HttpResponse = await httpRequest.request(url, options)
     if (response.result[&#039;response&#039;].paras.result) {
-      console.log(&#039;设备执行命令成功....&#039;)
+        console.log(&#039;设备执行命令成功....&#039;)
     }
     console.log(&#039;command response:&#039;, JSON.stringify(response.result))
-  }
+}
+
 </code></pre>
       <p>参考MQTT连接云端设备中下发命令，就可以获取到MQTT的响应消息</p>
       <figure>
