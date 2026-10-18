@@ -19,7 +19,7 @@
     <main>
         <article>
 
-            <h1>openharmony 南向开发参考文档</h1>
+            <h1>openharmony 南向开发参考</h1>
             <p>
                 <span>2026年10月17日</span>比赛 · 平顶山 · 模版使用
             </p>
@@ -55,7 +55,9 @@
             </figure>
 
             <h2>2. 编译内核开发-任务</h2>
-            <p>参考文档：<a href="https://gitee.com/isoh_edu/txsmartropenharmony/tree/main/vendor/isoftstone/rk2206/samples/a1_kernel_task">https://gitee.com/isoh_edu/txsmartropenharmony/tree/main/vendor/isoftstone/rk2206/samples/a1_kernel_task</a></p>
+            <p>参考文档：<a
+                    href="https://gitee.com/isoh_edu/txsmartropenharmony/tree/main/vendor/isoftstone/rk2206/samples/a1_kernel_task">https://gitee.com/isoh_edu/txsmartropenharmony/tree/main/vendor/isoftstone/rk2206/samples/a1_kernel_task</a>
+            </p>
             <p>第一步：修改build文件和makefile文件</p>
             <p class="red">（注意路径，别改错了）</p>
             <figure>
@@ -90,6 +92,40 @@
             <figure>
                 <img src="images/PaintedCat@202610172058.png" alt="修改头文件链接">
             </figure>
+
+            <h2>3. 综合实验-智慧家居</h2>
+            <p>第一步：修改连接华为云的参数 host ， client_id，device_id，password</p>
+            <p>创建连接网址：<a href="https://iot-tool.obs-website.cn-north-4.myhuaweicloud.com/"
+                    target="_blank">https://iot-tool.obs-website.cn-north-4.myhuaweicloud.com/</a>
+            </p>
+            <figure>
+                <img src="images/PaintedCat@202610181411.png" alt="华为云配置">
+            </figure>
+
+            <p>第二步：修改华为云产品的service_id 以及相关设备属性 ，保持设备端与云端名称一致</p>
+            <figure>
+                <img src="images/PaintedCat@202610181414.png" alt="华为云配置">
+            </figure>
+            <figure>
+                <img src="images/PaintedCat@2026101814141.png" alt="华为云配置">
+            </figure>
+
+            <p>第三步：修改WiFi连接，让开发板可以连接手机WiFi</p>
+            <figure>
+                <img src="images/PaintedCat@2026101814142.png" alt="华为云配置">
+            </figure>
+
+            <p>第四步：按照基本使用修改gn文件和makefile文件</p>
+
+            <p>第五步：使用命令：hb build -f   编译代码，然后烧录运行</p>
+
+            <p>第六步：就可以看到云端的数据变化了</p>
+            <figure>
+                <img src="images/PaintedCat@202610181419.png" alt="华为云配置">
+            </figure>
+
+
+
 
 
 
