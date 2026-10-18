@@ -12,7 +12,7 @@ const navGroups = [
     {
         name: "心情随笔",
         folder: "essays",          // 文件夹是组的属性，写一次
-        open: true,
+        open: false,
         items: [
             { text: "回忆过去（2026年10）", file: "PaintedCat@20261008.html" ,asg:"关键时刻还是要逼自己一把"},
             { text: "内心独白（2025）", file: "inner-2025.html" }
