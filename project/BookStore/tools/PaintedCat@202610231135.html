@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaintedCat</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <script src="../js/siderbar.js" defer></script>
+</head>
+
+<body>
+    <aside></aside>
+
+    <!-- 移动端遮罩 -->
+    <div class="overlay" id="overlay"></div>
+
+
+    <main>
+        <article>
+
+            <h1>Python数据处理代码片段</h1>
+            <p>
+                <span>2026年10月23日</span>工具 · Python · 积累
+            </p>
+
+            <h2>1. 读写文件常用代码</h2>
+            <pre><code class="language-python">
+def read_file(file_name, encoding=&quot;utf-8&quot;, skip_empty_line=True):
+    &quot;&quot;&quot;
+    读取tsv文本，按\t分割为二维列表
+    :param skip_empty_line: 是否跳过空行
+    :return: list[list[str]]
+    &quot;&quot;&quot;
+    result = []
+    with open(file_name, &quot;r&quot;, encoding=encoding) as f:
+        for line in f:
+            # 仅移除末尾换行，保留本行内所有\t、首尾空字段
+            line = line.rstrip(&quot;\n&quot;)
+            if skip_empty_line and line == &quot;&quot;:
+                continue
+            row = line.split(&quot;\t&quot;)
+            result.append(row)
+    return result
+</code></pre>
+<pre><code class="language-python">
+def write_file(data, file_name, encoding=&quot;utf-8&quot;, skip_empty_row=True):
+    &quot;&quot;&quot;
+    将二维列表写入tsv文本，字段用\t分隔，一行对应一个子列表
+    :param data: 二维列表 list[list[str]]
+    :param skip_empty_row: 是否跳过空行（子列表为空）
+    :return: None
+    &quot;&quot;&quot;
+    with open(file_name, &quot;w&quot;, encoding=encoding, newline=&quot;&quot;) as f:
+        for row in data:
+            if skip_empty_row and len(row) == 0:
+                continue
+            line = &quot;\t&quot;.join(row) + &quot;\n&quot;
+            f.write(line)
+</code></pre>
+
+        </article>
+    </main>
+    <!-- 右：目录（对应正文里的 <h2 id="xxx">） -->
+    <ul id="toc">
+        <p>本页目录</p>
+    </ul>
+
+</body>
+
+</html>

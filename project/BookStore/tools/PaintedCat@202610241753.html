@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PaintedCat</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <script src="../js/siderbar.js" defer></script>
+  </head>
+
+  <body>
+    <aside></aside>
+
+    <!-- 移动端遮罩 -->
+    <div class="overlay" id="overlay"></div>
+
+    <main>
+      <article>
+        <h1>node.js 新学者知识积累</h1>
+        <p><span>2026年10月24日</span>工具 · 平顶山 · 积累</p>
+
+        <h2>1. ESM导入路径</h2>
+        <p>学习node使用服务端技术，优点比较多，加油学习，顺利拿到想要的技术，还是有很多可以思考的事情呢！</p>
+        <pre><code class="language-javascript">
+// get-path.js
+import { fileURLToPath } from &#039;url&#039;
+import { dirname, join } from &#039;path&#039;
+export default function (metaUrl) {
+  const f = fileURLToPath(metaUrl)
+  const d = dirname(f)
+  return {
+    __filename: f,
+    __dirname: d,
+    join: (...args) =&gt; join(d, ...args)
+  }
+}
+
+</code></pre>
+        <p>使用：</p>
+        <pre><code class="language-javascript">
+import getPath from &#039;./get-path.js&#039;
+const { __dirname,__filename, join } = getPath(import.meta.url)
+</code></pre>
+
+        <h2>2. 创建package.json文件</h2>
+        <pre><code class="language-javascript">
+{
+    &quot;type&quot;: &quot;module&quot;
+}
+</code></pre>
+
+
+
+
+      </article>
+    </main>
+    <!-- 右：目录（对应正文里的 <h2 id="xxx">） -->
+    <ul id="toc">
+      <p>本页目录</p>
+    </ul>
+  </body>
+</html>

@@ -36,7 +36,11 @@ const navGroups = [
         name: "工具箱",
         folder: "tools",
         open: false,
-        items: [{ text: "示例网页", file: "demo.html" }]
+        items: [
+            { text: "Python工具片段", file: "PaintedCat@202610231135.html" },
+            { text: "JavaScript工具片段", file: "PaintedCat@202610241753.html" },
+            { text: "示例网页", file: "demo.html" }
+        ]
     }
 ];
 
